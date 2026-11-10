@@ -3,27 +3,27 @@
   "world": "艾瑟蘭異界物語：新世界",
   "snapshot": {
     "gameDay": 193,
-    "gameTime": "04:35",
-    "location": "沉鐘古城・封印局前進營・現場指揮帳",
-    "officialSave": "V120",
-    "npcIndex": "V64",
-    "detailIndex": "V14",
-    "baseline": "第192日15:24",
+    "gameTime": "13:11",
+    "location": "西線軍方前進營・預備休息區・第三休息帳",
+    "officialSave": "V121",
+    "npcIndex": "V65",
+    "detailIndex": "V15",
+    "baseline": "第193日13:11",
     "authority": "最新有效完整存檔及後續正式劇情優先；本看板只作唯讀查詢，不是正式存檔",
-    "scope": "V120正式完整存檔及其後第193日04:35前正式劇情；GitHub看板非正式完整存檔",
+    "scope": "V121正式完整存檔及已確認正式劇情至第193日13:11",
     "paused": false,
-    "incrementalCounter": 22,
-    "fullCounter": 22
+    "incrementalCounter": 0,
+    "fullCounter": 0
   },
   "sync": {
     "intervalTurns": 20,
     "turnsSinceSuccessfulSync": 0,
     "triggerOnFormalSave": true,
     "lastGameDay": 193,
-    "lastGameTime": "04:35",
-    "lastSourceSave": "V120＋後續正式劇情至第193日04:35",
+    "lastGameTime": "13:11",
+    "lastSourceSave": "V121完整存檔／06 V15／12 V65｜第193日13:11",
     "status": "成功同步",
-    "note": "手動GH同步；銀砂河谷測繪箱及完整資料交付，620000核准待結算；沉鐘古城現場報到，黑霧巨像朝主鐘移動；雙存檔計數器不歸零。"
+    "note": "玩家明確指令完整存檔GH存檔；V121、06 V15、12 V65已成功上傳檔案庫；目前第三休息帳，班恩問落月武器。雙計數器0/25與0/50。"
   },
   "hero": {
     "name": "澈",
@@ -36,7 +36,7 @@
       "hard": 19,
       "hardTarget": 18
     },
-    "cashCopper": 54369646,
+    "cashCopper": 54367866,
     "thirdPartyHeldCopper": 400000,
     "thirdPartyHeldBy": "奧斯文・貝克",
     "uncollectedBaseCopper": 865000,
@@ -46,7 +46,7 @@
       "無限空間",
       "任何武器完美駕馭"
     ],
-    "equipped": "夢想二號機",
+    "equipped": "夢想二號機（收甲）",
     "chipsCapacity": 15,
     "chipsUsed": 12,
     "chips": [
@@ -63,7 +63,10 @@
       "分身",
       "冰封"
     ],
-    "note": "不採用HP／MP。其他已確立能力見正式完整存檔；看板未列出不代表失去。"
+    "note": "不採用HP／MP。其他已確立能力見正式完整存檔；看板未列出不代表失去。",
+    "uncollectedApprovedCopper": 5470000,
+    "currentLocation": "西線軍方前進營・預備休息區・第三休息帳",
+    "status": "無傷，尚未選床、尚未入睡"
   },
   "characters": [
     {
@@ -2430,5 +2433,50 @@
       "details": "第190日已購；產權後續手續待辦，400,000代管改造專款與成交價分開。",
       "updatedDay": 191
     }
+  ],
+  "latestEvents": [
+    {
+      "gameDay": 193,
+      "time": "13:11",
+      "event": "澈進入前進營第三休息帳，與班恩、里克、托姆、哈洛初次交談；班恩右臂輕傷，問落月使用何種武器。"
+    },
+    {
+      "gameDay": 193,
+      "time": "12:16",
+      "event": "瓦爾克・德拉森及25名敵軍俘虜正式移交王國軍，收據POW-193-041～066；TMP-N190-S01尚未結案。"
+    },
+    {
+      "gameDay": 193,
+      "time": "12:05",
+      "event": "澈施展落月損壞舊石橋東側引道；王國軍11名觀察兵存活，班恩1人輕傷；修復責任待判定。"
+    },
+    {
+      "gameDay": 193,
+      "time": "12:36",
+      "event": "現代商城購茶具茶葉熱水實付1780銅幣；茶具與剩餘茶葉已贈雷蒙德。"
+    },
+    {
+      "gameDay": 193,
+      "time": "12:52",
+      "event": "敵軍增援主車隊向東撤離，約20名步兵留橋東警戒；軍方持續監視。"
+    }
+  ],
+  "currentScene": {
+    "location": "西線軍方前進營・預備休息區・第三休息帳",
+    "npcs": [
+      "班恩",
+      "里克",
+      "托姆",
+      "哈洛"
+    ],
+    "prompt": "班恩問澈：你那一下，到底是拿什麼打出來的？",
+    "restStarted": false
+  },
+  "openIssues": [
+    "TMP-N190-S01尚未結案與付款，基礎7200000、情報獎金上限1300000",
+    "舊石橋修復責任與費用待正式裁定，不可擅自扣款",
+    "莫里茲・凱恩與賽格・羅文去向未明",
+    "兩具攻城構裝體藏澈無限空間，軍方不知；三方案未簽約",
+    "已核准未支付任務合計5470000銅幣"
   ]
 }
