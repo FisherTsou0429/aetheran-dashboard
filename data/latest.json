@@ -3,27 +3,27 @@
   "world": "艾瑟蘭異界物語：新世界",
   "snapshot": {
     "gameDay": 192,
-    "gameTime": "15:24",
-    "location": "格林鎮北住宅區・白樺莊園",
+    "gameTime": "19:51",
+    "location": "銀砂河谷・北觀測站",
     "officialSave": "V120",
     "npcIndex": "V64",
     "detailIndex": "V14",
     "baseline": "第192日15:24",
     "authority": "最新有效完整存檔及後續正式劇情優先；本看板只作唯讀查詢，不是正式存檔",
-    "scope": "第192日15:24完整存檔V120；檔案庫上傳成功；第191日V119獨有原文尚待取得",
+    "scope": "V120正式完整存檔＋第192日19:51前18回合正式劇情；本看板不是正式存檔",
     "paused": false,
-    "incrementalCounter": 0,
-    "fullCounter": 0
+    "incrementalCounter": 18,
+    "fullCounter": 18
   },
   "sync": {
     "intervalTurns": 20,
     "turnsSinceSuccessfulSync": 0,
     "triggerOnFormalSave": true,
     "lastGameDay": 192,
-    "lastGameTime": "15:24",
-    "lastSourceSave": "V120正式完整存檔＋06 V14＋12 V64",
+    "lastGameTime": "19:51",
+    "lastSourceSave": "V120＋第192日15:24至19:51正式劇情（未另行完整存檔）",
     "status": "成功同步",
-    "note": "完整存檔已成功上傳使用者檔案庫，遊戲雙計數器歸零；白樺莊園工程追加18,600銅幣獲核准、奧斯文工程代理、雷薩克受贈手機、小夢防禦甲與瓦倫專屬甲進度同步。"
+    "note": "GH手動同步：蒼岩哨站雙守衛完整修復驗收650000待公會結算；銀砂河谷三柱及測繪箱鑑定，尚未操作。雙存檔計數器18/25、18/50不歸零。"
   },
   "hero": {
     "name": "澈",
@@ -36,7 +36,7 @@
       "hard": 19,
       "hardTarget": 18
     },
-    "cashCopper": 43387646,
+    "cashCopper": 54369646,
     "thirdPartyHeldCopper": 400000,
     "thirdPartyHeldBy": "奧斯文・貝克",
     "uncollectedBaseCopper": 182000,
@@ -265,14 +265,14 @@
       "id": "TMP-G188-B05",
       "name": "西林採石場・鳴晶岩蛛群",
       "rank": "B",
-      "status": "已驗收待結算",
+      "status": "基本報酬已結算",
       "rewardCopper": 182000,
       "bonusCopper": 38000,
       "bonusStatus": "尚未核發",
       "deadlineDay": 191,
       "deadlineTime": "12:00",
       "owner": "採石場／公會",
-      "details": "第191日09:50採石場原址驗收通過。182,000基本報酬核准未領，不可自動加錢與晉升。",
+      "details": "182000銅幣基本報酬已入帳；38000附加款待核定。",
       "taskDetails": {
         "client": "西林舊採石場舊業主聯合管理人，透過公會發布",
         "requirements": "清除鳴晶岩蛛主巢群，確保主要坑道可安全通行。",
@@ -293,14 +293,14 @@
       "id": "TMP-H190-S01",
       "name": "雷鳴天脊・蒼雷巨翼龍討伐",
       "rank": "S",
-      "status": "已接取未完成",
+      "status": "替代完成已驗收基本報酬已結算",
       "rewardCopper": 4600000,
       "bonusCopper": 600000,
       "bonusStatus": "觀測站保全條件",
       "deadlineDay": 196,
       "deadlineTime": "18:00",
       "owner": "王都高空航路監理署",
-      "details": "從南側航路進入，避開三座有人觀測站；澈尚未出發、未擊殺巨翼龍。",
+      "details": "4600000基本報酬已入帳；600000觀測站保全附加款待核定。",
       "taskDetails": {
         "requirements": "討伐蒼雷巨翼龍，並保護雷鳴天脊航路上的觀測設施。",
         "place": "雷鳴天脊，從南側航路進入。",
@@ -339,14 +339,14 @@
       "id": "TMP-N187-S06",
       "name": "第三寒鐵戰群與指揮網截斷",
       "rank": "S",
-      "status": "戰鬥完成待軍方驗證",
+      "status": "已正式結算",
       "rewardCopper": 5600000,
       "bonusCopper": 900000,
       "bonusStatus": "情報獎上限",
       "deadlineDay": 195,
       "deadlineTime": "18:00（歷史舊期限，依最新軍方驗證）",
       "owner": "北境軍方",
-      "details": "戰鬥證據第190日22:04提交；指揮網自第190日約16:35須持續斷線24小時，最早第191日16:35驗證，未領款。",
+      "details": "5600000基本報酬及600000情報獎已入帳；另300000情報獎未核發。",
       "taskDetails": {
         "requirements": "擊破兩座移動指揮塔，使指揮網中斷至少 24 小時，迫使第三寒鐵戰群撤退並提交證據。",
         "client": "北境軍方，透過軍方與公會辦理",
@@ -747,6 +747,35 @@
       "owner": "格林鎮北側農戶",
       "details": "第192日瓦倫、小夢共同接取，完成三處觀察點與農戶簽認，11:21公會正式驗收。兩人各領1400銅幣；澈旁觀無報酬及晉升計數。",
       "updatedDay": 192
+    },
+    {
+      "id": "DM-G192-B01",
+      "name": "蒼岩哨站失控守衛",
+      "rank": "B+專屬",
+      "status": "雙機完整修復已驗收待公會付款",
+      "rewardCopper": 650000,
+      "details": "第192日19:00軍方驗收，CG-01/02正常啟動，歷史資料保留，異常轉接模組與M-27資料已移交。調查操作者是獨立任務，澈未接取。"
+    },
+    {
+      "id": "DM-G192-P02",
+      "name": "銀砂河谷古代測繪箱",
+      "rank": "A專屬豁免",
+      "status": "已接取、現場鑑定中",
+      "rewardCopper": 540000,
+      "bonusCopper": 80000,
+      "deadlineDay": 204,
+      "deadlineTime": "18:00",
+      "details": "第192日19:51位於北觀測站，已鑑定西柱流量、南柱方位、東柱週期，東柱受地下天然魔力支流干擾；箱體和歷史資料完整，尚未校準、拆卸或回收。"
+    },
+    {
+      "id": "TMP-G192-S03",
+      "name": "沉鐘古城黑霧巨像",
+      "rank": "S特例",
+      "status": "已接取未出發",
+      "rewardCopper": 3800000,
+      "bonusCopper": 400000,
+      "deadlineDay": 209,
+      "deadlineTime": "18:00"
     }
   ],
   "research": [
@@ -1760,6 +1789,24 @@
       "category": "不動產",
       "details": "第190日已購；產權後續手續待辦，400,000代管改造專款與成交價分開。",
       "updatedDay": 191
+    }
+  ],
+  "events": [
+    {
+      "id": "EV-192-SENTRY-REPAIR",
+      "day": 192,
+      "time": "18:09–19:00",
+      "title": "蒼岩哨站雙守衛完整修復並驗收",
+      "summary": "CG-01與CG-02外部惡意控制隔離，完整保留歷史資料，正常啟動並通過軍方安全驗收；650000銅幣待公會付款。M-27異常模組已移交，追查操作者另案。",
+      "location": "蒼岩哨站"
+    },
+    {
+      "id": "EV-192-SILVER-VALLEY-ARRIVAL",
+      "day": 192,
+      "time": "19:42–19:51",
+      "title": "銀砂河谷三柱與測繪箱深度鑑定",
+      "summary": "三柱均未損壞；東柱受地下魔力支流干擾，測繪箱及歷史地脈圖完整，尚未操作。",
+      "location": "銀砂河谷・北觀測站"
     }
   ]
 }
