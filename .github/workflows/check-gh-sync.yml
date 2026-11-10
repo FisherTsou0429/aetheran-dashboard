@@ -1,0 +1,34 @@
+name: GH save data check
+
+on:
+  push:
+    branches:
+      - main
+      - 'gh-sync/**'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Verify GH save data
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Compare with the current main snapshot
+        shell: bash
+        run: |
+          if [[ "$GITHUB_REF" == refs/heads/main ]]; then
+            baseline="$(node -p 'require(process.env.GITHUB_EVENT_PATH).before')"
+          else
+            baseline="$(git rev-parse refs/remotes/origin/main)"
+            if ! git merge-base --is-ancestor "$baseline" HEAD; then
+              echo "main 已更新，請從最新 main 重新合併。"
+              exit 1
+            fi
+          fi
+          git show "$baseline:data/latest.json" > "$RUNNER_TEMP/aetheran-previous.json"
+          node scripts/check-gh-sync.mjs "$RUNNER_TEMP/aetheran-previous.json" data/latest.json
