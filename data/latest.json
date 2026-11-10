@@ -992,5 +992,84 @@
       "title": "星環／界錨／夢想工坊支線專題基準",
       "details": "屬較早整合歷史，非第191日最新逐案結果。"
     }
+  ],
+  "prices": [
+    {
+      "id": "PRICE-H2",
+      "name": "2008 HUMMER H2（黑色）",
+      "status": "已成交永久價",
+      "originalCopper": 17800000,
+      "paidCopper": 1780000,
+      "quantity": "1輛",
+      "category": "現代商城",
+      "details": "H2供工坊研究，曾部分拆卸；原標價與實付不可改寫。",
+      "updatedDay": 96
+    },
+    {
+      "id": "PRICE-GR86",
+      "name": "Toyota GR86（紅色）",
+      "status": "已成交永久價",
+      "originalCopper": 1780000,
+      "paidCopper": 178000,
+      "quantity": "1輛",
+      "category": "現代商城",
+      "details": "完整保留不供拆解；非本回合新購。",
+      "updatedDay": 96
+    },
+    {
+      "id": "PRICE-AR-ONE",
+      "name": "開發型AR智慧眼鏡套裝（首副）",
+      "status": "已成交永久價",
+      "originalCopper": 98000,
+      "paidCopper": 9800,
+      "quantity": "1副",
+      "category": "現代商城",
+      "details": "原首購套裝，附鏡體與開發介面。",
+      "updatedDay": 97
+    },
+    {
+      "id": "PRICE-AR-TWO",
+      "name": "開發型AR智慧眼鏡（後購兩副）",
+      "status": "已成交永久價",
+      "originalCopper": 196000,
+      "paidCopper": 19600,
+      "quantity": "2副一筆",
+      "category": "現代商城",
+      "details": "同款兩副合計成交；與首副分開記錄，不要再重扣。",
+      "updatedDay": 97
+    },
+    {
+      "id": "PRICE-SHOVEL",
+      "name": "長柄尖頭鏟",
+      "status": "已成交永久價",
+      "originalCopper": 1280,
+      "paidCopper": 128,
+      "quantity": "1把",
+      "category": "現代商城",
+      "details": "第76日08:46已購，單價永久保留。",
+      "updatedDay": 76
+    },
+    {
+      "id": "PRICE-VALEN-HELMET",
+      "name": "瓦倫黑銀全罩頭盔",
+      "status": "已成交永久價",
+      "originalCopper": null,
+      "paidCopper": 680,
+      "quantity": "1頂",
+      "category": "既有裝備購買",
+      "details": "原商城標價／是否折扣未由本版確定，僅保留已確認支付680銅幣。",
+      "updatedDay": 190
+    },
+    {
+      "id": "PRICE-ESTATE",
+      "name": "白樺莊園",
+      "status": "已成交房產",
+      "originalCopper": null,
+      "paidCopper": 8350000,
+      "quantity": "1處",
+      "category": "不動產",
+      "details": "第190日已購；產權後續手續待辦，400,000代管改造專款與成交價分開。",
+      "updatedDay": 191
+    }
   ]
 }
