@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#101b27" />
   <meta name="description" content="《艾瑟蘭異界物語：新世界》玩家唯讀資料看板：角色、裝備、任務、研究、夢想事業與未完成事項。" />
   <title>艾瑟蘭世界管理中心</title>
-  <link rel="stylesheet" href="./style.css?v=equipment-modes" />
-  <script src="./app.js?v=timeline-range-end" defer></script>
+  <link rel="stylesheet" href="./style.css?v=inventory-dialog" />
+  <script src="./app.js?v=inventory-dialog" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">跳至主要內容</a>
@@ -72,5 +72,12 @@
       </main>
     </div>
   </div>
+  <dialog id="inventory-dialog" class="inventory-dialog" aria-labelledby="inventory-dialog-title">
+    <div class="inventory-dialog-head">
+      <h2 id="inventory-dialog-title"></h2>
+      <form method="dialog"><button type="submit" class="small-btn" autofocus>關閉</button></form>
+    </div>
+    <div id="inventory-dialog-body"></div>
+  </dialog>
 </body>
 </html>

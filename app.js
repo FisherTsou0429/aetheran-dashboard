@@ -4,7 +4,7 @@ const TABS={
  overview:["總覽","最重要的角色、逾期研究、任務與最近事件集中在這裡。"],
  characters:["角色與能力","冒險者階級、特殊能力、同行者與已知人物狀態。"],
  equipment:["裝備與晶片","查看澈持有的武器、夢想二號機的五種模式、晶片與借用裝備。"],
- inventory:["物品與庫存","找回忘記的魔核、素材、古代裝置及其保管位置。"],
+ inventory:["物品與庫存","點選物品名稱，查看數量、保管位置與來源。"],
  prices:["永久商品價格","已成交商品永久標價、實付與歷史條件；不是新交易。"],
  quests:["任務與委託","先看手上的任務與接洽進度，再依公會公告四區查閱紀錄。"],
  "player-commissions":["玩家委託","查閱澈發布的委託、懸賞條件、已付款項及待核實線索。"],
@@ -426,6 +426,61 @@ function renderEquipment(rows){
  return modesPanel+weaponPanels+otherPanel;
 }
 
+const INVENTORY_SECTIONS=[
+ "完整構裝體","第193日日間回收","第193～194日夜間回收","已移交紀錄"
+];
+
+function inventoryButton(row,name,index){
+ const item=index==null?"":' data-inventory-item="'+index+'"';
+ return '<button type="button" class="inventory-name" data-inventory-id="'+safe(row.id)+'"'+item+
+  ' aria-haspopup="dialog">'+safe(name)+'</button>';
+}
+
+function inventoryList(rows){
+ return '<ul class="inventory-list">'+rows.map(row=>{
+  const nameButton=inventoryButton(row,row.name||row.title||row.id);
+  if(!row.items?.length)return '<li>'+nameButton+'</li>';
+  const entries=row.items.map((item,index)=>({item,index}));
+  const matches=query?entries.filter(({item})=>searchText(item).toLocaleLowerCase().includes(query.toLocaleLowerCase())):[];
+  const visible=matches.length?matches:entries;
+  return '<li class="inventory-batch"><h3>'+nameButton+'</h3><ul class="inventory-list">'+
+   visible.map(({item:[name],index})=>'<li>'+inventoryButton(row,name,index)+'</li>').join("")+'</ul></li>';
+ }).join("")+'</ul>';
+}
+
+function renderInventory(rows){
+ const review=DATA.inventoryReview;
+ const note=review?.gameDay?'<div class="info-banner">新增物資核對至第'+safe(review.gameDay)+'日 '+safe(review.gameTime)+
+  '。頁首顯示全站 GH 快照。'+safe(review.scope||"")+'</div>':"";
+ if(!rows.length)return note+cardGrid(rows);
+ const groups=INVENTORY_SECTIONS.map(category=>{
+  const group=rows.filter(row=>row.category===category);
+  return group.length?section(category==="已移交紀錄"?"已移交軍方":category,inventoryList(group)):"";
+ }).join("");
+ const other=rows.filter(row=>!INVENTORY_SECTIONS.includes(row.category));
+ return note+groups+(other.length?section("其他庫存",inventoryList(other)):"");
+}
+
+function showInventoryDetail(button){
+ const {inventoryId,inventoryItem}=button.dataset;
+ const row=entries("inventory").find(entry=>entry.id===inventoryId);
+ if(!row)return;
+ const item=inventoryItem==null?null:row.items?.[Number(inventoryItem)];
+ if(inventoryItem!=null&&!item)return;
+ const facts=[
+  ["狀態",row.status],["數量",item?.[1]??row.count],["保管位置",row.place],
+  ["所屬批次",item?row.name:""],["紀錄 ID",row.id],
+  ["最近核對",row.updatedDay!=null?"第"+row.updatedDay+"日":""],["來源",row.source]
+ ].filter(([,value])=>value!=null&&value!=="");
+ const details=values=>'<dl class="inventory-dialog-facts">'+values.map(([name,value])=>
+  '<div><dt>'+safe(name)+'</dt><dd>'+safe(value)+'</dd></div>').join("")+'</dl>';
+ $("inventory-dialog-title").textContent=item?.[0]??row.name??row.title??row.id;
+ $("inventory-dialog-body").innerHTML=details(facts)+
+  (row.details?'<p>'+safe(row.details)+'</p>':"")+
+  (!item&&row.items?.length?'<h3>批次品項</h3>'+details(row.items):"");
+ $("inventory-dialog").showModal();
+}
+
 function render(){
  if(!DATA)return;
  const cfg=TABS[page],p=$("content");
@@ -447,6 +502,7 @@ function render(){
  }
  const result=rows.filter(allMatch);
  if(page==="equipment"){p.innerHTML=renderEquipment(result);return;}
+ if(page==="inventory"){p.innerHTML=renderInventory(result);return;}
  if(page==="quests"){p.innerHTML=renderQuestCategories(result);return;}
  if(page==="player-commissions"){p.innerHTML=renderPlayerCommissions(result);return;}
  if(page==="timeline"){p.innerHTML=section("事件時間軸",timelineCoverage()+renderTimeline(result),countShown(result.length));return;}
@@ -460,6 +516,10 @@ function render(){
 function init(){
  document.querySelectorAll("#nav button").forEach(b=>b.addEventListener("click",()=>navigate(b.dataset.page)));
  $("menu-toggle").addEventListener("click",()=>document.querySelector(".sidebar").classList.toggle("open"));
+ $("content").addEventListener("click",event=>{
+  const button=event.target.closest("[data-inventory-id]");
+  if(button)showInventoryDetail(button);
+ });
  document.addEventListener("click",e=>{const b=e.target.closest("[data-goto]");if(b)navigate(b.dataset.goto)});
  $("quest-category-filter").addEventListener("click",e=>{
   const button=e.target.closest("[data-quest-category]");

@@ -43,6 +43,21 @@ select{max-width:195px;padding:0 14px;font-size:12px;min-width:150px}
 .kpi{background:#fff;padding:20px 21px;border:1px solid #e2e7e8;border-radius:12px;min-height:114px;box-shadow:var(--shadow)}
 .kpi small{display:block;font-size:11px;color:#748491}.kpi strong{display:block;font-size:26px;letter-spacing:-.02em;margin-top:6px;font-weight:700;color:#253943}
 .kpi strong small{display:inline;font-size:12px;margin-left:5px}.kpi em{display:block;color:#86949b;font-style:normal;font-size:11px;margin-top:4px}
+.inventory-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:8px;margin:0;padding:0;list-style:none}
+.inventory-name{width:100%;min-height:42px;text-align:left;padding:8px 12px;border:1px solid var(--border);border-radius:8px;color:var(--ink);background:var(--white);overflow-wrap:anywhere}
+.inventory-name:hover{border-color:#a3c8bd;color:#136d58}
+.inventory-batch{grid-column:1/-1;border:1px solid var(--border);border-radius:10px;padding:10px 12px 12px;background:#eef3f2}
+.inventory-batch h3{margin:0 0 6px}
+.inventory-batch h3 .inventory-name{background:transparent;border-color:transparent;padding-left:0;font-weight:700}
+.inventory-dialog{width:min(520px,calc(100% - 28px));max-height:85dvh;padding:20px;border:1px solid var(--border);border-radius:14px;color:var(--ink);background:var(--white);box-shadow:var(--shadow);overflow:auto}
+.inventory-dialog::backdrop{background:rgb(18 30 42 / 55%)}
+.inventory-dialog-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.inventory-dialog-head h2{margin:0;font-size:19px;min-width:0;overflow-wrap:anywhere}
+.inventory-dialog-head form{flex:none}
+.inventory-dialog-facts{margin:10px 0 0}
+.inventory-dialog-facts div{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:8px;padding:6px 0;border-bottom:1px solid var(--border);overflow-wrap:anywhere}
+.inventory-dialog-facts dt{color:var(--muted)}
+.inventory-dialog-facts dd{margin:0}
 .equipment-modes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,128px),1fr));gap:10px;margin:0;padding:0;list-style:none}
 .equipment-modes li{display:grid;align-content:start;gap:4px;background:white;border:1px solid #e1e7e9;border-radius:10px;padding:12px 14px}
 .equipment-modes strong{color:#273d48;font-size:15px}

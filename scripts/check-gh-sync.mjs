@@ -72,12 +72,14 @@ function validateSync(previous, candidate) {
 
   const timeline = changedRecords(previous, candidate, "timeline", errors);
   const quests = changedRecords(previous, candidate, "quests", errors);
+  const inventory = changedRecords(previous, candidate, "inventory", errors);
   const summaries = candidate.latestEvents ?? [];
-  const receipt = candidate.sync?.changeSet;
+  const { inventoryIds, ...receipt } = candidate.sync?.changeSet ?? {};
+  const { inventoryIds: previousInventoryIds, ...previousReceipt } = previous.sync?.changeSet ?? {};
   const needsReceipt = !isDeepStrictEqual(before, snapshot) ||
     timeline.changed.length || quests.changed.length ||
     !isDeepStrictEqual(previous.latestEvents ?? [], summaries) ||
-    !isDeepStrictEqual(previous.sync?.changeSet, receipt);
+    !isDeepStrictEqual(previousReceipt, receipt);
   if (needsReceipt) {
     const reviewed = candidate.sync?.timelineVerifiedThrough;
     const sync = candidate.sync;
@@ -94,6 +96,19 @@ function validateSync(previous, candidate) {
     }
     if (timeline.changed.length > 0 && receipt?.noImportantEvents === true) {
       errors.push("已有時間軸變更，請移除 noImportantEvents: true。");
+    }
+  }
+
+  if (needsReceipt || inventory.changed.length || !isDeepStrictEqual(previousInventoryIds, inventoryIds)) {
+    checkExpectedIds(inventoryIds, inventory.changed, "inventoryIds", errors);
+  }
+  for (const row of inventory.changed) {
+    if (![row.name, row.status, row.place, row.count, row.details, row.source].every(nonempty)) {
+      errors.push("庫存 " + row.id + " 缺少名稱、狀態、保管位置、數量、明細或來源。");
+    }
+    if (row.items != null && (!Array.isArray(row.items) ||
+        row.items.some(item => !Array.isArray(item) || item.length !== 2 || !item.every(nonempty)))) {
+      errors.push("庫存 " + row.id + " 的批次品項須有名稱與數量。");
     }
   }
 
@@ -151,7 +166,8 @@ function validateSync(previous, candidate) {
     const order = row.day * 1440 + range.end;
     return !latest || order > latest.order ? { order, row } : latest;
   }, null)?.row;
-  return { errors, timelineChanged: timeline.changed.length, questsChanged: quests.changed.length, lastEvent };
+  return { errors, timelineChanged: timeline.changed.length, questsChanged: quests.changed.length,
+    inventoryChanged: inventory.changed.length, lastEvent };
 }
 
 try {
@@ -160,7 +176,7 @@ try {
   const load = path => JSON.parse(readFileSync(path, "utf8").replace(/^\uFEFF/, ""));
   const result = validateSync(load(previousPath), load(candidatePath));
   if (result.errors.length) throw new Error(result.errors.join("\n"));
-  console.log("GH 同步檢查通過｜時間軸 " + result.timelineChanged + " 筆｜任務 " + result.questsChanged + " 筆");
+  console.log("GH 同步檢查通過｜時間軸 " + result.timelineChanged + " 筆｜任務 " + result.questsChanged + " 筆｜庫存 " + result.inventoryChanged + " 筆");
   if (result.lastEvent) {
     const { day, time, title } = result.lastEvent;
     console.log("最新時間軸事件｜第" + day + "日 " + time + "｜" + title);
