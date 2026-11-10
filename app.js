@@ -7,6 +7,7 @@ const TABS={
  inventory:["物品與庫存","找回忘記的魔核、素材、古代裝置及其保管位置。"],
  prices:["永久商品價格","已成交商品永久標價、實付與歷史條件；不是新交易。"],
  quests:["任務與委託","先看手上的任務與接洽進度，再依公會公告四區查閱紀錄。"],
+ "player-commissions":["玩家委託","查閱澈發布的委託、懸賞條件、已付款項及待核實線索。"],
  research:["夢想工坊","研究里程碑、製造日期、實際成果與未結驗收。"],
  logistics:["夢想物流","飛天號、貨車、分行及配車情況。"],
  workforce:["夢想人力","道路工程、人力派遣、款項與待確認進度。"],
@@ -29,10 +30,12 @@ function classify(status=""){
 }
 function badge(status){return '<span class="tag '+classify(status)+'">'+safe(status||"未標示")+"</span>";}
 function countShown(n){return n+' 筆紀錄';}
+function searchText(value){
+ return value&&typeof value==="object"?Object.values(value).map(searchText).join(" "):String(value??"");
+}
 function allMatch(row){
- const {taskDetails,...fields}=row;
- const str=[...Object.values(fields),...Object.values(taskDetails??{})].flat().join(" ").toLocaleLowerCase();
- return str.includes(query.toLocaleLowerCase())&&(!filter||String(row.status??"")===filter);
+ return (!filter||String(row.status??"")===filter)&&
+  (!query||searchText(row).toLocaleLowerCase().includes(query.toLocaleLowerCase()));
 }
 function questDeadline(row){
  return row.deadlineDay==null ? (row.deadlineTime||"") : "第"+row.deadlineDay+"日"+(row.deadlineTime?" "+row.deadlineTime:"");
@@ -81,7 +84,12 @@ function questCategory(row){
  return "guild";
 }
 
+function isPlayerCommission(row){
+ return row.rank==="玩家發布"||row.owner==="澈（委託人）";
+}
+
 function pageRows(){
+ if(page==="player-commissions")return entries("quests").filter(isPlayerCommission);
  const rows=entries(page);
  return page==="quests"&&questFilter?rows.filter(row=>questCategory(row)===questFilter):rows;
 }
@@ -112,6 +120,7 @@ function questFields(fields){
 
 function questCard(row){
  const task=row.taskDetails||{};
+ const publishedByPlayer=isPlayerCommission(row);
  const focus=questFocus(row.status);
  const accepted=task.acceptedAt||
   (row.status==="公告未接取"||focus==="contact"?"未正式接取":"")||
@@ -122,8 +131,8 @@ function questCard(row){
  const fields=[
   ["委託人／發布方",task.client||row.owner],
   ["發布／公告時間",task.publishedAt],
-  ["正式接取",accepted],
-  ["報名／接取截止",application],
+  [publishedByPlayer?"委託方式":"正式接取",accepted],
+  [publishedByPlayer?"徵集截止":"報名／接取截止",application],
   ["到期／交付截止",task.deliveryDeadline],
   [focus==="contact"?"提案報酬":"報酬",reward]
  ];
@@ -142,14 +151,35 @@ function questCard(row){
   ["原紀錄期限",!application&&!task.deliveryDeadline?originalDeadline:""],
   ["原看板備註",row.details||row.note]
  ].filter(([,value])=>value);
- const type=QUEST_CATEGORIES.find(([key])=>key===questCategory(row))[1];
+ const type=publishedByPlayer?"":QUEST_CATEGORIES.find(([key])=>key===questCategory(row))[1];
  const identity=[row.id,row.rank,type].filter(Boolean).join(" · ");
+ const commissionLink=publishedByPlayer&&page==="quests"?
+  '<button class="inline-link commission-link" type="button" data-goto="player-commissions">查看玩家委託紀錄</button>':"";
  return '<article class="card quest-card"><div class="card-head"><div><h3>'+safe(row.name||row.title||row.id)+'</h3>'+
   '<div class="sub">'+safe(identity)+'</div></div>'+badge(row.status)+'</div>'+
   '<dl class="quest-requirements">'+questFields([["任務需求",task.requirements]])+'</dl>'+
   '<dl class="quest-fields">'+questFields(fields)+'</dl>'+
   (details.length?'<dl class="quest-details">'+questFields(details)+'</dl>':'')+
-  (task.source?'<p class="quest-source">資料來源 · '+safe(task.source)+'</p>':'')+'</article>';
+  (task.source?'<p class="quest-source">資料來源 · '+safe(task.source)+'</p>':'')+commissionLink+'</article>';
+}
+
+function commissionSection(title,rows,layout=""){
+ if(!Array.isArray(rows)||!rows.length)return "";
+ const cards=rows.map(row=>'<article class="card commission-item"><div class="card-head"><div><h3>'+
+  safe(row.name)+'</h3><div class="commission-meta">'+safe(row.meta)+'</div></div>'+
+  (row.status?badge(row.status):"")+'</div><p class="description">'+safe(row.details)+'</p></article>');
+ return section(title,'<div class="commission-list '+layout+'">'+cards.join("")+'</div>',countShown(rows.length));
+}
+
+function renderPlayerCommissions(rows){
+ if(!rows.length)return cardGrid(rows);
+ return rows.map(row=>{
+  const {awards,leads,history}=row.commission??{};
+  return '<section class="player-commission">'+section("委託公告",questCard(row))+
+   commissionSection("懸賞與付款",awards,"commission-awards")+
+   commissionSection("礦點與線索",leads)+
+   commissionSection("委託歷程",history)+'</section>';
+ }).join("");
 }
 
 function questFocusPanel(key,title,description,rows){
@@ -274,6 +304,7 @@ function render(){
  }
  const result=rows.filter(allMatch);
  if(page==="quests"){p.innerHTML=renderQuestCategories(result);return;}
+ if(page==="player-commissions"){p.innerHTML=renderPlayerCommissions(result);return;}
  if(page==="timeline"){p.innerHTML=section("事件時間軸",renderTimeline(result),countShown(result.length));return;}
  let heading=cfg[0]; 
  let pre="";
@@ -306,7 +337,7 @@ function init(){
 }
 async function load(){
  try{
-   const response=await fetch("./data/latest.json?build=quest-details",{cache:"no-store"});
+   const response=await fetch("./data/latest.json?build=player-commissions",{cache:"no-store"});
    if(!response.ok)throw new Error("HTTP "+response.status);
    const d=await response.json();
    if(d.schemaVersion!=="1.0"||!d.snapshot||!d.hero||!d.quests||!d.research)throw new Error("資料格式不符");
