@@ -3,30 +3,30 @@
   "world": "艾瑟蘭異界物語：新世界",
   "snapshot": {
     "gameDay": 193,
-    "gameTime": "13:11",
+    "gameTime": "14:40",
     "location": "西線軍方前進營・預備休息區・第三休息帳",
     "officialSave": "V121",
     "npcIndex": "V65",
     "detailIndex": "V15",
     "baseline": "第193日13:11",
     "authority": "最新有效完整存檔及後續正式劇情優先；本看板只作唯讀查詢，不是正式存檔",
-    "scope": "V121正式完整存檔及已確認正式劇情至第193日13:11",
+    "scope": "V121正式完整存檔及後續已確認正式劇情至第193日14:40（GitHub唯讀增量同步）",
     "paused": false,
-    "incrementalCounter": 0,
-    "fullCounter": 0
+    "incrementalCounter": 14,
+    "fullCounter": 14
   },
   "sync": {
     "intervalTurns": 20,
     "turnsSinceSuccessfulSync": 0,
     "triggerOnFormalSave": true,
     "lastGameDay": 193,
-    "lastGameTime": "13:11",
-    "lastSourceSave": "V121完整存檔／06 V15／12 V65｜第193日13:11",
+    "lastGameTime": "14:40",
+    "lastSourceSave": "V121完整存檔（13:11）＋後續14回合正式劇情至14:40",
     "status": "成功同步",
-    "note": "V121／06 V15／12 V65 快照第193日 13:11。看板補登當日 21 筆詳細時間軸事件並核對沉鐘古城與黑曜軍團委託。",
+    "note": "僅GitHub唯讀看板同步；正式完整存檔仍為V121，06 V15，12 V65；不重置增量及完整存檔計數器。",
     "timelineVerifiedThrough": {
       "gameDay": 193,
-      "gameTime": "13:11"
+      "gameTime": "14:40"
     }
   },
   "hero": {
@@ -70,7 +70,7 @@
     "note": "不採用HP／MP。其他已確立能力見正式完整存檔；看板未列出不代表失去。",
     "uncollectedApprovedCopper": 5470000,
     "currentLocation": "西線軍方前進營・預備休息區・第三休息帳",
-    "status": "無傷，尚未選床、尚未入睡"
+    "status": "無傷，夢想二號機收甲；第三休息帳交談中，未入睡"
   },
   "characters": [
     {
@@ -2844,6 +2844,36 @@
   ],
   "latestEvents": [
     {
+      "id": "EV-193-CAMP-TALENT",
+      "gameDay": 193,
+      "time": "14:40",
+      "event": "澈向班恩、里克、哈洛稱武器掌握是天賦；眾人接受但不知能力真相。雷蒙德命令續查北側礦道及疑似賽格後勤標記。"
+    },
+    {
+      "id": "EV-193-CAMP-SWORD",
+      "gameDay": 193,
+      "time": "14:29",
+      "event": "澈認為瓦爾克斷城劍術缺點是重心及出招後無後手。托姆向工兵展示澈用巨顎削出的木棍；舊石橋主拱可保留，東引道準備臨時加固。"
+    },
+    {
+      "id": "EV-193-NORTH-TUNNEL",
+      "gameDay": 193,
+      "time": "14:21",
+      "event": "北側封閉通風井發現軍服、軍官識別牌及近期通行跡象，後續發現臨時停留點與疑似賽格後勤標記；人員身分未確定。"
+    },
+    {
+      "id": "EV-193-BRIDGE-WITHDRAWAL",
+      "gameDay": 193,
+      "time": "14:07",
+      "event": "敵軍退出橋東警戒位置，王國軍監視不追擊；班恩右臂醫療復查恢復正常。"
+    },
+    {
+      "id": "EV-193-CAMP-REST",
+      "gameDay": 193,
+      "time": "13:54",
+      "event": "澈在第三休息帳與里克、哈洛談及不屬軍隊、只接受委託；托姆帶走光滑木棍；未收新任務。"
+    },
+    {
       "id": "EV-193-CAMP-THIRD-TENT",
       "gameDay": 193,
       "time": "13:11",
@@ -2879,10 +2909,9 @@
     "npcs": [
       "班恩",
       "里克",
-      "托姆",
       "哈洛"
     ],
-    "prompt": "班恩問澈：你那一下，到底是拿什麼打出來的？",
+    "prompt": "里克問澈：第一次拿起劍的時候，就已經知道該怎麼用了嗎？",
     "restStarted": false
   },
   "openIssues": [
@@ -2890,6 +2919,8 @@
     "舊石橋修復責任與費用待正式裁定，不可擅自扣款",
     "莫里茲・凱恩與賽格・羅文去向未明",
     "兩具攻城構裝體藏澈無限空間，軍方不知；三方案未簽約",
-    "已核准未支付任務合計5470000銅幣"
+    "已核准未支付任務合計5470000銅幣",
+    "北側礦道疑似賽格後勤標記，莫里茲及賽格身分位置尚未確認",
+    "橋梁主拱可保留，東側引道加固施工中，責任與費用未定"
   ]
 }
