@@ -17,6 +17,7 @@ const TABS={
  timeline:["事件時間軸","按遊戲日回顧事件。點開任一事件，即可查看經過、人物、結果與來源。"]
 };
 let DATA=null,page="overview",query="",filter="",questFilter="";
+let loadSequence=0,loadedPayload="";
 const $=id=>document.getElementById(id);
 const safe=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const fmt=n=>typeof n==="number"?n.toLocaleString("zh-TW"):safe(n);
@@ -77,7 +78,7 @@ const QUEST_CATEGORIES=[
 function questCategory(row){
  const category=row.category||"";
  const id=row.id||"";
- // The current snapshot has no quest category field. Use its established identifiers and titles.
+ // Older snapshots also identify categories through established IDs and titles.
  if(/飛天號.*急件|飛空艇.*急件/.test(category)||/^(?:TMP-)?AIR(?:-|\d)/.test(id))return "air";
  if(/隊伍招募|遠征徵人/.test(category)||/^(?:REC-|TMP-R\d)/.test(id))return "recruitment";
  if(/夢想(?:小)?隊專屬/.test(category)||/夢想(?:小)?隊專屬/.test(row.name||""))return "team";
@@ -88,7 +89,18 @@ function isPlayerCommission(row){
  return row.rank==="玩家發布"||row.owner==="澈（委託人）";
 }
 
+function timelineRows(){
+ const seen=new Set();
+ return [...entries("timeline"),...entries("events")].filter(row=>{
+  const key=[row.day,row.time,row.title].join("|");
+  if(seen.has(key)||(row.id&&seen.has(row.id)))return false;
+  seen.add(key);
+  if(row.id)seen.add(row.id);
+  return true;
+ });
+}
 function pageRows(){
+ if(page==="timeline")return timelineRows();
  if(page==="player-commissions")return entries("quests").filter(isPlayerCommission);
  const rows=entries(page);
  return page==="quests"&&questFilter?rows.filter(row=>questCategory(row)===questFilter):rows;
@@ -107,9 +119,9 @@ function refreshPageFilters(){
 }
 
 function questFocus(status=""){
- if(/^(?:已(?:正式)?接取|已簽約)(?:未完成|未開始|未啟動|進行中)?$/.test(status))return "active";
+ if(/(?:待(?:正式)?驗收|待軍方驗證|待(?:公會)?(?:結算|付款|領款)|(?:待領|未領)(?:款|報酬))$/.test(status))return "followup";
+ if(/^(?:已(?:正式)?接取|已簽約)(?:[／、， ]?(?:未完成|未開始|未啟動|未出發|進行中|現場鑑定中|已抵達|已報到|現場報到完成(?:[、，／]尚未交戰)?))?$/.test(status))return "active";
  if(/^(?:提案未簽約|接洽中|洽談中|待(?:對方|委託方)回覆|申請待審核|待接取審核|待簽約|待面談)$/.test(status))return "contact";
- if(/^(?:已完成|戰鬥完成|已交付|已驗收|已結算|已核准)?(?:[／、 ]?)(?:待(?:正式)?驗收|待軍方驗證|待結算|(?:已核准)?未領(?:款|報酬)|待領(?:款|報酬))$/.test(status))return "followup";
  return "";
 }
 
@@ -123,7 +135,7 @@ function questCard(row){
  const publishedByPlayer=isPlayerCommission(row);
  const focus=questFocus(row.status);
  const accepted=task.acceptedAt||
-  (row.status==="公告未接取"||focus==="contact"?"未正式接取":"")||
+  (/^公告未接取/.test(row.status)||focus==="contact"?"未正式接取":"")||
   (focus==="active"?"已正式接取，時點未記載":"");
  const originalDeadline=questDeadline(row);
  const application=task.applicationDeadline||(/報名|申請|受理/.test(row.deadlineTime||"")?originalDeadline:"");
@@ -223,14 +235,25 @@ function renderQuestCategories(rows){
  categories.map(([key,title])=>'<section class="quest-category">'+
  section(title,cardGrid(groups[key],emptyMessage,questCard),countShown(groups[key].length))+'</section>').join("");
 }
-function navigate(next){
- if(!TABS[next])return;
- page=next;query="";questFilter="";$("search").value="";$("status-filter").value="";
- location.hash=next;
- document.querySelectorAll("#nav button").forEach(btn=>{const active=btn.dataset.page===next;btn.classList.toggle("active",active);btn.setAttribute("aria-current",active?"page":"false");});
+function markActivePage(){
+ document.querySelectorAll("#nav button").forEach(btn=>{
+  const active=btn.dataset.page===page;
+  btn.classList.toggle("active",active);
+  btn.setAttribute("aria-current",active?"page":"false");
+ });
+}
+
+function navigate(next,updateHash=true){
+ if(!Object.hasOwn(TABS,next))return;
  document.querySelector(".sidebar").classList.remove("open");
- refreshPageFilters();
- window.scrollTo({top:0,behavior:"smooth"});
+ if(next!==page){
+  page=next;query="";questFilter="";$("search").value="";$("status-filter").value="";
+  if(updateHash)location.hash=next;
+  markActivePage();
+  refreshPageFilters();
+  window.scrollTo({top:0,behavior:"smooth"});
+ }
+ load();
 }
 function setStatusOptions(rows){
  const select=$("status-filter");const v=select.value;
@@ -245,26 +268,31 @@ function currentCounters(){
 function renderOverview(){
  const H=DATA.hero;const tasks=entries("quests");const r=entries("research");
  const alerts=r.filter(x=>/逾期|待正式驗收|待結案清查/.test(x.status));
- const owed=tasks.filter(x=>/待結算|待軍方驗證|已驗收/.test(x.status));
+ const owed=tasks.filter(x=>questFocus(x.status)==="followup");
  const kpis=[
   ["可支配銅幣",fmt(H.cashCopper),"不含他人代管款"],
   ["B→A合格進度",H.advancement.qualified+"/"+H.advancement.qualifiedTarget,"困難 "+H.advancement.hard+"/"+H.advancement.hardTarget],
-  ["待結算任務",String(owed.length),"核准金額尚未自動入帳"],
+  ["待驗收／待領款",String(owed.length),"按最新驗收及付款狀態"],
   ["研究／製造關注",String(alerts.length),"含舊案核對，不等於全部逾期"]
  ];
  let html='<div class="kpi-grid">'+kpis.map(k=>'<div class="kpi"><small>'+safe(k[0])+'</small><strong>'+safe(k[1])+'</strong><em>'+safe(k[2])+'</em></div>').join("")+"</div>";
  html+='<div class="info-banner">資料截至遊戲第'+DATA.snapshot.gameDay+'日'+DATA.snapshot.gameTime+'，並非即時世界模擬。公開版只重現已確認的玩家可查資料；未知及未列出項目需回查正式存檔。</div>';
  const risks=r.filter(x=>/逾期|待正式驗收|待結案清查/.test(x.status)).slice(0,6);
  html+='<div class="summary-panels"><section class="panel"><h3>需要你注意的研究／製造</h3><ul class="mini-list">'+risks.map(x=>'<li><span class="dot warn"></span><div><button class="inline-link" data-goto="research">'+safe(x.name)+'</button><small>'+safe(x.status)+'｜'+(x.targetDay?'原定第'+x.targetDay+'日':'無確認期限')+'</small></div></li>').join("")+'</ul></section>';
- html+='<section class="panel"><h3>待領報酬與待軍方確認</h3><ul class="mini-list">'+owed.map(x=>'<li><span class="dot"></span><div><button class="inline-link" data-goto="quests">'+safe(x.name)+'</button><small>'+safe(x.status)+'｜基礎報酬 '+fmt(x.rewardCopper||0)+'銅幣（尚未領取）</small></div></li>').join("")+'</ul><p class="panel-note">只列已確定的報酬狀態，附條件獎金不視為核准。</p></section></div>';
+ const pending=owed.map(x=>'<li><span class="dot"></span><div><button class="inline-link" data-goto="quests">'+
+  safe(x.name)+'</button><small>'+safe(x.status)+'</small><small>'+
+  safe(Number.isFinite(x.paymentPendingCopper)?"已核准待領 "+fmt(x.paymentPendingCopper)+" 銅幣":x.taskDetails?.payment||x.details||"")+
+  '</small></div></li>').join("");
+ html+='<section class="panel"><h3>待驗收／待領款</h3><ul class="mini-list">'+
+  (pending||'<li>目前無待追蹤紀錄。</li>')+'</ul></section></div>';
  const important=[
-   {id:"OV-VALEN",name:"瓦倫已登錄F級",status:"已登錄",details:"但城鎮自由通行尚未核准；幽藍指揮官甲仍待本人同意及費用報價。"},
-   {id:"OV-PURIFY",name:"多相淨化晶片",status:"階段通過／未裝備",details:"六核低功率成功；第192日封裝樣品、第193日短測是目標，不是成品。"},
-   {id:"OV-ESTATE",name:"白樺莊園",status:"產權及工程待報",details:"莊園已購；代管400,000銅幣另計。整修與雇用試用期仍需追蹤。"},
-   {id:"OV-DRAGON",name:"蒼雷巨翼龍S級任務",status:"已接取未完成",details:"澈尚未出發；第196日18:00交付期限。"}
- ];
+  entries("characters").find(x=>x.id==="CHAR-VALEN"),
+  r.find(x=>x.id==="R-PURIFY-01"),
+  entries("sidelines").find(x=>x.id==="S-ESTATE"),
+  tasks.find(x=>questFocus(x.status)==="active")
+ ].filter(Boolean);
  html+=section("近期關注",'<div class="grid">'+important.map(card).join("")+"</div>","重點提示");
- const recent=orderedTimeline(entries("timeline")).slice(0,4);
+ const recent=orderedTimeline(timelineRows()).slice(0,4);
  html+=section("最近事件",'<div class="grid">'+recent.map(x=>card({id:"第"+x.day+"日"+(x.time?" "+x.time:""),name:x.title,status:"歷史紀錄",details:x.summary||x.details})).join("")+
   '</div><button class="inline-link timeline-link" type="button" data-goto="timeline">查看事件時間軸</button>',countShown(recent.length));
  html+='<div class="section-heading"><h2>同步與資料來源</h2></div><section class="panel"><div class="stat-row"><span>看板同步計數器</span><strong>'+DATA.sync.turnsSinceSuccessfulSync+'/'+DATA.sync.intervalTurns+'</strong></div><div class="stat-row"><span>正式增量／完整存檔計數器</span><strong>'+DATA.snapshot.incrementalCounter+'/25・'+DATA.snapshot.fullCounter+'/50</strong></div><div class="stat-row"><span>權威基準</span><strong>'+safe(DATA.snapshot.officialSave)+'</strong></div><p class="panel-note">'+safe(DATA.sync.note)+'</p></section>';
@@ -272,11 +300,15 @@ function renderOverview(){
 }
 function renderHero(){
  const h=DATA.hero,adv=h.advancement;
+ const verifiedPayments=entries("quests").filter(row=>Number.isFinite(row.paymentPendingCopper));
+ const pending=verifiedPayments.length?verifiedPayments.reduce((sum,row)=>
+  questFocus(row.status)==="followup"?sum+row.paymentPendingCopper:sum,0):h.uncollectedBaseCopper;
+ const pendingLabel=verifiedPayments.length?"已核准但未領報酬":"已核准但未領基本報酬";
  const chips=h.chips.map(x=>'<span>'+safe(x)+'</span>').join("");
  return '<div class="character-feature"><section class="large-stat"><h2>澈 <span class="tag good">B級冒險者</span></h2><p>男性穿越者・非勇者｜主裝備：'+safe(h.equipped)+'</p>'+
  '<div class="stat-row"><span>唯一可支配銅幣</span><strong>'+fmt(h.cashCopper)+'</strong></div>'+
  '<div class="stat-row"><span>奧斯文代管專款</span><strong>'+fmt(h.thirdPartyHeldCopper)+'（不計入現金）</strong></div>'+
- '<div class="stat-row"><span>已核准但未領基本報酬</span><strong>'+fmt(h.uncollectedBaseCopper)+'</strong></div>'+
+ '<div class="stat-row"><span>'+pendingLabel+'</span><strong>'+fmt(pending)+'</strong></div>'+
  '<div class="stat-row"><span>合格任務晉升</span><strong>'+adv.qualified+' / '+adv.qualifiedTarget+'</strong></div>'+
  '<div class="progress"><span style="width:'+Math.min(100,adv.qualified/adv.qualifiedTarget*100)+'%"></span></div>'+
  '<p>困難任務：'+adv.hard+'/'+adv.hardTarget+'｜護甲晶片：'+h.chipsUsed+'/'+h.chipsCapacity+'</p>'+
@@ -375,30 +407,48 @@ function init(){
   query="";questFilter="";$("search").value="";$("status-filter").value="";
   refreshPageFilters();
  });
- window.addEventListener("hashchange",()=>{const wanted=location.hash.slice(1);if(TABS[wanted]&&wanted!==page)navigate(wanted)});
+ window.addEventListener("hashchange",()=>{
+  const wanted=location.hash.slice(1)||"overview";
+  if(wanted!==page&&Object.hasOwn(TABS,wanted))navigate(wanted,false);
+ });
+ const wanted=location.hash.slice(1);
+ page=Object.hasOwn(TABS,wanted)?wanted:"overview";
+ markActivePage();
+ $("quest-category-filter").innerHTML=[["","全部"],...QUEST_CATEGORIES].map(([key,title])=>
+  '<button type="button" data-quest-category="'+safe(key)+'">'+safe(title)+'</button>').join("");
 }
 async function load(){
+ const request=++loadSequence;
+ $("top-status").textContent=DATA?"更新資料中…":"載入中";
  try{
-   const response=await fetch("./data/latest.json?build=expandable-timeline",{cache:"no-store"});
-   if(!response.ok)throw new Error("HTTP "+response.status);
-   const d=await response.json();
-   if(d.schemaVersion!=="1.0"||!d.snapshot||!d.hero||!d.quests||!d.research)throw new Error("資料格式不符");
+  const response=await fetch("./data/latest.json?refresh="+Date.now()+"-"+request,{cache:"no-store"});
+  if(!response.ok)throw new Error("HTTP "+response.status);
+  const payload=await response.text();
+  if(request!==loadSequence)return;
+  if(payload!==loadedPayload){
+   const d=JSON.parse(payload);
+   if(d.schemaVersion!=="1.0"||!d.snapshot||!d.sync||!d.hero?.advancement||
+      !Array.isArray(d.hero.chips)||!Array.isArray(d.hero.abilities)||
+      !Array.isArray(d.quests)||!Array.isArray(d.research))throw new Error("資料格式不符");
    DATA=d;
-   $("quest-category-filter").innerHTML=[["","全部"],...QUEST_CATEGORIES].map(([key,title])=>
-    '<button type="button" data-quest-category="'+safe(key)+'">'+safe(title)+'</button>').join("");
    $("snapshot-label").textContent="遊戲時間：第"+d.snapshot.gameDay+"日 "+d.snapshot.gameTime;
    $("location-label").textContent="目前位置："+d.snapshot.location;
    $("save-label").textContent="正式來源："+d.snapshot.officialSave;
-   $("top-status").textContent="資料截至第"+d.snapshot.gameDay+"日";
    $("side-sync").textContent=currentCounters();
    const n=$("notice");
    n.hidden=false;n.textContent="玩家查詢專用看板｜"+d.snapshot.scope;
-   const wanted=location.hash.slice(1); page=TABS[wanted]?wanted:"overview";
-   document.querySelectorAll("#nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===page));
    refreshPageFilters();
+   loadedPayload=payload;
+  }
+  $("top-status").textContent="第"+DATA.snapshot.gameDay+"日 "+DATA.snapshot.gameTime;
  }catch(err){
-   $("top-status").textContent="資料讀取失敗";
-   $("content").innerHTML='<div class="empty">無法載入資料檔。請稍後重新整理，或檢查 <a href="./data/latest.json">latest.json</a> 是否已部署。<p>'+safe(err.message)+'</p></div>';
+  if(request!==loadSequence)return;
+  if(DATA){
+   $("top-status").textContent="更新失敗 · 顯示上次資料";
+   return;
+  }
+  $("top-status").textContent="資料讀取失敗";
+  $("content").innerHTML='<div class="empty">無法載入資料檔。請再點左側選單重試，或檢查 <a href="./data/latest.json">latest.json</a> 是否已部署。<p>'+safe(err.message)+'</p></div>';
  }
 }
 document.addEventListener("DOMContentLoaded",()=>{init();load()});
