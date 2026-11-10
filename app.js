@@ -3,7 +3,7 @@
 const TABS={
  overview:["總覽","最重要的角色、逾期研究、任務與最近事件集中在這裡。"],
  characters:["角色與能力","冒險者階級、特殊能力、同行者與已知人物狀態。"],
- equipment:["裝備與晶片","護甲、載具、晶片槽與借出設備的狀態。"],
+ equipment:["裝備與晶片","查看澈持有的武器、夢想二號機的五種模式、晶片與借用裝備。"],
  inventory:["物品與庫存","找回忘記的魔核、素材、古代裝置及其保管位置。"],
  prices:["永久商品價格","已成交商品永久標價、實付與歷史條件；不是新交易。"],
  quests:["任務與委託","先看手上的任務與接洽進度，再依公會公告四區查閱紀錄。"],
@@ -357,6 +357,32 @@ function renderTimeline(rows){
   [...days].map(([day,events])=>'<section class="timeline-day"><h3>第'+safe(day)+'日</h3>'+
    '<div class="timeline-events">'+events.map(timelineEvent).join("")+'</div></section>').join("");
 }
+const EQUIPMENT_SECTIONS=[
+ ["近戰武器","持有武器｜近戰"],
+ ["遠程武器","持有武器｜遠程"],
+ ["透明武器","持有武器｜透明"],
+ ["武器移轉","已轉交的武器"]
+];
+
+function renderEquipment(rows){
+ if(!rows.length)return cardGrid(rows);
+ const armor=rows.find(row=>row.id==="EQ-DREAM2");
+ const modes=Array.isArray(armor?.modes)?armor.modes:[];
+ const matchingModes=query?modes.filter(mode=>searchText(mode).toLocaleLowerCase().includes(query.toLocaleLowerCase())):[];
+ const visibleModes=matchingModes.length?matchingModes:modes;
+ const modesPanel=visibleModes.length?section("夢想二號機的五種模式",
+  '<ul class="equipment-modes">'+visibleModes.map(mode=>'<li><strong>'+safe(mode.name)+'</strong>'+
+   (mode.details?'<span>'+safe(mode.details)+'</span>':"")+'</li>').join("")+'</ul>'+
+  '<p class="equipment-modes-note">模式名稱依正式存檔列出。完整測試與驗收狀態待核對。</p>'):"";
+ const weaponPanels=EQUIPMENT_SECTIONS.map(([category,title])=>{
+  const group=rows.filter(row=>row.category===category);
+  return group.length?section(title,cardGrid(group),countShown(group.length)):"";
+ }).join("");
+ const other=rows.filter(row=>!EQUIPMENT_SECTIONS.some(([category])=>category===row.category));
+ const otherPanel=other.length?section("護甲、晶片與其他裝備",cardGrid(other),countShown(other.length)):"";
+ return modesPanel+weaponPanels+otherPanel;
+}
+
 function render(){
  if(!DATA)return;
  const cfg=TABS[page],p=$("content");
@@ -377,6 +403,7 @@ function render(){
    return;
  }
  const result=rows.filter(allMatch);
+ if(page==="equipment"){p.innerHTML=renderEquipment(result);return;}
  if(page==="quests"){p.innerHTML=renderQuestCategories(result);return;}
  if(page==="player-commissions"){p.innerHTML=renderPlayerCommissions(result);return;}
  if(page==="timeline"){p.innerHTML=section("事件時間軸",renderTimeline(result),countShown(result.length));return;}

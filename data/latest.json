@@ -107,11 +107,34 @@
     {
       "id": "EQ-DREAM2",
       "name": "夢想二號機",
-      "status": "使用中",
-      "place": "澈裝備",
+      "status": "持有",
+      "place": "澈持有",
       "count": "1套",
-      "details": "胸甲15槽，已裝12，剩餘3槽。已裝晶片：風行、火焰、固構、風壓、夜幕、靜音結界、感測藤蔓、超音波震動、硬化、高壓水流、分身、冰封。",
-      "updatedDay": 191
+      "details": "第193日的正式紀錄為收甲。胸甲15槽，已裝12，剩餘3槽。已裝晶片：風行、火焰、固構、風壓、夜幕、靜音結界、感測藤蔓、超音波震動、硬化、高壓水流、分身、冰封。",
+      "updatedDay": 193,
+      "modes": [
+        {
+          "id": "EQ-DREAM2-MODE-STANDARD",
+          "name": "一般"
+        },
+        {
+          "id": "EQ-DREAM2-MODE-STEALTH",
+          "name": "隱蔽",
+          "details": "第192日18:09於蒼岩哨站使用"
+        },
+        {
+          "id": "EQ-DREAM2-MODE-SPEED",
+          "name": "疾行"
+        },
+        {
+          "id": "EQ-DREAM2-MODE-HEAVY",
+          "name": "重裝"
+        },
+        {
+          "id": "EQ-DREAM2-MODE-ROCK",
+          "name": "破岩"
+        }
+      ]
     },
     {
       "id": "EQ-DREAM1",
@@ -157,6 +180,209 @@
       "count": "1輛",
       "details": "供機械研究，尚未確認完全復原或可行駛。",
       "updatedDay": 96
+    },
+    {
+      "id": "EQ-WPN-CLAW-L",
+      "name": "巨爪・大",
+      "category": "近戰武器",
+      "status": "持有",
+      "details": "大太刀。決鬥後有內部應力與局部傳導損耗，已部分修復。"
+    },
+    {
+      "id": "EQ-WPN-CLAW-S",
+      "name": "巨爪・小",
+      "category": "近戰武器",
+      "status": "持有",
+      "details": "與巨爪・大分開記錄的小刀。"
+    },
+    {
+      "id": "EQ-WPN-GREATJAW",
+      "name": "巨顎",
+      "category": "近戰武器",
+      "status": "持有",
+      "details": "又名巨鰐，為同一把雙手重劍。"
+    },
+    {
+      "id": "EQ-WPN-TWIN-BLADES",
+      "name": "異形雙刀",
+      "category": "近戰武器",
+      "status": "持有",
+      "details": "既有雙刀，存檔確認由澈保留。"
+    },
+    {
+      "id": "EQ-WPN-ARMOR-PIERCER",
+      "name": "魔核破甲短刺",
+      "category": "近戰武器",
+      "status": "持有",
+      "details": "既有破甲短刺。"
+    },
+    {
+      "id": "EQ-WPN-DUAL-CLAWS",
+      "name": "雙爪",
+      "category": "近戰武器",
+      "status": "持有",
+      "details": "歷史盤點記為「雙爪×2」。另有獨立記錄的透明雙持爪。",
+      "count": "2（原盤點）"
+    },
+    {
+      "id": "EQ-WPN-GERMAN-GREATSWORD",
+      "name": "德製200公分雙手大劍",
+      "category": "近戰武器",
+      "status": "持有",
+      "details": "存檔分列的實體大劍。"
+    },
+    {
+      "id": "EQ-WPN-ONE-HAND-SWORDS",
+      "name": "單手劍",
+      "category": "近戰武器",
+      "status": "持有",
+      "details": "歷史武器盤點收錄兩把。",
+      "count": "2把"
+    },
+    {
+      "id": "EQ-WPN-POISON-SPEAR",
+      "name": "冥棘毒槍",
+      "category": "近戰武器",
+      "status": "持有",
+      "details": "取材自變異毒鎧蜥尾刺，槍頭曾展示發射與導引回收。"
+    },
+    {
+      "id": "EQ-WPN-POISON-DAGGER",
+      "name": "僵毒匕首",
+      "category": "近戰武器",
+      "status": "持有",
+      "details": "由變異毒鎧蜥的受損尾刺製成。"
+    },
+    {
+      "id": "EQ-WPN-OBSIDIAN-V9",
+      "name": "黑曜 V9 複合弓",
+      "category": "遠程武器",
+      "status": "持有",
+      "details": "第192日澈將早期複合弓送給小夢後，仍持有黑曜 V9。",
+      "updatedDay": 192
+    },
+    {
+      "id": "EQ-WPN-STORM-R12",
+      "name": "暴風 R12 重弩",
+      "category": "遠程武器",
+      "status": "持有",
+      "details": "澈持有的重弩。剩餘可用弩矢數待核對。"
+    },
+    {
+      "id": "EQ-WPN-MAGNUM-357",
+      "name": ".357 Magnum 左輪",
+      "category": "遠程武器",
+      "status": "持有",
+      "details": "仍由澈收納。重彈頭餘量待核對。",
+      "updatedDay": 188
+    },
+    {
+      "id": "EQ-WPN-MAGIC-GUN",
+      "name": "魔導槍",
+      "category": "遠程武器",
+      "status": "持有",
+      "details": "存檔記錄展示後由澈收妥，未載具體型號。"
+    },
+    {
+      "id": "EQ-WPN-G6",
+      "name": "G-6「雷鳴」格林機槍",
+      "category": "遠程武器",
+      "status": "持有",
+      "details": "既有機槍，另有備用彈鏈的保存紀錄。"
+    },
+    {
+      "id": "EQ-WPN-M82A1",
+      "name": "巴雷特 M82A1 反器材狙擊步槍",
+      "category": "遠程武器",
+      "status": "持有",
+      "details": "此處列澈自留的一把。另兩把已分別贈予雷奧尼斯與加雷斯。",
+      "count": "1把",
+      "updatedDay": 188
+    },
+    {
+      "id": "EQ-WPN-ANZIO-20MM",
+      "name": "Anzio 20mm 架空模擬反器材步槍",
+      "category": "遠程武器",
+      "status": "持有",
+      "details": "第188日購入並試射。當時剩9發。",
+      "updatedDay": 188
+    },
+    {
+      "id": "EQ-WPN-BAHER-23MM",
+      "name": "Baher 23mm 架空模擬反器材步槍",
+      "category": "遠程武器",
+      "status": "持有",
+      "details": "第188日購入，當時尚未發射，隨槍購入10發。",
+      "updatedDay": 188
+    },
+    {
+      "id": "EQ-WPN-XR84",
+      "name": "XR-84「山嵐」無後座力砲",
+      "category": "遠程武器",
+      "status": "持有",
+      "details": "最後一次可核對的彈藥盤點為0枚。後續補充待核對。"
+    },
+    {
+      "id": "EQ-WPN-CLEAR-DAGGER",
+      "name": "透明匕首",
+      "category": "透明武器",
+      "status": "持有",
+      "details": "第176日11:08與其餘透明武器一同收入無限空間。",
+      "place": "無限空間",
+      "updatedDay": 176
+    },
+    {
+      "id": "EQ-WPN-CLEAR-KATANA",
+      "name": "透明太刀",
+      "category": "透明武器",
+      "status": "持有",
+      "details": "六件透明武器之一。",
+      "place": "無限空間",
+      "updatedDay": 176
+    },
+    {
+      "id": "EQ-WPN-CLEAR-GREATSWORD",
+      "name": "透明雙手大劍",
+      "category": "透明武器",
+      "status": "持有",
+      "details": "六件透明武器之一，與實體大劍分開記錄。",
+      "place": "無限空間",
+      "updatedDay": 176
+    },
+    {
+      "id": "EQ-WPN-CLEAR-CLAWS",
+      "name": "透明雙持爪",
+      "category": "透明武器",
+      "status": "持有",
+      "details": "六件透明武器之一，與既有雙爪分開記錄。",
+      "place": "無限空間",
+      "updatedDay": 176
+    },
+    {
+      "id": "EQ-WPN-CLEAR-SCYTHE",
+      "name": "透明雙手鐮刀",
+      "category": "透明武器",
+      "status": "持有",
+      "details": "六件透明武器之一。",
+      "place": "無限空間",
+      "updatedDay": 176
+    },
+    {
+      "id": "EQ-WPN-CLEAR-SIXTH",
+      "name": "第六件透明武器",
+      "category": "透明武器",
+      "status": "持有",
+      "details": "已一同收納。名稱與形制待核對。",
+      "place": "無限空間",
+      "updatedDay": 176
+    },
+    {
+      "id": "EQ-WPN-EARLY-COMPOUND-BOW",
+      "name": "早期低磅數現代複合弓",
+      "category": "武器移轉",
+      "status": "已贈送",
+      "details": "第192日12:46之後已正式贈予小夢。",
+      "updatedDay": 192
     }
   ],
   "inventory": [
