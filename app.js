@@ -90,8 +90,23 @@ function isPlayerCommission(row){
 }
 
 function timelineRows(){
+ const structured=[...entries("timeline"),...entries("events")];
+ const latest=latestTimelinePoint(structured);
+ const snapshot=timelinePoint(DATA.snapshot.gameDay,DATA.snapshot.gameTime);
+ const summaries=entries("latestEvents").flatMap(row=>{
+  const point=timelinePoint(row.gameDay,row.time);
+  if(!point||typeof row.event!=="string"||!row.event.trim())return [];
+  if(snapshot&&point.order>snapshot.order)return [];
+  // Older summaries have no ID. Use them only after the last structured event.
+  if(!row.id&&latest&&point.order<=latest.order)return [];
+  return [{
+   id:row.id,day:point.day,time:point.time,title:row.event.trim(),status:"摘要待補",
+   details:"GH 同步的近期摘要。正式時間軸的詳情尚待補登。",
+   source:"GH 同步近期摘要"
+  }];
+ });
  const seen=new Set();
- return [...entries("timeline"),...entries("events")].filter(row=>{
+ return [...structured,...summaries].filter(row=>{
   const key=[row.day,row.time,row.title].join("|");
   if(seen.has(key)||(row.id&&seen.has(row.id)))return false;
   seen.add(key);
@@ -293,7 +308,7 @@ function renderOverview(){
  ].filter(Boolean);
  html+=section("近期關注",'<div class="grid">'+important.map(card).join("")+"</div>","重點提示");
  const recent=orderedTimeline(timelineRows()).slice(0,4);
- html+=section("最近事件",'<div class="grid">'+recent.map(x=>card({id:"第"+x.day+"日"+(x.time?" "+x.time:""),name:x.title,status:"歷史紀錄",details:x.summary||x.details})).join("")+
+ html+=section("最近事件",timelineCoverage()+'<div class="grid">'+recent.map(x=>card({id:"第"+x.day+"日"+(x.time?" "+x.time:""),name:x.title,status:x.status||"歷史紀錄",details:x.summary||x.details})).join("")+
   '</div><button class="inline-link timeline-link" type="button" data-goto="timeline">查看事件時間軸</button>',countShown(recent.length));
  html+='<div class="section-heading"><h2>同步與資料來源</h2></div><section class="panel"><div class="stat-row"><span>看板同步計數器</span><strong>'+DATA.sync.turnsSinceSuccessfulSync+'/'+DATA.sync.intervalTurns+'</strong></div><div class="stat-row"><span>正式增量／完整存檔計數器</span><strong>'+DATA.snapshot.incrementalCounter+'/25・'+DATA.snapshot.fullCounter+'/50</strong></div><div class="stat-row"><span>權威基準</span><strong>'+safe(DATA.snapshot.officialSave)+'</strong></div><p class="panel-note">'+safe(DATA.sync.note)+'</p></section>';
  return html;
@@ -324,6 +339,33 @@ function timelineMinutes(time=""){
  if(/上午|早|晨/.test(time))return 6*60;
  return -1;
 }
+function timelinePoint(day,time=""){
+ const clock=/^(\d{1,2}:\d{2})(?:\s*[–—～-]\s*(\d{1,2}:\d{2}))?$/.exec(time);
+ if(!Number.isInteger(day)||!clock)return null;
+ const end=clock[2]||clock[1];
+ const [hour,minute]=end.split(":").map(Number);
+ if(hour>23||minute>59)return null;
+ return {day,time:end.padStart(5,"0"),order:day*1440+hour*60+minute};
+}
+function latestTimelinePoint(rows){
+ return rows.reduce((latest,row)=>{
+  const point=timelinePoint(row.day,row.time);
+  return point&&(!latest||point.order>latest.order)?point:latest;
+ },null);
+}
+function timelineCoverage(){
+ const latest=latestTimelinePoint(entries("timeline"));
+ const snapshot=timelinePoint(DATA.snapshot.gameDay,DATA.snapshot.gameTime);
+ const verified=DATA.sync.timelineVerifiedThrough;
+ const reviewed=timelinePoint(verified?.gameDay,verified?.gameTime);
+ const needsDetails=timelineRows().some(row=>row.status==="摘要待補");
+ const behind=snapshot&&(!latest||latest.order<snapshot.order)&&reviewed?.order!==snapshot.order;
+ const label=latest?"時間軸詳情更新至第"+latest.day+"日 "+latest.time:"時間軸尚無可核對的詳情時點";
+ const note=needsDetails?"部分同步摘要已暫列於時間軸，詳情待補。":
+  behind?"快照時間已更新，時間軸詳情尚未核對到該時點。":"";
+ return '<p class="timeline-note">'+safe(label)+'</p>'+
+  (note?'<div class="info-banner">'+safe(note)+'</div>':"");
+}
 function orderedTimeline(rows){
  return [...rows].sort((a,b)=>b.day-a.day||timelineMinutes(b.time)-timelineMinutes(a.time));
 }
@@ -337,7 +379,7 @@ function timelineEvent(row){
  return '<details class="timeline-event"><summary><span class="timeline-preview">'+
   '<span class="timeline-when">'+safe(row.time||"時間未記載")+'</span>'+
   '<span class="timeline-title">'+safe(row.title)+'</span>'+
-  (row.summary?'<span class="timeline-summary">'+safe(row.summary)+'</span>':"")+
+  (row.summary||row.status==="摘要待補"?'<span class="timeline-summary">'+safe(row.summary||row.status)+'</span>':"")+
   '</span><span class="timeline-action" aria-hidden="true"><span class="timeline-expand">展開</span><span class="timeline-collapse">收合</span></span></summary>'+
   '<div class="timeline-body">'+metadata+
   (row.details?'<p>'+safe(row.details)+'</p>':"")+
@@ -406,7 +448,7 @@ function render(){
  if(page==="equipment"){p.innerHTML=renderEquipment(result);return;}
  if(page==="quests"){p.innerHTML=renderQuestCategories(result);return;}
  if(page==="player-commissions"){p.innerHTML=renderPlayerCommissions(result);return;}
- if(page==="timeline"){p.innerHTML=section("事件時間軸",renderTimeline(result),countShown(result.length));return;}
+ if(page==="timeline"){p.innerHTML=section("事件時間軸",timelineCoverage()+renderTimeline(result),countShown(result.length));return;}
  let heading=cfg[0]; 
  let pre="";
  if(page==="research")pre='<div class="info-banner">「目標第N日」不等於完成日；「舊案待清查」也不等於製造失敗。系統只按正式來源明確紀錄顯示狀態。</div>';
