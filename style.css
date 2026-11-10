@@ -68,6 +68,12 @@ select{max-width:195px;padding:0 14px;font-size:12px;min-width:150px}
 .empty{border:1px dashed #ccd6d7;background:#fbfcfc;color:#788b94;text-align:center;padding:42px 25px;border-radius:13px}
 .loading{text-align:center;color:#7d909b;padding:60px 0}
 .footer{margin-top:45px;padding-top:18px;border-top:1px solid var(--border);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:10px;color:#8b99a0}
+.quest-category-filter:not([hidden]){display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.quest-category-filter button{min-height:40px;max-width:100%;background:white;border:1px solid var(--border);border-radius:8px;padding:7px 12px;color:#34505d;font-size:13px;font-weight:700}
+.quest-category-filter button:hover{border-color:var(--teal)}
+.quest-category-filter button[aria-pressed=true]{background:#176c64;border-color:#176c64;color:white}
+.quest-category-filter button:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.quest-focus-grid>.quest-focus-panel:only-child{grid-column:1/-1}
 .quest-focus-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:12px;align-items:start}
 .quest-focus-panel{min-width:0;padding:16px;border:1px solid #c9ded7;border-top:3px solid var(--teal);border-radius:12px;background:#eef7f4}
 .quest-focus-contact{background:#eff5fa;border-color:#cfdeed;border-top-color:#547da3}
