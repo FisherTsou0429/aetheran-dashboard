@@ -5,6 +5,7 @@ const TABS={
  characters:["角色與能力","冒險者階級、特殊能力、同行者與已知人物狀態。"],
  equipment:["裝備與晶片","護甲、載具、晶片槽與借出設備的狀態。"],
  inventory:["物品與庫存","找回忘記的魔核、素材、古代裝置及其保管位置。"],
+ prices:["永久商品價格","已成交商品永久標價、實付與歷史條件；不是新交易。"],
  quests:["任務與委託","以任務ID查詢接取、驗收、未領報酬與期限。"],
  research:["夢想工坊","研究里程碑、製造日期、實際成果與未結驗收。"],
  logistics:["夢想物流","飛天號、貨車、分行及配車情況。"],
@@ -40,6 +41,10 @@ function card(row){
  if(row.place||row.location)details.push("地點："+(row.place||row.location));
  if(row.lead||row.owner)details.push("負責："+(row.lead||row.owner));
  if(row.count)details.push("數量："+row.count);
+ if(row.quantity)details.push("成交數量："+row.quantity);
+ if(row.category)details.push("類型："+row.category);
+ if(row.originalCopper!=null)details.push("原始標價："+fmt(row.originalCopper)+"銅幣");
+ if(row.paidCopper!=null)details.push("確認實付："+fmt(row.paidCopper)+"銅幣");
  if(row.rewardCopper!=null)details.push("基礎報酬："+fmt(row.rewardCopper)+"銅幣");
  if(row.bonusCopper!=null)details.push("附加上限／條件："+fmt(row.bonusCopper)+"銅幣");
  if(row.bonusStatus)details.push("附加狀態："+row.bonusStatus);
@@ -134,6 +139,7 @@ function render(){
  let heading=cfg[0]; 
  let pre="";
  if(page==="research")pre='<div class="info-banner">「目標第N日」不等於完成日；「舊案待清查」也不等於製造失敗。系統只按正式來源明確紀錄顯示狀態。</div>';
+ if(page==="prices")pre='<div class="info-banner">此處是已確認成交的永久價格索引，不會產生購物、扣款或庫存變動。第一版仍在補齊完整歷史價格目錄。</div>';
  if(page==="quests")pre='<div class="info-banner">公告未接取不代表已接受委託；待領獎金及附條件報酬不加入現金。公告細節以原始任務卡為準。</div>';
  if(page==="sidelines"||page==="workforce")pre='<div class="info-banner">部分支線的最近專題來源早於第191日。標記「第97日」代表最後核對來源，不應當作第191日的最新實際營運結果。</div>';
  p.innerHTML=pre+section(heading,cardGrid(result),countShown(result.length));
