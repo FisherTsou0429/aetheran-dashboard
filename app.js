@@ -57,6 +57,7 @@ function navigate(next){
  location.hash=next;
  document.querySelectorAll("#nav button").forEach(btn=>{const active=btn.dataset.page===next;btn.classList.toggle("active",active);btn.setAttribute("aria-current",active?"page":"false");});
  document.querySelector(".sidebar").classList.remove("open");
+ setStatusOptions(entries(next));
  render();
  window.scrollTo({top:0,behavior:"smooth"});
 }
