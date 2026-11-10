@@ -14,7 +14,7 @@ const TABS={
  sidelines:["世界支線","白樺莊園、星環、界錨、北境封印及其他支線。"],
  npcs:["NPC永久名冊","重要角色關係、職責、最近確認資訊；非全部歷史名冊。"],
  commitments:["承諾與待辦","尚未兌現的約定、提案與需要玩家決定的事項。"],
- timeline:["歷史紀錄","主要事件時間軸。更早內容仍保留在完整存檔中。"]
+ timeline:["事件時間軸","按遊戲日回顧事件。點開任一事件，即可查看經過、人物、結果與來源。"]
 };
 let DATA=null,page="overview",query="",filter="",questFilter="";
 const $=id=>document.getElementById(id);
@@ -264,7 +264,9 @@ function renderOverview(){
    {id:"OV-DRAGON",name:"蒼雷巨翼龍S級任務",status:"已接取未完成",details:"澈尚未出發；第196日18:00交付期限。"}
  ];
  html+=section("近期關注",'<div class="grid">'+important.map(card).join("")+"</div>","重點提示");
- html+=section("最近事件",'<div class="grid">'+entries("timeline").slice(0,4).map(x=>card({id:"第"+x.day+"日 "+x.time,name:x.title,status:"歷史紀錄",details:x.details})).join("")+"</div>","最新4筆");
+ const recent=orderedTimeline(entries("timeline")).slice(0,4);
+ html+=section("最近事件",'<div class="grid">'+recent.map(x=>card({id:"第"+x.day+"日"+(x.time?" "+x.time:""),name:x.title,status:"歷史紀錄",details:x.summary||x.details})).join("")+
+  '</div><button class="inline-link timeline-link" type="button" data-goto="timeline">查看事件時間軸</button>',countShown(recent.length));
  html+='<div class="section-heading"><h2>同步與資料來源</h2></div><section class="panel"><div class="stat-row"><span>看板同步計數器</span><strong>'+DATA.sync.turnsSinceSuccessfulSync+'/'+DATA.sync.intervalTurns+'</strong></div><div class="stat-row"><span>正式增量／完整存檔計數器</span><strong>'+DATA.snapshot.incrementalCounter+'/25・'+DATA.snapshot.fullCounter+'/50</strong></div><div class="stat-row"><span>權威基準</span><strong>'+safe(DATA.snapshot.officialSave)+'</strong></div><p class="panel-note">'+safe(DATA.sync.note)+'</p></section>';
  return html;
 }
@@ -281,8 +283,47 @@ function renderHero(){
  '<p>主要能力：'+safe(h.abilities.join("、"))+'</p></section>'+
  '<section class="large-stat"><h2>晶片配置</h2><p>夢想二號機・已裝12／15槽</p><div class="card-details">'+chips+'</div><p>未裝晶片不會被看板自動補上。剩餘3槽。</p><p class="panel-note">'+safe(h.note)+'</p></section></div>';
 }
+function timelineMinutes(time=""){
+ const exact=/^(\d{1,2}):(\d{2})/.exec(time);
+ if(exact)return Number(exact[1])*60+Number(exact[2]);
+ // Place approximate periods in order while displaying the original wording.
+ if(/晚|夜/.test(time))return 18*60;
+ if(/午後|下午|中午/.test(time))return 12*60;
+ if(/上午|早|晨/.test(time))return 6*60;
+ return -1;
+}
+function orderedTimeline(rows){
+ return [...rows].sort((a,b)=>b.day-a.day||timelineMinutes(b.time)-timelineMinutes(a.time));
+}
+
+function timelineEvent(row){
+ const people=Array.isArray(row.people)?row.people.join("、"):row.people;
+ const facts=[["地點",row.location],["人物",people]].filter(([,value])=>value);
+ const steps=Array.isArray(row.steps)?row.steps:[];
+ const metadata=facts.length?'<dl class="timeline-facts">'+facts.map(([label,value])=>
+  '<div><dt>'+safe(label)+'</dt><dd>'+safe(value)+'</dd></div>').join("")+'</dl>':"";
+ return '<details class="timeline-event"><summary><span class="timeline-preview">'+
+  '<span class="timeline-when">'+safe(row.time||"時間未記載")+'</span>'+
+  '<span class="timeline-title">'+safe(row.title)+'</span>'+
+  (row.summary?'<span class="timeline-summary">'+safe(row.summary)+'</span>':"")+
+  '</span><span class="timeline-action" aria-hidden="true"><span class="timeline-expand">展開</span><span class="timeline-collapse">收合</span></span></summary>'+
+  '<div class="timeline-body">'+metadata+
+  (row.details?'<p>'+safe(row.details)+'</p>':"")+
+  (steps.length?'<ol class="timeline-steps">'+steps.map(step=>'<li>'+safe(step)+'</li>').join("")+'</ol>':"")+
+  (row.outcome?'<p class="timeline-outcome"><strong>結果與後續</strong>'+safe(row.outcome)+'</p>':"")+
+  (row.source?'<p class="timeline-source">來源 · '+safe(row.source)+'</p>':"")+'</div></details>';
+}
+
 function renderTimeline(rows){
- return '<div class="grid">'+rows.map(x=>card({id:"第"+x.day+"日"+(x.time?" "+x.time:""),name:x.title,status:"已記錄",details:x.details})).join("")+"</div>";
+ if(!rows.length)return cardGrid(rows);
+ const days=new Map();
+ for(const row of orderedTimeline(rows)){
+  if(!days.has(row.day))days.set(row.day,[]);
+  days.get(row.day).push(row);
+ }
+ return '<p class="timeline-note">事件按確認時點由近到遠排列。頁首的遊戲時間為看板快照。</p>'+
+  [...days].map(([day,events])=>'<section class="timeline-day"><h3>第'+safe(day)+'日</h3>'+
+   '<div class="timeline-events">'+events.map(timelineEvent).join("")+'</div></section>').join("");
 }
 function render(){
  if(!DATA)return;
@@ -293,7 +334,8 @@ function render(){
  $("quest-priority").hidden=page!=="quests";
  const rows=pageRows();
  const showToolbar=page!=="overview";
- $("search").placeholder=page==="overview"?"選擇左側分類後搜尋資料…":"搜尋名稱、任務ID、物品位置、NPC或研究…";
+ const placeholder=page==="timeline"?"搜尋事件、人物、地點或任務 ID…":"搜尋名稱、任務ID、物品位置、NPC或研究…";
+ $("search").placeholder=page==="overview"?"選擇左側分類後搜尋資料…":placeholder;
  $("search").disabled=!showToolbar;$("status-filter").disabled=!showToolbar;
  $("clear-filters").disabled=!showToolbar;
  if(page==="overview"){p.innerHTML=renderOverview();return;}
@@ -337,7 +379,7 @@ function init(){
 }
 async function load(){
  try{
-   const response=await fetch("./data/latest.json?build=player-commissions",{cache:"no-store"});
+   const response=await fetch("./data/latest.json?build=expandable-timeline",{cache:"no-store"});
    if(!response.ok)throw new Error("HTTP "+response.status);
    const d=await response.json();
    if(d.schemaVersion!=="1.0"||!d.snapshot||!d.hero||!d.quests||!d.research)throw new Error("資料格式不符");

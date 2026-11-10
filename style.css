@@ -101,6 +101,37 @@ select{max-width:195px;padding:0 14px;font-size:12px;min-width:150px}
 .quest-details>div{display:grid;grid-template-columns:minmax(0,7.2em) minmax(0,1fr);gap:8px;border-top:1px solid var(--border);padding:7px 0}
 .quest-details dd{margin:0}
 .quest-source{margin:5px 0 0;color:var(--muted);font-size:11px;overflow-wrap:anywhere}
+.timeline-link{margin-top:10px}
+.timeline-note{margin:0;color:var(--muted);font-size:12px}
+.timeline-day{margin-top:24px}
+.timeline-day>h3{margin:0 0 9px;color:#275e59;font-size:15px}
+.timeline-events{display:grid;gap:9px}
+.timeline-event{background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow)}
+.timeline-event>summary{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;cursor:pointer;list-style:none;padding:15px 17px;border-radius:12px}
+.timeline-event>summary::-webkit-details-marker{display:none}
+.timeline-event>summary:hover{background:#f1f7f5}
+.timeline-event>summary:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.timeline-event[open]>summary{border-radius:12px 12px 0 0;border-bottom:1px solid var(--border);background:#f1f7f5}
+.timeline-preview,.timeline-when,.timeline-title,.timeline-summary{display:block}
+.timeline-preview{min-width:0;overflow-wrap:anywhere}
+.timeline-when{color:#426873;font-size:12px;font-weight:700}
+.timeline-title{color:#243946;font-size:16px;font-weight:700}
+.timeline-summary{margin-top:4px;color:#546675;font-size:13px}
+.timeline-action{color:#275e59;white-space:nowrap;font-size:12px;font-weight:700}
+.timeline-action:after{content:" ＋"}
+.timeline-event[open] .timeline-action:after{content:" −"}
+.timeline-collapse,.timeline-event[open] .timeline-expand{display:none}
+.timeline-event[open] .timeline-collapse{display:inline}
+.timeline-body{padding:14px 17px;font-size:13px;overflow-wrap:anywhere;color:#334a56}
+.timeline-body p{margin:0 0 10px;white-space:pre-line}
+.timeline-facts{display:flex;flex-wrap:wrap;gap:8px 18px;margin:0 0 12px}
+.timeline-facts dt{font-weight:700;color:#415762}
+.timeline-facts dd{margin:0}
+.timeline-steps{margin:0 0 12px;padding-left:22px}
+.timeline-steps li+li{margin-top:6px}
+.timeline-outcome{padding:8px 10px;border-radius:8px;background:#eef6f3}
+.timeline-outcome strong{display:block}
+.timeline-body .timeline-source{margin:0;font-size:11px;color:var(--muted)}
 .commission-list{display:grid;gap:9px}
 .commission-awards{grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr))}
 .commission-item{padding:14px 16px}
