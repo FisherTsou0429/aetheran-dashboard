@@ -440,7 +440,7 @@ async function load(){
    refreshPageFilters();
    loadedPayload=payload;
   }
-  $("top-status").textContent="第"+DATA.snapshot.gameDay+"日 "+DATA.snapshot.gameTime;
+  $("top-status").textContent="資料截至第"+DATA.snapshot.gameDay+"日"+(DATA.snapshot.gameTime?" "+DATA.snapshot.gameTime:"");
  }catch(err){
   if(request!==loadSequence)return;
   if(DATA){
