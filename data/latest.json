@@ -3,27 +3,27 @@
   "world": "艾瑟蘭異界物語：新世界",
   "snapshot": {
     "gameDay": 191,
-    "gameTime": "11:18",
-    "location": "格林鎮・夢想工坊・多相淨化研究室",
+    "gameTime": "下午（精確時刻未核定）",
+    "location": "雷鳴天脊北部・無雷谷・中央控制區",
     "officialSave": "V119",
     "npcIndex": "V63",
     "detailIndex": "V13",
     "baseline": "第191日11:18",
     "authority": "最新有效完整存檔及後續正式劇情優先；本看板只作唯讀查詢，不是正式存檔",
-    "scope": "第一版精選可核對資料；未列出不代表不存在，需繼續補齊原存檔細項",
-    "paused": true,
-    "incrementalCounter": 0,
-    "fullCounter": 0
+    "scope": "V119正式存檔基準及第191日後續正式劇情；歷史未變欄位沿用原資料",
+    "paused": false,
+    "incrementalCounter": 23,
+    "fullCounter": 23
   },
   "sync": {
     "intervalTurns": 20,
     "turnsSinceSuccessfulSync": 0,
     "triggerOnFormalSave": true,
     "lastGameDay": 191,
-    "lastGameTime": "11:18",
-    "lastSourceSave": "V119",
-    "status": "初始基準",
-    "note": "滿20個正式小說回合或正式存檔成功後，在可用的GitHub連線下嘗試同步。只有GitHub寫入成功才更新成功狀態及重置看板同步計數；不影響25/50存檔計數。"
+    "lastGameTime": "下午（精確時刻未核定）",
+    "lastSourceSave": "V119及後續正式劇情",
+    "status": "強制同步成功",
+    "note": "玩家強制同步；更新無雷谷雷脈調律所、薩雷昂與伊瑟菈事件及第191日後續計數。看板非正式存檔。"
   },
   "hero": {
     "name": "澈",
@@ -1080,6 +1080,12 @@
       "role": "北境封印站研究主管",
       "details": "借用FS-N188-01；研究進展須由後續正式劇情確認。",
       "updatedDay": 191
+    },
+    {
+      "name": "伊瑟菈",
+      "role": "雷脈之靈",
+      "status": "已自由",
+      "details": "原被拘束於無雷谷中央封存艙；澈修復調律所後解除18條鎖鏈；目前在谷內，已試飛。"
     }
   ],
   "commitments": [
@@ -1117,9 +1123,20 @@
       "status": "已約定／施工進度待報",
       "details": "承包哈洛德・費恩350,000計畫第191日開工，目標5–7日；不得當作已驗收。",
       "updatedDay": 191
+    },
+    {
+      "name": "北方第三外部控制區調查",
+      "status": "線索已取得",
+      "details": "獨立供能反應仍存在；格拉穆曾被轉移至北方第三区域，實際現況尚未確認。"
     }
   ],
   "timeline": [
+    {
+      "day": 191,
+      "time": "下午",
+      "title": "無雷谷雷脈調律所恢復，伊瑟菈獲釋",
+      "details": "十二座高塔修復、兩條地下支路修復、原始調律模式恢復、十八條拘束鎖鏈安全解除；第三外部控制區偵測到獨立供能，格拉穆下落未明。薩雷昂已解除控制並於中央山壁休養。"
+    },
     {
       "day": 191,
       "time": "11:18",
