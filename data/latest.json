@@ -2,28 +2,28 @@
   "schemaVersion": "1.0",
   "world": "艾瑟蘭異界物語：新世界",
   "snapshot": {
-    "gameDay": 192,
-    "gameTime": "19:51",
-    "location": "銀砂河谷・北觀測站",
+    "gameDay": 193,
+    "gameTime": "04:35",
+    "location": "沉鐘古城・封印局前進營・現場指揮帳",
     "officialSave": "V120",
     "npcIndex": "V64",
     "detailIndex": "V14",
     "baseline": "第192日15:24",
     "authority": "最新有效完整存檔及後續正式劇情優先；本看板只作唯讀查詢，不是正式存檔",
-    "scope": "V120正式完整存檔＋第192日19:51前18回合正式劇情；本看板不是正式存檔",
+    "scope": "V120正式完整存檔及其後第193日04:35前正式劇情；GitHub看板非正式完整存檔",
     "paused": false,
-    "incrementalCounter": 18,
-    "fullCounter": 18
+    "incrementalCounter": 22,
+    "fullCounter": 22
   },
   "sync": {
     "intervalTurns": 20,
     "turnsSinceSuccessfulSync": 0,
     "triggerOnFormalSave": true,
-    "lastGameDay": 192,
-    "lastGameTime": "19:51",
-    "lastSourceSave": "V120＋第192日15:24至19:51正式劇情（未另行完整存檔）",
+    "lastGameDay": 193,
+    "lastGameTime": "04:35",
+    "lastSourceSave": "V120＋後續正式劇情至第193日04:35",
     "status": "成功同步",
-    "note": "GH手動同步：蒼岩哨站雙守衛完整修復驗收650000待公會結算；銀砂河谷三柱及測繪箱鑑定，尚未操作。雙存檔計數器18/25、18/50不歸零。"
+    "note": "手動GH同步；銀砂河谷測繪箱及完整資料交付，620000核准待結算；沉鐘古城現場報到，黑霧巨像朝主鐘移動；雙存檔計數器不歸零。"
   },
   "hero": {
     "name": "澈",
@@ -774,12 +774,12 @@
       "id": "DM-G192-P02",
       "name": "銀砂河谷古代測繪箱",
       "rank": "A專屬豁免",
-      "status": "已接取、現場鑑定中",
+      "status": "完成且正式驗收，待公會結算",
       "rewardCopper": 540000,
       "bonusCopper": 80000,
       "deadlineDay": 204,
       "deadlineTime": "18:00",
-      "details": "第192日19:51位於北觀測站，已鑑定西柱流量、南柱方位、東柱週期，東柱受地下天然魔力支流干擾；箱體和歷史資料完整，尚未校準、拆卸或回收。",
+      "details": "第193日03:18已交付測繪箱、六小時三柱紀錄及地下通道圖；540000基本+80000附加均核准，620000未入帳。北側第七導流節點另案，未接取。",
       "taskDetails": {
         "client": "王國地理測繪院格林分署・諾爾・賽文",
         "requirements": "調查三柱、完整記錄其魔力流向並安全保全測繪箱及歷史資料。",
@@ -799,7 +799,7 @@
       "id": "TMP-G192-S03",
       "name": "沉鐘古城黑霧巨像",
       "rank": "S特例",
-      "status": "已接取未出發",
+      "status": "已接取、現場報到完成、尚未交戰",
       "rewardCopper": 3800000,
       "bonusCopper": 400000,
       "deadlineDay": 209,
@@ -813,7 +813,8 @@
         "deliveryDeadline": "第209日 18:00",
         "payment": "基本 3,800,000 銅幣，附加最高 400,000。已接取，尚未出發或結算。",
         "source": "第192日已確認正式劇情・沉鐘古城越級審核"
-      }
+      },
+      "details": "第193日04:35位於封印局前進營指揮帳；指揮官奧德里克・凡恩；巨像約23米高，朝中央主鐘前進，鐘鳴時胸口同步發光；通行許可可領取，尚未選路。"
     }
   ],
   "research": [
@@ -2082,6 +2083,22 @@
     }
   ],
   "events": [
+    {
+      "id": "EV-193-SILVER-HANDOVER",
+      "day": 193,
+      "time": "02:54–03:18",
+      "title": "銀砂河谷逆流點解析與測繪箱正式交付",
+      "summary": "定位地下27米局部逆流點，確認古代通道用於地脈穩壓、供能與魔力回收；測繪箱、三柱完整紀錄、地脈圖交付測繪院，620000核准未付款；北側節點另案。",
+      "location": "銀砂河谷・北觀測站"
+    },
+    {
+      "id": "EV-193-BELL-CAMP",
+      "day": 193,
+      "time": "04:19–04:35",
+      "title": "抵達沉鐘古城封印局前進營並完成報到",
+      "summary": "澈風行200%飛抵沉鐘古城，會見現場指揮官奧德里克・凡恩；巨像朝主鐘前進，主鐘共鳴時巨像胸口同步亮起；尚未交戰或選路。",
+      "location": "沉鐘古城・封印局前進營"
+    },
     {
       "id": "EV-192-SENTRY-REPAIR",
       "day": 192,
