@@ -367,7 +367,8 @@ function timelineCoverage(){
   (note?'<div class="info-banner">'+safe(note)+'</div>':"");
 }
 function orderedTimeline(rows){
- return [...rows].sort((a,b)=>b.day-a.day||timelineMinutes(b.time)-timelineMinutes(a.time));
+ const endOrder=row=>timelinePoint(row.day,row.time)?.order??row.day*1440+timelineMinutes(row.time);
+ return [...rows].sort((a,b)=>endOrder(b)-endOrder(a));
 }
 
 function timelineEvent(row){
