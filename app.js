@@ -6,7 +6,7 @@ const TABS={
  equipment:["裝備與晶片","護甲、載具、晶片槽與借出設備的狀態。"],
  inventory:["物品與庫存","找回忘記的魔核、素材、古代裝置及其保管位置。"],
  prices:["永久商品價格","已成交商品永久標價、實付與歷史條件；不是新交易。"],
- quests:["任務與委託","以任務ID查詢接取、驗收、未領報酬與期限。"],
+ quests:["任務與委託","先看手上的任務與接洽進度，再依公會公告四區查閱紀錄。"],
  research:["夢想工坊","研究里程碑、製造日期、實際成果與未結驗收。"],
  logistics:["夢想物流","飛天號、貨車、分行及配車情況。"],
  workforce:["夢想人力","道路工程、人力派遣、款項與待確認進度。"],
@@ -33,6 +33,9 @@ function allMatch(row){
  const str=Object.entries(row).map(([k,v])=>Array.isArray(v)?v.join(" "):String(v??"")).join(" ").toLocaleLowerCase();
  return str.includes(query.toLocaleLowerCase())&&(!filter||String(row.status??"")===filter);
 }
+function questDeadline(row){
+ return row.deadlineDay==null ? (row.deadlineTime||"") : "第"+row.deadlineDay+"日"+(row.deadlineTime?" "+row.deadlineTime:"");
+}
 function card(row){
  const name=row.name||row.title||row.id;
  const details=[];
@@ -49,13 +52,81 @@ function card(row){
  if(row.bonusCopper!=null)details.push("附加上限／條件："+fmt(row.bonusCopper)+"銅幣");
  if(row.bonusStatus)details.push("附加狀態："+row.bonusStatus);
  if(row.targetDay!=null)details.push("目標：第"+row.targetDay+"日");
- if(row.deadlineDay!=null)details.push("期限：第"+row.deadlineDay+"日"+(row.deadlineTime?" "+row.deadlineTime:""));
+ const deadline=questDeadline(row);
+ if(deadline)details.push("期限："+deadline);
  if(row.updatedDay!=null)details.push("最近來源：第"+row.updatedDay+"日");
  if(row.goal)details.push("下一步："+row.goal);
  return '<article class="card"><div class="card-head"><div><h3>'+safe(name)+'</h3><div class="sub">'+safe(row.id||"")+'</div></div>'+badge(row.status)+'</div><p class="description">'+safe(row.details||row.note||"")+'</p><div class="card-details">'+details.map(x=>"<span>"+safe(x)+"</span>").join("")+"</div></article>";
 }
 function section(title,content,count){return '<div class="section-heading"><h2>'+safe(title)+'</h2><span>'+safe(count||"")+'</span></div>'+content;}
-function cardGrid(rows){return rows.length?'<div class="grid">'+rows.map(card).join("")+'</div>':'<div class="empty">沒有符合這組搜尋／篩選條件的資料。</div>';}
+function cardGrid(rows,emptyMessage="沒有符合這組搜尋／篩選條件的資料。"){
+ return rows.length?'<div class="grid">'+rows.map(card).join("")+'</div>':'<div class="empty">'+safe(emptyMessage)+'</div>';
+}
+
+const QUEST_CATEGORIES=[
+ ["guild","一般公會委託"],
+ ["team","夢想小隊專屬委託"],
+ ["air","夢想飛天號專屬急件運輸"],
+ ["recruitment","隊伍招募／遠征徵人"]
+];
+
+function questCategory(row){
+ const category=row.category||"";
+ const id=row.id||"";
+ // The current snapshot has no quest category field. Use its established identifiers and titles.
+ if(/飛天號.*急件|飛空艇.*急件/.test(category)||/^(?:TMP-)?AIR(?:-|\d)/.test(id))return "air";
+ if(/隊伍招募|遠征徵人/.test(category)||/^(?:REC-|TMP-R\d)/.test(id))return "recruitment";
+ if(/夢想(?:小)?隊專屬/.test(category)||/夢想(?:小)?隊專屬/.test(row.name||""))return "team";
+ return "guild";
+}
+
+function questFocus(status=""){
+ if(/^(?:已(?:正式)?接取|已簽約)(?:未完成|未開始|未啟動|進行中)?$/.test(status))return "active";
+ if(/^(?:提案未簽約|接洽中|洽談中|待(?:對方|委託方)回覆|申請待審核|待接取審核|待簽約|待面談)$/.test(status))return "contact";
+ if(/^(?:已完成|戰鬥完成|已交付|已驗收|已結算|已核准)?(?:[／、 ]?)(?:待(?:正式)?驗收|待軍方驗證|待結算|(?:已核准)?未領(?:款|報酬)|待領(?:款|報酬))$/.test(status))return "followup";
+ return "";
+}
+
+function questSummary(row,showDetails){
+ const deadline=questDeadline(row);
+ const reward=row.rewardCopper==null?"":"基礎報酬 "+fmt(row.rewardCopper)+" 銅幣";
+ const terms=[deadline&&"期限 "+deadline,reward].filter(Boolean).join("｜");
+ return '<article class="quest-summary"><div class="card-head"><div><h3>'+safe(row.name||row.title||row.id)+'</h3>'+
+ '<div class="sub">'+safe(row.id||"")+'</div></div>'+badge(row.status)+'</div>'+
+ (terms?'<p class="quest-terms">'+safe(terms)+'</p>':"")+
+ (showDetails&&(row.details||row.note)?'<p class="description">'+safe(row.details||row.note)+'</p>':"")+'</article>';
+}
+
+function questFocusPanel(key,title,description,rows){
+ const emptyMessage="看板目前未收錄這個狀態的任務。";
+ const content=rows.length?'<div class="quest-summary-list">'+rows.map(row=>questSummary(row,key==="followup")).join("")+'</div>':
+ '<p class="quest-focus-empty">'+emptyMessage+'</p>';
+ return '<section class="quest-focus-panel quest-focus-'+key+'" aria-labelledby="quest-'+key+'">'+
+ '<div class="section-heading"><h2 id="quest-'+key+'">'+title+'</h2><span>'+countShown(rows.length)+'</span></div>'+
+ '<p class="quest-focus-description">'+description+'</p>'+content+'</section>';
+}
+
+function renderQuestPriority(rows){
+ const groups={active:[],contact:[],followup:[]};
+ for(const row of rows){
+  const key=questFocus(row.status);
+  if(key)groups[key].push(row);
+ }
+ return '<div class="quest-focus-grid">'+
+ questFocusPanel("active","正在進行","已正式接取的任務，包含尚未開始的案件。",groups.active)+
+ questFocusPanel("contact","正在接洽","提案、洽談及接取前審核。請以各筆原始狀態為準。",groups.contact)+
+ '</div>'+
+ (groups.followup.length?questFocusPanel("followup","待驗收／待領款","依各筆紀錄區分待驗證、待結算與已核准未領。",groups.followup):"");
+}
+
+function renderQuestCategories(rows){
+ const groups={guild:[],team:[],air:[],recruitment:[]};
+ for(const row of rows)groups[questCategory(row)].push(row);
+ const emptyMessage=query||filter?"此區沒有符合搜尋或篩選條件的紀錄。":"目前看板未收錄此區紀錄。";
+ return '<p class="quest-categories-note">公會公告四區 · 以下搜尋結果也保留已接取、已完成及歷史紀錄。</p>'+
+ QUEST_CATEGORIES.map(([key,title])=>'<section class="quest-category">'+
+ section(title,cardGrid(groups[key],emptyMessage),countShown(groups[key].length))+'</section>').join("");
+}
 function navigate(next){
  if(!TABS[next])return;
  page=next;query="";filter="";$("search").value="";$("status-filter").value="";
@@ -123,6 +194,7 @@ function render(){
  const cfg=TABS[page],p=$("content");
  $("page-title").textContent=cfg[0];
  $("page-description").textContent=cfg[1];
+ $("quest-priority").hidden=page!=="quests";
  const rows=entries(page);
  const showToolbar=page!=="overview";
  $("search").placeholder=page==="overview"?"選擇左側分類後搜尋資料…":"搜尋名稱、任務ID、物品位置、NPC或研究…";
@@ -135,12 +207,12 @@ function render(){
    return;
  }
  const result=rows.filter(allMatch);
+ if(page==="quests"){p.innerHTML=renderQuestCategories(result);return;}
  if(page==="timeline"){p.innerHTML=section("事件時間軸",renderTimeline(result),countShown(result.length));return;}
  let heading=cfg[0]; 
  let pre="";
  if(page==="research")pre='<div class="info-banner">「目標第N日」不等於完成日；「舊案待清查」也不等於製造失敗。系統只按正式來源明確紀錄顯示狀態。</div>';
  if(page==="prices")pre='<div class="info-banner">此處是已確認成交的永久價格索引，不會產生購物、扣款或庫存變動。第一版仍在補齊完整歷史價格目錄。</div>';
- if(page==="quests")pre='<div class="info-banner">公告未接取不代表已接受委託；待領獎金及附條件報酬不加入現金。公告細節以原始任務卡為準。</div>';
  if(page==="sidelines"||page==="workforce")pre='<div class="info-banner">部分支線的最近專題來源早於第191日。標記「第97日」代表最後核對來源，不應當作第191日的最新實際營運結果。</div>';
  p.innerHTML=pre+section(heading,cardGrid(result),countShown(result.length));
 }
@@ -160,6 +232,7 @@ async function load(){
    const d=await response.json();
    if(d.schemaVersion!=="1.0"||!d.snapshot||!d.hero||!d.quests||!d.research)throw new Error("資料格式不符");
    DATA=d;
+   $("quest-priority").innerHTML=renderQuestPriority(entries("quests"));
    $("snapshot-label").textContent="遊戲時間：第"+d.snapshot.gameDay+"日 "+d.snapshot.gameTime;
    $("location-label").textContent="目前位置："+d.snapshot.location;
    $("save-label").textContent="正式來源："+d.snapshot.officialSave;

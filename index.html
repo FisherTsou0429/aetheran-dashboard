@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#101b27" />
   <meta name="description" content="《艾瑟蘭異界物語：新世界》玩家唯讀資料看板：角色、裝備、任務、研究、夢想事業與未完成事項。" />
   <title>艾瑟蘭世界管理中心</title>
-  <link rel="stylesheet" href="./style.css" />
-  <script src="./app.js" defer></script>
+  <link rel="stylesheet" href="./style.css?v=quest-sections" />
+  <script src="./app.js?v=quest-sections" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">跳至主要內容</a>
@@ -24,7 +24,7 @@
         <button type="button" data-page="equipment"><span aria-hidden="true">⚔</span> 裝備</button>
         <button type="button" data-page="inventory"><span aria-hidden="true">▣</span> 物品與庫存</button>
         <button type="button" data-page="prices"><span aria-hidden="true">◉</span> 永久商品價格</button>
-        <button type="button" data-page="quests"><span aria-hidden="true">☷</span> 公會任務</button>
+        <button type="button" data-page="quests"><span aria-hidden="true">☷</span> 任務與委託</button>
         <button type="button" data-page="research"><span aria-hidden="true">⚙</span> 夢想工坊</button>
         <button type="button" data-page="logistics"><span aria-hidden="true">✈</span> 夢想物流</button>
         <button type="button" data-page="workforce"><span aria-hidden="true">♧</span> 夢想人力</button>
@@ -56,6 +56,7 @@
             <span id="save-label">正式來源：讀取中</span>
           </div>
         </section>
+        <div id="quest-priority" role="region" aria-label="優先追蹤任務" hidden></div>
         <section class="toolbar" aria-label="搜尋與篩選">
           <label for="search" class="sr-only">搜尋目前分類</label>
           <div class="search-wrap"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="搜尋名稱、任務ID、物品位置、NPC或研究…" autocomplete="off" /></div>
