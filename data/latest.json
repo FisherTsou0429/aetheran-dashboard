@@ -1,0 +1,996 @@
+{
+  "schemaVersion": "1.0",
+  "world": "艾瑟蘭異界物語：新世界",
+  "snapshot": {
+    "gameDay": 191,
+    "gameTime": "11:18",
+    "location": "格林鎮・夢想工坊・多相淨化研究室",
+    "officialSave": "V119",
+    "npcIndex": "V63",
+    "detailIndex": "V13",
+    "baseline": "第191日11:18",
+    "authority": "最新有效完整存檔及後續正式劇情優先；本看板只作唯讀查詢，不是正式存檔",
+    "scope": "第一版精選可核對資料；未列出不代表不存在，需繼續補齊原存檔細項",
+    "paused": true,
+    "incrementalCounter": 0,
+    "fullCounter": 0
+  },
+  "sync": {
+    "intervalTurns": 20,
+    "turnsSinceSuccessfulSync": 0,
+    "triggerOnFormalSave": true,
+    "lastGameDay": 191,
+    "lastGameTime": "11:18",
+    "lastSourceSave": "V119",
+    "status": "初始基準",
+    "note": "滿20個正式小說回合或正式存檔成功後，在可用的GitHub連線下嘗試同步。只有GitHub寫入成功才更新成功狀態及重置看板同步計數；不影響25/50存檔計數。"
+  },
+  "hero": {
+    "name": "澈",
+    "gender": "男性",
+    "identity": "穿越者／非勇者",
+    "rank": "B",
+    "advancement": {
+      "qualified": 42,
+      "qualifiedTarget": 65,
+      "hard": 19,
+      "hardTarget": 18
+    },
+    "cashCopper": 43349306,
+    "thirdPartyHeldCopper": 400000,
+    "thirdPartyHeldBy": "奧斯文・貝克",
+    "uncollectedBaseCopper": 182000,
+    "abilities": [
+      "現代網購（10倍折扣）",
+      "異世界收購",
+      "無限空間",
+      "任何武器完美駕馭"
+    ],
+    "equipped": "夢想二號機",
+    "chipsCapacity": 15,
+    "chipsUsed": 12,
+    "chips": [
+      "風行",
+      "火焰",
+      "固構",
+      "風壓",
+      "夜幕",
+      "靜音結界",
+      "感測藤蔓",
+      "超音波震動",
+      "硬化",
+      "高壓水流",
+      "分身",
+      "冰封"
+    ],
+    "note": "不採用HP／MP。其他已確立能力見正式完整存檔；看板未列出不代表失去。"
+  },
+  "characters": [
+    {
+      "id": "CHAR-CHE",
+      "name": "澈",
+      "status": "已確認",
+      "role": "主角／B級冒險者",
+      "location": "夢想工坊",
+      "details": "B→A合格42/65、困難19/18；夢想二號機已裝12枚晶片、剩3槽。",
+      "updatedDay": 191
+    },
+    {
+      "id": "CHAR-VALEN",
+      "name": "賽德里克・瓦倫",
+      "status": "已登錄",
+      "role": "自主亡靈指揮官／F級冒險者",
+      "location": "格林鎮冒險者公會",
+      "details": "靈魂完整度79%。已取得公會室內獨立候場許可；城內獨行尚未許可。借穿夢想一號機（10槽皆空）。尚未加入夢想隊。",
+      "updatedDay": 191
+    },
+    {
+      "id": "AI-XIAOMENG",
+      "name": "小夢",
+      "status": "適應中",
+      "role": "澈的私人AI／人形載體",
+      "location": "當前具體位置未確認",
+      "details": "具獨立人形載體並在適應身體；與想想資訊隔離。瓦倫未來組隊僅提案，尚未徵得小夢同意。",
+      "updatedDay": 191
+    },
+    {
+      "id": "AI-XIANGXIANG",
+      "name": "想想",
+      "status": "運作中",
+      "role": "夢想工坊管理AI",
+      "location": "夢想工坊",
+      "details": "管理研究、製造與訪客進出紀錄；不自動知道小夢掌握的私人情報。",
+      "updatedDay": 191
+    }
+  ],
+  "equipment": [
+    {
+      "id": "EQ-DREAM2",
+      "name": "夢想二號機",
+      "status": "使用中",
+      "place": "澈裝備",
+      "count": "1套",
+      "details": "胸甲15槽，已裝12，剩餘3槽。已裝晶片：風行、火焰、固構、風壓、夜幕、靜音結界、感測藤蔓、超音波震動、硬化、高壓水流、分身、冰封。",
+      "updatedDay": 191
+    },
+    {
+      "id": "EQ-DREAM1",
+      "name": "夢想一號機",
+      "status": "借用中",
+      "place": "瓦倫穿著",
+      "count": "1套",
+      "details": "原型護甲，10個晶片槽全空；沒有裝入動力晶片。所有權未轉移。",
+      "updatedDay": 191
+    },
+    {
+      "id": "EQ-VALEN-ORIGINAL",
+      "name": "瓦倫原銀甲",
+      "status": "保存中",
+      "place": "夢想工坊架上",
+      "count": "1套（不含劍）",
+      "details": "屬於瓦倫，尚未處置。",
+      "updatedDay": 191
+    },
+    {
+      "id": "EQ-AR-GLASSES",
+      "name": "開發型AR智能眼鏡",
+      "status": "已建立本地連線",
+      "place": "澈／布魯克／維爾納各一副",
+      "count": "3副",
+      "details": "與小夢工作站本地連線；不能推定離開工坊仍有遠距網路。來源：第97日夢想工坊支線紀錄，近期位置未逐副確認。",
+      "updatedDay": 97
+    },
+    {
+      "id": "EQ-GR86",
+      "name": "紅色Toyota GR86",
+      "status": "保留完整",
+      "place": "夢想工坊車輛研究區門口（較早記錄）",
+      "count": "1輛",
+      "details": "不供拆解，實際現時泊位須核對。",
+      "updatedDay": 96
+    },
+    {
+      "id": "EQ-H2",
+      "name": "黑色2008 HUMMER H2",
+      "status": "部分拆解",
+      "place": "夢想工坊車輛研究區（較早記錄）",
+      "count": "1輛",
+      "details": "供機械研究，尚未確認完全復原或可行駛。",
+      "updatedDay": 96
+    }
+  ],
+  "inventory": [
+    {
+      "id": "INV-SPIDER-QUEEN",
+      "name": "鳴晶岩蛛主母屍體",
+      "status": "保有",
+      "place": "澈的無限空間",
+      "count": "1",
+      "details": "蜘蛛已全部死亡；普通蛛屍與卵囊已售出，不得重複計入。",
+      "updatedDay": 191
+    },
+    {
+      "id": "INV-SPIDER-CORES",
+      "name": "鳴晶岩蛛魔核",
+      "status": "保有",
+      "place": "澈的無限空間",
+      "count": "全部保留／精確顆數未列",
+      "details": "出售其他岩蛛材料時魔核未售出。",
+      "updatedDay": 191
+    },
+    {
+      "id": "INV-COMMAND-TOWER-PURPLE",
+      "name": "亡靈移動指揮塔（紫）",
+      "status": "隔離保存",
+      "place": "澈的無限空間",
+      "count": "1座",
+      "details": "完整，約18.6公尺；未售、未拆。",
+      "updatedDay": 190
+    },
+    {
+      "id": "INV-COMMAND-TOWER-RED",
+      "name": "亡靈移動指揮塔（紅）",
+      "status": "隔離保存",
+      "place": "澈的無限空間",
+      "count": "1座",
+      "details": "完整，約15.2公尺；未售、未拆。",
+      "updatedDay": 190
+    },
+    {
+      "id": "INV-FROST-BONE",
+      "name": "霜骨龍骨架及原生藍龍魂核",
+      "status": "研究保留",
+      "place": "夢想工坊",
+      "count": "1組",
+      "details": "霜骨龍V0.2未建造完成；不得與雙頭熔岩飛龍混同。",
+      "updatedDay": 191
+    },
+    {
+      "id": "INV-TWIN-WYVERN",
+      "name": "雙頭熔岩飛龍遺骸與魔核",
+      "status": "保有／未製作",
+      "place": "澈所有；具體保管分區依完整存檔",
+      "count": "1組",
+      "details": "澈希望製作專屬雙頭骨龍，尚未完成。",
+      "updatedDay": 191
+    },
+    {
+      "id": "INV-ARTIFICIAL-CORE",
+      "name": "人工亡靈動力核心 FS-N188-01",
+      "status": "借出研究",
+      "place": "北境封印站・格雷文・索爾",
+      "count": "1",
+      "details": "研究借用中，未確認歸還。",
+      "updatedDay": 191
+    },
+    {
+      "id": "INV-ORE-560KG",
+      "name": "工坊保留礦石批次",
+      "status": "已入庫研究",
+      "place": "夢想工坊",
+      "count": "560公斤",
+      "details": "第190日交工坊，銀紋聚賦礦同晶紋方向低負載效率提升約14%。詳細品類與單價依主存檔與商品台帳。",
+      "updatedDay": 190
+    },
+    {
+      "id": "INV-NORTH-BOXES",
+      "name": "北境黑鐵軍用箱",
+      "status": "封存未開",
+      "place": "工坊封存區／具體位置見正式存檔",
+      "count": "3箱",
+      "details": "另有灰翼騎兵徽章、地脈轉送基座、2傳送裝置、7符文板、高階魂晶等未處置。",
+      "updatedDay": 190
+    },
+    {
+      "id": "INV-LAVA-DRAGON-CORE",
+      "name": "熔冠地龍魔核及分解素材",
+      "status": "保有",
+      "place": "澈的無限空間",
+      "count": "完整S級魔核1枚，其他分解材料另計",
+      "details": "第188日地龍已完美分解，不再保有完整地龍遺體。",
+      "updatedDay": 188
+    }
+  ],
+  "quests": [
+    {
+      "id": "TMP-G188-B05",
+      "name": "西林採石場・鳴晶岩蛛群",
+      "rank": "B",
+      "status": "已驗收待結算",
+      "rewardCopper": 182000,
+      "bonusCopper": 38000,
+      "bonusStatus": "尚未核發",
+      "deadlineDay": 191,
+      "deadlineTime": "12:00",
+      "owner": "採石場／公會",
+      "details": "第191日09:50採石場原址驗收通過。182,000基本報酬核准未領，不可自動加錢與晉升。"
+    },
+    {
+      "id": "TMP-H190-S01",
+      "name": "雷鳴天脊・蒼雷巨翼龍討伐",
+      "rank": "S",
+      "status": "已接取未完成",
+      "rewardCopper": 4600000,
+      "bonusCopper": 600000,
+      "bonusStatus": "觀測站保全條件",
+      "deadlineDay": 196,
+      "deadlineTime": "18:00",
+      "owner": "王都高空航路監理署",
+      "details": "從南側航路進入，避開三座有人觀測站；澈尚未出發、未擊殺巨翼龍。"
+    },
+    {
+      "id": "TMP-N190-S01",
+      "name": "黑曜軍團・第九裂刃攻城群",
+      "rank": "S",
+      "status": "已接取未完成",
+      "rewardCopper": 7200000,
+      "bonusCopper": 1300000,
+      "bonusStatus": "情報獎上限",
+      "deadlineDay": 197,
+      "deadlineTime": "18:00",
+      "owner": "北境聯軍西線指揮部",
+      "details": "約600–900敵、兩座大型攻城構裝體；第193日08:00簡報、09:00開始，進主戰區前通知前進營。"
+    },
+    {
+      "id": "TMP-N187-S06",
+      "name": "第三寒鐵戰群與指揮網截斷",
+      "rank": "S",
+      "status": "戰鬥完成待軍方驗證",
+      "rewardCopper": 5600000,
+      "bonusCopper": 900000,
+      "bonusStatus": "情報獎上限",
+      "deadlineDay": 195,
+      "deadlineTime": "18:00（歷史舊期限，依最新軍方驗證）",
+      "owner": "北境軍方",
+      "details": "戰鬥證據第190日22:04提交；指揮網自第190日約16:35須持續斷線24小時，最早第191日16:35驗證，未領款。"
+    },
+    {
+      "id": "G-169-001",
+      "name": "霜角委託",
+      "rank": "A",
+      "status": "已接取未開始",
+      "rewardCopper": 320000,
+      "bonusCopper": null,
+      "deadlineDay": null,
+      "owner": "公會",
+      "details": "已接未開始；詳細期限及條件查正式任務卡。"
+    },
+    {
+      "id": "G-189-M01",
+      "name": "賦能增幅型礦源懸賞",
+      "rank": "玩家發布",
+      "status": "公開徵集中",
+      "rewardCopper": null,
+      "bonusCopper": null,
+      "deadlineDay": 219,
+      "deadlineTime": "08:20",
+      "owner": "澈（委託人）",
+      "details": "有效線索20,000、樣本50,000、確證礦源300,000。先前樣本獎已付；灰脊丘陵西廢礦道新線索未核實。"
+    },
+    {
+      "id": "TMP-N190-S02",
+      "name": "蒼白軍勢・霜鐵谷亡靈軍團",
+      "rank": "S",
+      "status": "公告未接取",
+      "rewardCopper": 5900000,
+      "bonusCopper": 800000,
+      "bonusStatus": "保全獎上限",
+      "deadlineDay": 193,
+      "deadlineTime": "10:00報名截止",
+      "owner": "軍方",
+      "details": "約300–500亡靈；封印地許可及軍事特批，194日07:00集合、08:00作業，197日17:00交付。"
+    },
+    {
+      "id": "TMP-G191-F01",
+      "name": "舊北門道路標記複核",
+      "rank": "F",
+      "status": "公告未接取",
+      "rewardCopper": 1800,
+      "deadlineDay": 191,
+      "deadlineTime": "12:00申請截止",
+      "owner": "道路管理所",
+      "details": "瓦倫查看；仍受城鎮外出許可限制。"
+    },
+    {
+      "id": "TMP-G191-F02",
+      "name": "魔導倉庫安全巡檢",
+      "rank": "F+",
+      "status": "公告未接取",
+      "rewardCopper": 2600,
+      "deadlineDay": 191,
+      "deadlineTime": "11:30申請截止",
+      "owner": "倉儲協會",
+      "details": "需符文識別資格與活動許可；瓦倫未接。"
+    },
+    {
+      "id": "TMP-G191-F03",
+      "name": "訓練場器材與防護陣列檢查",
+      "rank": "F",
+      "status": "公告未接取",
+      "rewardCopper": 1200,
+      "deadlineDay": 191,
+      "deadlineTime": "13:00申請截止",
+      "owner": "公會訓練部",
+      "details": "僅公會指定場域；瓦倫未接。"
+    },
+    {
+      "id": "TMP-G190-B01",
+      "name": "黑羽峽谷鏡羽獅鷲",
+      "rank": "B+",
+      "status": "公告未接取",
+      "rewardCopper": 168000,
+      "owner": "公會",
+      "details": "第190日既有公告，完整條件見原任務卡。"
+    },
+    {
+      "id": "TMP-G190-A01",
+      "name": "沉鐘湖水下魔導鐘",
+      "rank": "A",
+      "status": "公告未接取",
+      "rewardCopper": 285000,
+      "owner": "公會",
+      "details": "第190日既有公告。"
+    },
+    {
+      "id": "TMP-G190-B02",
+      "name": "赤銅丘陵雷殼蜈蚣",
+      "rank": "B",
+      "status": "公告未接取",
+      "rewardCopper": 126000,
+      "owner": "公會",
+      "details": "第190日既有公告。"
+    },
+    {
+      "id": "TMP-G190-A02",
+      "name": "霧松古道無聲車隊",
+      "rank": "A+",
+      "status": "公告未接取",
+      "rewardCopper": 420000,
+      "owner": "公會",
+      "details": "第190日既有公告。"
+    },
+    {
+      "id": "TMP-G190-C01",
+      "name": "白露濕地月光蓮",
+      "rank": "C+",
+      "status": "公告未接取",
+      "rewardCopper": 38000,
+      "owner": "公會",
+      "details": "第190日既有公告。"
+    },
+    {
+      "id": "TMP-G190-A03",
+      "name": "斷橋堡魔像",
+      "rank": "A",
+      "status": "公告未接取",
+      "rewardCopper": 310000,
+      "owner": "公會",
+      "details": "第190日既有公告。"
+    },
+    {
+      "id": "TMP-G190-B03",
+      "name": "暮砂商路貨車護衛",
+      "rank": "B",
+      "status": "公告未接取",
+      "rewardCopper": 104000,
+      "owner": "公會",
+      "details": "第190日既有公告。"
+    },
+    {
+      "id": "TMP-G190-B04",
+      "name": "深根森林吞光菌",
+      "rank": "B+",
+      "status": "公告未接取",
+      "rewardCopper": 152000,
+      "owner": "公會",
+      "details": "第190日既有公告。"
+    },
+    {
+      "id": "SP-G190-01",
+      "name": "夢想隊專屬大型構裝測試邀請",
+      "rank": "特別邀請",
+      "status": "提案未簽約",
+      "rewardCopper": 240000,
+      "owner": "提案方",
+      "details": "不是已接受正式任務。"
+    },
+    {
+      "id": "AIR-G190-01",
+      "name": "銀城精密零件飛船貨運",
+      "rank": "貨運",
+      "status": "公告未接取",
+      "rewardCopper": 138000,
+      "owner": "物流委託",
+      "details": "扣除費用後131,100銅幣；第191日08:00申請期限需再按時點核對。"
+    },
+    {
+      "id": "AIR-G190-02",
+      "name": "王都醫療用品飛船貨運",
+      "rank": "貨運",
+      "status": "公告未接取",
+      "rewardCopper": 310000,
+      "owner": "物流委託",
+      "details": "扣除費用後294,500銅幣；第191日11:00申請期限已過當前遊戲時間。"
+    }
+  ],
+  "research": [
+    {
+      "id": "R-PURIFY-01",
+      "name": "多相淨化V0.1／可攜式晶片",
+      "status": "階段通過／下一階段待驗收",
+      "lead": "維爾納／法恩／想想",
+      "startDay": 188,
+      "targetDay": 192,
+      "goal": "第192日封裝可攜樣品、第193日獨立測試",
+      "details": "六枚低風險核心低功率運轉4小時，樣本污染活性下降約81–87%；高功率相位偏移；01/03/06高風險核心仍隔離，未裝入夢想二號機。",
+      "updatedDay": 191
+    },
+    {
+      "id": "R-VALEN-ARMOR",
+      "name": "幽藍指揮官甲V0.1",
+      "status": "設計中／待瓦倫同意",
+      "lead": "布魯克／維爾納／法恩／想想",
+      "startDay": 191,
+      "targetDay": 193,
+      "goal": "第193日晚試穿原型，195–197日目標實戰版",
+      "details": "增幅亡靈能力、戰場感測及戰術輔助為研究方向。瓦倫尚未同意量測、未採購材料、未扣款。",
+      "updatedDay": 191
+    },
+    {
+      "id": "R-TRUCK-03",
+      "name": "六噸懸浮魔導貨車第3輛",
+      "status": "待正式驗收",
+      "lead": "布魯克／物流卡爾",
+      "startDay": null,
+      "targetDay": 188,
+      "goal": "載重驗收與配車",
+      "details": "第188日已製成，尚未完成正式載重驗收或交付尼可。",
+      "updatedDay": 191
+    },
+    {
+      "id": "R-TRUCK-04",
+      "name": "六噸懸浮魔導貨車第4輛",
+      "status": "製造逾期",
+      "lead": "夢想工坊",
+      "startDay": null,
+      "targetDay": 190,
+      "goal": "確認完工與驗收",
+      "details": "原定第190日完成，至第191日11:18尚無完工驗收紀錄。",
+      "updatedDay": 191
+    },
+    {
+      "id": "R-TRUCK-05",
+      "name": "六噸懸浮魔導貨車後續排程（一）",
+      "status": "預定未到期",
+      "lead": "夢想工坊",
+      "targetDay": 192,
+      "goal": "生產節點",
+      "details": "第192日排程節點；不代表製造完成。",
+      "updatedDay": 191
+    },
+    {
+      "id": "R-TRUCK-06",
+      "name": "六噸懸浮魔導貨車後續排程（二）",
+      "status": "預定未到期",
+      "lead": "夢想工坊",
+      "targetDay": 194,
+      "goal": "生產節點",
+      "details": "第194日排程節點；不代表製造完成。",
+      "updatedDay": 191
+    },
+    {
+      "id": "R-SILVER-ORE",
+      "name": "銀紋聚賦礦效率研究",
+      "status": "低負載測試通過",
+      "lead": "維爾納／法恩",
+      "targetDay": null,
+      "goal": "晶紋定位、熔煉及長期穩定性",
+      "details": "同向符文與低負載條件約+14%效率可重現，非萬用增幅。",
+      "updatedDay": 191
+    },
+    {
+      "id": "R-FROST-DRAGON",
+      "name": "霜骨龍重建V0.2",
+      "status": "設計階段",
+      "lead": "夢想工坊",
+      "targetDay": null,
+      "goal": "先保留原生骨骼再生，再研究飛行與冰息等",
+      "details": "骨架與原藍龍魂核保留；尚未打造完成。",
+      "updatedDay": 191
+    },
+    {
+      "id": "R-TWO-HEAD",
+      "name": "雙頭骨龍／雙首同步晶片V0.1",
+      "status": "構想研究",
+      "lead": "夢想工坊",
+      "targetDay": null,
+      "goal": "雙頭飛龍骨材改造與同步控制",
+      "details": "澈希望專屬雙頭骨龍；未建造、晶片尚概念階段。",
+      "updatedDay": 191
+    },
+    {
+      "id": "R-PHONE10",
+      "name": "首批10台手機試樣機",
+      "status": "舊案待結案清查",
+      "lead": "夢想工坊",
+      "targetDay": 144,
+      "goal": "查成品及整批驗收紀錄",
+      "details": "舊目標第144日晚；最新紀錄無足以確認整批驗收結果。不能直接宣稱沒製造。",
+      "updatedDay": 191
+    },
+    {
+      "id": "R-RINGS",
+      "name": "爆發增幅戒／魔力聚束戒",
+      "status": "舊案待結案清查",
+      "lead": "夢想工坊",
+      "targetDay": 36,
+      "goal": "核對最終驗收",
+      "details": "第36日為舊目標，最新未見完整最終驗收證據。",
+      "updatedDay": 191
+    },
+    {
+      "id": "R-MILITARY-TRUCK",
+      "name": "軍用魔導貨車原型",
+      "status": "交付後待軍方結案",
+      "lead": "軍方／工坊",
+      "targetDay": 127,
+      "goal": "軍方驗收與量產決定",
+      "details": "第127日原型交軍方，不代表正式量產批准。",
+      "updatedDay": 191
+    },
+    {
+      "id": "R-SEVEN-ORES",
+      "name": "七種新礦加工及其他魔核應用",
+      "status": "研發中",
+      "lead": "夢想工坊",
+      "targetDay": null,
+      "goal": "材料熱循環、晶紋、安全與實用性測試",
+      "details": "尚無可證明已逾期的正式最終製造日。",
+      "updatedDay": 191
+    },
+    {
+      "id": "R-CAR",
+      "name": "可駕駛魔導汽車",
+      "status": "設計準備／待核對最新",
+      "lead": "布魯克／維爾納／小夢",
+      "targetDay": null,
+      "goal": "先人工駕駛、封閉場地安全測試，再談自動駕駛",
+      "details": "第97日支線紀錄確認未有可行駛成車；後續最新完成進度需另查。",
+      "updatedDay": 97
+    },
+    {
+      "id": "R-BUS",
+      "name": "魔導公車",
+      "status": "構想／待核對最新",
+      "lead": "夢想工坊",
+      "targetDay": 106,
+      "goal": "第96日提出十日願景，非確定交車契約",
+      "details": "舊目標不等於已營運；尚未確認原型、路線、票價與許可。",
+      "updatedDay": 97
+    },
+    {
+      "id": "R-RELAY",
+      "name": "格林鎮通訊塔／AR遠距聯網",
+      "status": "優先研究方向／待核對最新",
+      "lead": "維爾納／布魯克／小夢",
+      "targetDay": null,
+      "goal": "鎮內穩定遠距連接測試",
+      "details": "早期僅本地AR眼鏡連線；不能推定已建跨鎮通訊塔。",
+      "updatedDay": 97
+    }
+  ],
+  "logistics": [
+    {
+      "id": "L-SHIP",
+      "name": "夢想飛天號",
+      "status": "停泊中",
+      "place": "格林飛天站",
+      "lead": "澈／物流",
+      "details": "尺寸32×14×11公尺，載重約4–5噸；船上無岩蛛。",
+      "updatedDay": 191
+    },
+    {
+      "id": "L-BRANCH",
+      "name": "夢想物流・鐵壁分行",
+      "status": "營運資產已確立",
+      "place": "鐵壁舊貨場",
+      "lead": "卡爾・布倫",
+      "details": "舊貨場已付款，不重扣；後續財務數據依正式紀錄。",
+      "updatedDay": 190
+    },
+    {
+      "id": "L-TRUCK01",
+      "name": "六噸懸浮貨車第1輛",
+      "status": "已交付",
+      "place": "鐵壁分行",
+      "lead": "班恩・霍克",
+      "details": "第一輛正式交付車。",
+      "updatedDay": 188
+    },
+    {
+      "id": "L-TRUCK02",
+      "name": "六噸懸浮貨車第2輛",
+      "status": "已交付",
+      "place": "鐵壁分行",
+      "lead": "托馬斯・里德",
+      "details": "第二輛正式交付車。",
+      "updatedDay": 188
+    },
+    {
+      "id": "L-TRUCK03",
+      "name": "六噸懸浮貨車第3輛",
+      "status": "待驗收配車",
+      "place": "夢想工坊",
+      "lead": "尼可・費爾（已聘，尚未正式配車）",
+      "details": "第188日製成，尚未載貨驗收及分配。",
+      "updatedDay": 191
+    },
+    {
+      "id": "L-TRUCK04",
+      "name": "六噸懸浮貨車第4輛",
+      "status": "製造逾期",
+      "place": "夢想工坊",
+      "lead": "工坊製造",
+      "details": "原定第190日完成，無完成／驗收紀錄。",
+      "updatedDay": 191
+    }
+  ],
+  "workforce": [
+    {
+      "id": "W-GRAN",
+      "name": "夢想人力派遣",
+      "status": "經營構想已確立／登記未確認",
+      "lead": "葛蘭",
+      "place": "格林鎮",
+      "details": "澈擁有；一般媒合業務淨利澈70%／葛蘭30%，工人不支付媒合費。正式登記與營業場所未確認；不能虛構營收。第97日專題為較早資料。",
+      "updatedDay": 97
+    },
+    {
+      "id": "W-ROADS",
+      "name": "格林鎮四門道路工程",
+      "status": "工程進行／新進度待核對",
+      "lead": "葛蘭",
+      "place": "格林鎮四門",
+      "details": "第97日已確認新鋪約300m／原待鋪680m，剩380m；300組柏油用120餘180。第107日主路全鋪為受託目標，不當作第191日已完成。",
+      "updatedDay": 97
+    },
+    {
+      "id": "W-ROADS-FUNDS",
+      "name": "道路工程專款",
+      "status": "獨立帳款",
+      "lead": "葛蘭／鎮政廳",
+      "place": "道路工程",
+      "details": "鎮政廳總預算上限2,400,000銅幣，首期480,000屬工程專款；不計入澈可支配財產或公司淨利。",
+      "updatedDay": 97
+    },
+    {
+      "id": "W-WORKERS",
+      "name": "石脊礦坑受影響礦工",
+      "status": "歷史援助追蹤／待核對最新",
+      "lead": "葛蘭／公會",
+      "place": "格林鎮",
+      "details": "早期受影響84名；援助基金、就業、勞動派遣最新狀態須以更新的正式劇情判定，不能把第93日數字視為第191日即時現況。",
+      "updatedDay": 93
+    }
+  ],
+  "sidelines": [
+    {
+      "id": "S-ESTATE",
+      "name": "白樺莊園",
+      "status": "已購／產權手續及整修持續",
+      "lead": "奧斯文・貝克／哈洛德・費恩",
+      "place": "格林鎮北住宅區",
+      "details": "購價8,350,000已付；奧斯文另保管400,000專款。無權代澈簽新約；整修350,000預定第191日開工、5–7日，最新當日施工成果尚未通報。",
+      "updatedDay": 191
+    },
+    {
+      "id": "S-ESTATE-RESIDENTS",
+      "name": "白樺莊園住客與試用聘僱",
+      "status": "居住中／試用中",
+      "lead": "伊蕾娜／凱恩／莉薇亞／雷薩克；試用：瑪蓮／諾菈／艾德",
+      "place": "白樺莊園",
+      "details": "試用期第190日13:45至第197日13:45，費用17,266待試用後依約支付。瓦倫僅短訪，未取得長住同意。",
+      "updatedDay": 191
+    },
+    {
+      "id": "S-ANCHOR",
+      "name": "界錨及第三未知轉接節點",
+      "status": "伏筆未結",
+      "lead": "澈／維爾薩恩（自稱維護者）",
+      "place": "西北裂隙／界錨",
+      "details": "原固定柱12/12恢復，後加黑環已處理；第三節點與外部操作者身分仍未知。界錨、星環、第三序列站是不同設施，不得混同。第97日專題，最新探索另以主存檔為準。",
+      "updatedDay": 97
+    },
+    {
+      "id": "S-STAR-RING",
+      "name": "星環中繼站",
+      "status": "探索線開放",
+      "lead": "澈／工坊核心知情者",
+      "place": "石脊礦坑下古代設施",
+      "details": "三環構造已拆卸與封存，低負載雙路能源啟用不等於傳送門重啟；銀色小盒、巨門與其他站點仍有未知。",
+      "updatedDay": 97
+    },
+    {
+      "id": "S-THIRD-STATION",
+      "name": "第三序列站古代技術",
+      "status": "已取得部分技術／後續研究",
+      "lead": "澈／小夢／想想",
+      "place": "夢想工坊與古代站點",
+      "details": "獨立輔助終端及四模組、兩古代晶板等早期技術成果；未取得原站完整行政權限。",
+      "updatedDay": 97
+    },
+    {
+      "id": "S-NORTH",
+      "name": "北境封印與亡靈轉換器",
+      "status": "調查持續",
+      "lead": "格雷文・索爾／軍方／澈",
+      "place": "北境封印站",
+      "details": "人工核心FS-N188-01借出研究；北境來源與相關軍事線索仍在推進。",
+      "updatedDay": 191
+    },
+    {
+      "id": "S-NIGHTRAVEN",
+      "name": "夜鴉與自由旅行",
+      "status": "未來主線／尚未完成",
+      "lead": "澈",
+      "place": "未定",
+      "details": "依既有長期主線方向；不得把未發生規劃列為已完成劇情。",
+      "updatedDay": 191
+    }
+  ],
+  "npcs": [
+    {
+      "id": "NPC-ERIN",
+      "name": "艾琳",
+      "status": "當日已確認在公會",
+      "role": "格林鎮公會日間接待／澈女友",
+      "details": "第191日10:20於公會櫃檯；不自動知曉澈秘密能力或其他人物的私人情報。",
+      "updatedDay": 191
+    },
+    {
+      "id": "NPC-MARTINA",
+      "name": "瑪蒂娜（小娜）",
+      "status": "夜班角色",
+      "role": "公會夜間接待",
+      "details": "『小娜』為澈獲准使用的暱稱，不是『馬帝納』。第191日上午未確認出勤。",
+      "updatedDay": 191
+    },
+    {
+      "id": "NPC-BROOK",
+      "name": "布魯克",
+      "status": "工坊在場",
+      "role": "機械／護甲鍛造",
+      "details": "第191日11:18工坊在場，負責瓦倫專屬甲機構設計。",
+      "updatedDay": 191
+    },
+    {
+      "id": "NPC-WERNER",
+      "name": "維爾納",
+      "status": "工坊在場",
+      "role": "魔導工程師",
+      "details": "第191日11:18工坊在場，負責多相淨化與專屬甲魔導設計。",
+      "updatedDay": 191
+    },
+    {
+      "id": "NPC-FAEN",
+      "name": "法恩",
+      "status": "工坊在場",
+      "role": "符文技術",
+      "details": "第191日11:18工坊在場，負責符文與晶片研發。",
+      "updatedDay": 191
+    },
+    {
+      "id": "NPC-KARL",
+      "name": "卡爾・布倫",
+      "status": "在職／當前位置未確認",
+      "role": "夢想物流分行經理",
+      "details": "鐵壁貨場與司機管理；最新營運報告待更新。",
+      "updatedDay": 190
+    },
+    {
+      "id": "NPC-GRAN",
+      "name": "葛蘭",
+      "status": "受託經營／當前位置未確認",
+      "role": "道路工程管理／夢想人力派遣預定經理",
+      "details": "不得無因知曉夢想工坊內部機密。第97日支線專題為較早進度。",
+      "updatedDay": 97
+    },
+    {
+      "id": "NPC-OSWEN",
+      "name": "奧斯文・貝克",
+      "status": "代理中",
+      "role": "白樺莊園交易代理",
+      "details": "持有400,000銅幣專款；未獲得替澈簽新約的權限。",
+      "updatedDay": 191
+    },
+    {
+      "id": "NPC-REZAK",
+      "name": "雷薩克・維恩",
+      "status": "莊園居住中",
+      "role": "白樺莊園協助照護",
+      "details": "並非已聘正式管家；認識瓦倫。",
+      "updatedDay": 191
+    },
+    {
+      "id": "NPC-ILENA",
+      "name": "伊蕾娜・維斯特",
+      "status": "莊園居住中",
+      "role": "白樺莊園住客",
+      "details": "未因住客身分自動成為受聘員工；認識瓦倫。",
+      "updatedDay": 191
+    },
+    {
+      "id": "NPC-KAIN",
+      "name": "凱恩・維洛斯",
+      "status": "莊園居住中",
+      "role": "白樺莊園住客",
+      "details": "未因住客身分自動成為受聘員工；認識瓦倫。",
+      "updatedDay": 191
+    },
+    {
+      "id": "NPC-LIVIA",
+      "name": "莉薇亞・洛斯",
+      "status": "莊園居住中",
+      "role": "輪椅少女",
+      "details": "約14–15歲；復原過程依正式紀錄，不自動判定已能獨立步行。",
+      "updatedDay": 191
+    },
+    {
+      "id": "NPC-LOVINA",
+      "name": "露薇娜",
+      "status": "關係持續",
+      "role": "銀線商人",
+      "details": "與澈互有情意但非正式女友；觀星承諾未完成。",
+      "updatedDay": 191
+    },
+    {
+      "id": "NPC-GREVEN",
+      "name": "格雷文・索爾",
+      "status": "研究中",
+      "role": "北境封印站研究主管",
+      "details": "借用FS-N188-01；研究進展須由後續正式劇情確認。",
+      "updatedDay": 191
+    }
+  ],
+  "commitments": [
+    {
+      "id": "C-DUEL-VALEN",
+      "name": "與瓦倫切磋",
+      "status": "未履行",
+      "details": "澈與瓦倫約定的較量尚未舉行。",
+      "updatedDay": 191
+    },
+    {
+      "id": "C-VALEN-ARMOR",
+      "name": "資助瓦倫專屬甲",
+      "status": "待報價與本人同意",
+      "details": "澈願支付費用，但未核預算、未扣款、瓦倫尚未同意相容性量測。",
+      "updatedDay": 191
+    },
+    {
+      "id": "C-XIAOMENG-TEAM",
+      "name": "瓦倫與小夢未來組隊",
+      "status": "僅提案",
+      "details": "小夢尚未答應，瓦倫願待她自主決定。",
+      "updatedDay": 191
+    },
+    {
+      "id": "C-STAR-GAZING",
+      "name": "與露薇娜觀星",
+      "status": "未履行",
+      "details": "雙方先前約定，尚未完成。",
+      "updatedDay": 191
+    },
+    {
+      "id": "C-ESTATE-RENOVATION",
+      "name": "白樺莊園無障礙改造",
+      "status": "已約定／施工進度待報",
+      "details": "承包哈洛德・費恩350,000計畫第191日開工，目標5–7日；不得當作已驗收。",
+      "updatedDay": 191
+    }
+  ],
+  "timeline": [
+    {
+      "day": 191,
+      "time": "11:18",
+      "title": "完成正式完整存檔V119",
+      "details": "三份MD已成功入庫；25／50正式存檔計數歸零。本看板基準來自該時點。"
+    },
+    {
+      "day": 191,
+      "time": "11:06",
+      "title": "多相淨化六核測試報告",
+      "details": "低功率階段通過；實用晶片未封裝。"
+    },
+    {
+      "day": 191,
+      "time": "10:17",
+      "title": "瓦倫登錄F級冒險者",
+      "details": "四項考核通過；城內自由通行仍未核准。"
+    },
+    {
+      "day": 191,
+      "time": "09:50",
+      "title": "岩蛛採石場目標驗收通過",
+      "details": "182,000銅幣核准待領，38,000條件獎尚未核發。"
+    },
+    {
+      "day": 190,
+      "time": "23:31",
+      "title": "部分蛛材及北境殘物出售",
+      "details": "共+200,000已反映於現金餘額，嚴禁重複計入。"
+    },
+    {
+      "day": 188,
+      "time": "",
+      "title": "懸浮貨車第3輛製成",
+      "details": "仍需正式載重驗收及配車。"
+    },
+    {
+      "day": 97,
+      "time": "",
+      "title": "星環／界錨／夢想工坊支線專題基準",
+      "details": "屬較早整合歷史，非第191日最新逐案結果。"
+    }
+  ]
+}
