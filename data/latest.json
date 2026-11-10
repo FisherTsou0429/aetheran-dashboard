@@ -2,28 +2,28 @@
   "schemaVersion": "1.0",
   "world": "艾瑟蘭異界物語：新世界",
   "snapshot": {
-    "gameDay": 191,
-    "gameTime": "下午（精確時刻未核定）",
-    "location": "雷鳴天脊北部・無雷谷・中央控制區",
+    "gameDay": 192,
+    "gameTime": "11:21（訓練場行程接續中）",
+    "location": "格林鎮冒險者公會，準備前往訓練場",
     "officialSave": "V119",
     "npcIndex": "V63",
     "detailIndex": "V13",
     "baseline": "第191日11:18",
     "authority": "最新有效完整存檔及後續正式劇情優先；本看板只作唯讀查詢，不是正式存檔",
-    "scope": "V119正式存檔基準及第191日後續正式劇情；歷史未變欄位沿用原資料",
+    "scope": "V119正式存檔及截至第192日11:21後續正式劇情；未列歷史欄位沿用原資料",
     "paused": false,
-    "incrementalCounter": 23,
-    "fullCounter": 23
+    "incrementalCounter": 44,
+    "fullCounter": 44
   },
   "sync": {
     "intervalTurns": 20,
     "turnsSinceSuccessfulSync": 0,
     "triggerOnFormalSave": true,
-    "lastGameDay": 191,
-    "lastGameTime": "下午（精確時刻未核定）",
-    "lastSourceSave": "V119及後續正式劇情",
-    "status": "強制同步成功",
-    "note": "玩家強制同步；更新無雷谷雷脈調律所、薩雷昂與伊瑟菈事件及第191日後續計數。看板非正式存檔。"
+    "lastGameDay": 192,
+    "lastGameTime": "11:21",
+    "lastSourceSave": "V119及第192日後續正式劇情",
+    "status": "成功同步",
+    "note": "第192日瓦倫與小夢F級任務TMP-G192-F03完成，各得1400銅幣；同步礦石、現金、人物及後續訓練進度。"
   },
   "hero": {
     "name": "澈",
@@ -36,7 +36,7 @@
       "hard": 19,
       "hardTarget": 18
     },
-    "cashCopper": 43349306,
+    "cashCopper": 43387646,
     "thirdPartyHeldCopper": 400000,
     "thirdPartyHeldBy": "奧斯文・貝克",
     "uncollectedBaseCopper": 182000,
@@ -71,9 +71,9 @@
       "name": "澈",
       "status": "已確認",
       "role": "主角／B級冒險者",
-      "location": "夢想工坊",
+      "location": "格林鎮冒險者公會",
       "details": "B→A合格42/65、困難19/18；夢想二號機已裝12枚晶片、剩3槽。",
-      "updatedDay": 191
+      "updatedDay": 192
     },
     {
       "id": "CHAR-VALEN",
@@ -81,17 +81,17 @@
       "status": "已登錄",
       "role": "自主亡靈指揮官／F級冒險者",
       "location": "格林鎮冒險者公會",
-      "details": "靈魂完整度79%。已取得公會室內獨立候場許可；城內獨行尚未許可。借穿夢想一號機（10槽皆空）。尚未加入夢想隊。",
-      "updatedDay": 191
+      "details": "F級冒險者，靈魂完整度約79%，已可往返公會與工坊，外出特定區域可單次申請。與小夢完成TMP-G192-F03，領1400銅幣；夢想一號機借用。",
+      "updatedDay": 192
     },
     {
       "id": "AI-XIAOMENG",
       "name": "小夢",
-      "status": "適應中",
+      "status": "F級冒險者",
       "role": "澈的私人AI／人形載體",
-      "location": "當前具體位置未確認",
-      "details": "具獨立人形載體並在適應身體；與想想資訊隔離。瓦倫未來組隊僅提案，尚未徵得小夢同意。",
-      "updatedDay": 191
+      "location": "格林鎮冒險者公會",
+      "details": "獨立身分登錄正式通過，夢想小隊第二人；可自主行走與日常活動，與瓦倫完成TMP-G192-F03並領1400銅幣。新造型設計已展示未正式換裝。",
+      "updatedDay": 192
     },
     {
       "id": "AI-XIANGXIANG",
@@ -249,6 +249,15 @@
       "count": "完整S級魔核1枚，其他分解材料另計",
       "details": "第188日地龍已完美分解，不再保有完整地龍遺體。",
       "updatedDay": 188
+    },
+    {
+      "id": "INV-ORE-D192",
+      "name": "灰脊丘陵四種特殊礦石",
+      "status": "已交工坊研究",
+      "place": "夢想工坊",
+      "count": "3710公斤",
+      "details": "銀紋聚賦礦1864kg、晶紋導流岩486kg、青衡蓄魔晶742kg、紫金共振礦618kg；優先單材測試。低級含鐵岩2130kg已售出38340銅幣，不得重複出售。",
+      "updatedDay": 192
     }
   ],
   "quests": [
@@ -728,6 +737,16 @@
         "payment": "原紀錄扣除費用後為 294,500 銅幣。",
         "source": "看板第191日 11:18 基準資料。原始公告全文未收錄於可核對的存檔。"
       }
+    },
+    {
+      "id": "TMP-G192-F03",
+      "name": "北側灌溉渠異響調查",
+      "rank": "F",
+      "status": "正式完成已結算",
+      "rewardCopper": 2800,
+      "owner": "格林鎮北側農戶",
+      "details": "第192日瓦倫、小夢共同接取，完成三處觀察點與農戶簽認，11:21公會正式驗收。兩人各領1400銅幣；澈旁觀無報酬及晉升計數。",
+      "updatedDay": 192
     }
   ],
   "research": [
@@ -1218,6 +1237,18 @@
     }
   ],
   "timeline": [
+    {
+      "day": 192,
+      "time": "07:55",
+      "title": "灰脊礦石交付工坊",
+      "details": "四種特殊礦石3710公斤入庫；低級含鐵岩2130公斤按18銅幣/kg出售，共38340銅幣，現金43387646。"
+    },
+    {
+      "day": 192,
+      "time": "11:21",
+      "title": "小夢與瓦倫首個合作F級委託完成",
+      "details": "TMP-G192-F03驗收結算2800銅幣，兩人各1400；澈同行觀察，後續安排訓練場武器選擇與切磋。"
+    },
     {
       "day": 191,
       "time": "下午",
