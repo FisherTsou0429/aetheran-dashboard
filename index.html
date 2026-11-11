@@ -6,9 +6,9 @@
   <meta name="theme-color" content="#101b27" />
   <meta name="description" content="《艾瑟蘭異界物語：新世界》玩家唯讀資料看板：角色、裝備、任務、研究、夢想事業與未完成事項。" />
   <title>艾瑟蘭世界管理中心</title>
-  <link rel="stylesheet" href="./style.css?v=personal-todos" />
+  <link rel="stylesheet" href="./style.css?v=todo-details" />
   <script src="./app.js?v=workshop-schedule" defer></script>
-  <script src="./personal-todos.js?v=1" defer></script>
+  <script src="./personal-todos.js?v=todo-details" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">跳至主要內容</a>
@@ -112,14 +112,18 @@
   </div>
   <template id="todo-item">
     <li class="card todo-item">
-      <h3></h3>
-      <p class="todo-item-deadline" hidden></p>
-      <p class="description todo-item-notes" hidden></p>
-      <div class="todo-actions">
-        <label class="todo-check"><input type="checkbox" data-todo-done /> 完成</label>
-        <button class="small-btn" type="button" data-todo-action="edit">編輯</button>
-        <button class="small-btn" type="button" data-todo-action="delete">刪除</button>
-      </div>
+      <details>
+        <summary></summary>
+        <div class="todo-item-body">
+          <p class="todo-item-deadline" hidden></p>
+          <p class="description todo-item-notes" hidden></p>
+          <div class="todo-actions">
+            <label class="todo-check"><input type="checkbox" data-todo-done /> 完成</label>
+            <button class="small-btn" type="button" data-todo-action="edit">編輯</button>
+            <button class="small-btn" type="button" data-todo-action="delete">刪除</button>
+          </div>
+        </div>
+      </details>
     </li>
   </template>
   <dialog id="inventory-dialog" class="inventory-dialog" aria-labelledby="inventory-dialog-title">

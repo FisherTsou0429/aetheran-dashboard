@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function makeItem(todo) {
     const item = template.content.firstElementChild.cloneNode(true);
     item.dataset.todoId = todo.id;
-    item.querySelector("h3").textContent = todo.title;
+    item.querySelector("summary").textContent = todo.title;
 
     const deadline = item.querySelector(".todo-item-deadline");
     deadline.hidden = todo.dueDay === null;
@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem(key, JSON.stringify({ ...record, done: checkbox.checked }));
       announce(checkbox.checked ? "已標記完成。" : "已移回待處理。");
       renderTodos();
-      panel.querySelector('[data-todo-id="' + CSS.escape(itemId) + '"] [data-todo-done]')?.focus();
+      panel.querySelector('[data-todo-id="' + CSS.escape(itemId) + '"] summary')?.focus();
     } catch {
       checkbox.checked = !checkbox.checked;
       announce("無法更新完成狀態。請檢查瀏覽器的網站資料設定。", true);
