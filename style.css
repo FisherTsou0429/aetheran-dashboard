@@ -209,3 +209,8 @@ select{max-width:195px;padding:0 14px;font-size:12px;min-width:150px}
 .todo-item>details>summary{color:#273d48;font-weight:700;cursor:pointer;overflow-wrap:anywhere}
 .todo-item>details>summary:focus-visible{outline:2px solid var(--teal);outline-offset:4px}
 .todo-item-body{margin-top:10px}
+
+.todo-item{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:flex-start}
+.todo-item>details{flex:1 1 9rem;min-width:0}
+.todo-item>details>summary{min-height:42px;padding:9px 0}
+.todo-item>.todo-actions{margin-top:0}
