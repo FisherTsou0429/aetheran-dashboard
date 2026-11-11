@@ -24,7 +24,7 @@ const safe=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"
 const fmt=n=>typeof n==="number"?n.toLocaleString("zh-TW"):safe(n);
 const entries=k=>Array.isArray(DATA?.[k])?DATA[k]:[];
 function classify(status=""){
- if(/逾期|異常|失敗/.test(status))return "alert";
+ if(/逾期|排程已過|異常|失敗/.test(status))return "alert";
  if(/待驗收|待結算|待軍方|待核對|待清查|待報|待同意|待報價|未履行|未核/.test(status))return "pending";
  if(/已通過|已交付|已登錄|已完成|使用中|保有|已入庫|運作中/.test(status))return "good";
  if(/預定|計畫|構想|設計|研發中|準備|提案/.test(status))return "plan";
@@ -117,7 +117,13 @@ function timelineRows(){
   return true;
  });
 }
+function researchRows(){
+ const day=DATA?.snapshot.gameDay;
+ return entries("research").map(row=>row.status==="預定未到期"&&Number.isInteger(row.targetDay)&&row.targetDay<day?
+  {...row,status:"排程已過／進度待核對"}:row);
+}
 function pageRows(){
+ if(page==="research")return researchRows();
  if(page==="timeline")return timelineRows();
  if(page==="player-commissions")return entries("quests").filter(isPlayerCommission);
  if(page==="commitments")return [...entries("commitments"),...entries("openIssues").map(row=>
@@ -286,8 +292,8 @@ function currentCounters(){
         '｜正式增量 '+DATA.snapshot.incrementalCounter+'/25｜完整 '+DATA.snapshot.fullCounter+'/50';
 }
 function renderOverview(){
- const H=DATA.hero;const tasks=entries("quests");const r=entries("research");
- const alerts=r.filter(x=>/逾期|待正式驗收|待結案清查/.test(x.status));
+ const H=DATA.hero;const tasks=entries("quests");const r=researchRows();
+ const alerts=r.filter(x=>/逾期|排程已過|待正式驗收|待結案清查/.test(x.status));
  const owed=tasks.filter(x=>questFocus(x.status)==="followup");
  const kpis=[
   ["可支配銅幣",fmt(H.cashCopper),"不含他人代管款"],
@@ -297,7 +303,7 @@ function renderOverview(){
  ];
  let html='<div class="kpi-grid">'+kpis.map(k=>'<div class="kpi"><small>'+safe(k[0])+'</small><strong>'+safe(k[1])+'</strong><em>'+safe(k[2])+'</em></div>').join("")+"</div>";
  html+='<div class="info-banner">資料截至遊戲第'+DATA.snapshot.gameDay+'日'+DATA.snapshot.gameTime+'，並非即時世界模擬。公開版只重現已確認的玩家可查資料；未知及未列出項目需回查正式存檔。</div>';
- const risks=r.filter(x=>/逾期|待正式驗收|待結案清查/.test(x.status)).slice(0,6);
+ const risks=r.filter(x=>/逾期|排程已過|待正式驗收|待結案清查/.test(x.status)).slice(0,6);
  html+='<div class="summary-panels"><section class="panel"><h3>需要你注意的研究／製造</h3><ul class="mini-list">'+risks.map(x=>'<li><span class="dot warn"></span><div><button class="inline-link" data-goto="research">'+safe(x.name)+'</button><small>'+safe(x.status)+'｜'+(x.targetDay?'原定第'+x.targetDay+'日':'無確認期限')+'</small></div></li>').join("")+'</ul></section>';
  const pending=owed.map(x=>'<li><span class="dot"></span><div><button class="inline-link" data-goto="quests">'+
   safe(x.name)+'</button><small>'+safe(x.status)+'</small><small>'+

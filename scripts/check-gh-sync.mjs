@@ -102,10 +102,20 @@ function validateSync(previous, candidate) {
   const timeline = changedRecords(previous, candidate, "timeline", errors);
   const quests = changedRecords(previous, candidate, "quests", errors);
   const inventory = changedRecords(previous, candidate, "inventory", errors);
+  const research = changedRecords(previous, candidate, "research", errors);
   const summaries = candidate.latestEvents ?? [];
   const commitmentChanged = validateCommitments(previous, candidate, beforePoint, point, errors);
-  const { inventoryIds, commitmentIds, ...receipt } = candidate.sync?.changeSet ?? {};
-  const { inventoryIds: previousInventoryIds, commitmentIds: previousCommitmentIds, ...previousReceipt } = previous.sync?.changeSet ?? {};
+  const { inventoryIds, commitmentIds, researchIds, ...receipt } = candidate.sync?.changeSet ?? {};
+  const { inventoryIds: previousInventoryIds, commitmentIds: previousCommitmentIds, researchIds: previousResearchIds, ...previousReceipt } = previous.sync?.changeSet ?? {};
+  if (point !== beforePoint || research.changed.length || !isDeepStrictEqual(previousResearchIds, researchIds)) {
+    checkExpectedIds(researchIds, research.changed, "researchIds", errors);
+  }
+  if (point !== beforePoint || previous.sync?.researchVerifiedThrough || candidate.sync?.researchVerifiedThrough) {
+    const reviewed = candidate.sync?.researchVerifiedThrough;
+    if (position(reviewed?.gameDay, reviewed?.gameTime) !== point || !nonempty(reviewed?.source)) {
+      errors.push("請核對工坊的製造、研究、驗收和交付，更新 sync.researchVerifiedThrough 至本次快照。");
+    }
+  }
   const needsReceipt = !isDeepStrictEqual(before, snapshot) ||
     timeline.changed.length || quests.changed.length ||
     !isDeepStrictEqual(previous.latestEvents ?? [], summaries) ||

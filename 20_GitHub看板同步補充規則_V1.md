@@ -42,6 +42,7 @@
 - 專案來源 `20_物品進出明細.md` 按異動 ID 合併至 `inventoryLedger.movements`，保留日期時間、名稱、異動、去向及來源。已反映在庫存的歷史異動只補登明細。新發生且已確認的數量或保管變更須同時更新 `inventory`，讀回時核對兩處。
 - `commitments` 登記已答應履行的約定，`openIssues` 登記需要行動、等待結果或核對的事項。提議、詢價及待審核放在待辦。每筆按同一穩定 ID 記錄 `kind`（`promise` 或 `todo`）、名稱、狀態、負責人、最後確認日、明細與來源，有正式安排及期限時一併填寫。履行或結案時更新同筆並填 `closed: true`，保留歷史。公開版只收錄可公開查閱的內容。
 - 每次推進快照前從正式存檔及已確認劇情回查承諾與待辦，含履行、付款、否決與期限變更。將 `sync.commitmentsVerifiedThrough` 更新至本次快照日期時間並附來源，再於 `sync.changeSet.commitmentIds` 列出兩陣列中本次應增修的 ID。確實無增修時填空陣列。提交後讀回核對。
+- 推進快照前核對 `research` 的研究、製造、測試、驗收與交付，按原 ID 更新已確認的進度，保留原排程與來源。將 `sync.researchVerifiedThrough` 設為本次快照日期時間並附上 `source`，以 `sync.changeSet.researchIds` 列出應更新的 ID，確實無變更時填空陣列。提交後讀回核對。
 - 提交前對照正式存檔與上次時間軸覆蓋範圍，列出本次應補登或更新的事件 ID、確認時點，以及需更新的任務、庫存 ID。逐筆核對 `timeline`、`quests`、`inventory`；例如任務正式接取、付款、現場發現與驗收可各有條目。核對完成後，將 `sync.timelineVerifiedThrough` 寫成與本次 `snapshot.gameDay`、`snapshot.gameTime` 相同的 `{ "gameDay": ..., "gameTime": "HH:MM" }`，表示已檢查至該時點。沒有新增重要事件時也須先核對才填寫。
 - 提交後重新讀取 GitHub `main` 的 `data/latest.json`，對照事件 ID、概要與展開詳情、任務狀態與付款、庫存收納與移交，以及 `sync.timelineVerifiedThrough`。若任何應更新資料未寫入，依第三節回報未完成並補登。全部核對後才回報成功與歸零。
 - 同步回執須列出提交版本、時間軸新增／更新筆數與最後一筆已核對事件的遊戲時間及標題。若此次確實沒有應新增或更新的事件，明列「時間軸 0 筆，已核對無新增重要事件」。
@@ -51,7 +52,7 @@
 - `saves/` 的 GH 接續索引是存檔指引。只有索引的提交不算看板同步。若本次附上接續索引，必須同時確認 `data/latest.json` 已更新到該正式存檔，且依成交清單逐筆銷帳。賣出、移交、代管及成交後餘量未明的批次，應離開現有庫存清單，保留可追查的歷史紀錄。
 
 1. 由執行存檔的遊戲對話讀取本規則及最新 `main`，記下主分支 SHA 與上一版的時間軸核對時點。先從正式劇情／存檔獨立列出應補登或更新的事件、任務及庫存 ID，再按 ID 合併 `data/latest.json`。保留所有既有歷史。
-2. 在候選檔的 `sync.changeSet` 填入 `timelineIds`、`questIds`、`inventoryIds`、`commitmentIds`，逐筆列出本次實際應新增或變更的 ID。四個欄位都必填，沒有變更用空陣列。只有已回查來源且這段確實無須增補事件時，才另填 `"noImportantEvents": true`。不要從候選 JSON 反推預期清單。
+2. 在候選檔的 `sync.changeSet` 填入 `timelineIds`、`questIds`、`inventoryIds`、`commitmentIds`、`researchIds`，逐筆列出本次實際應新增或變更的 ID。五個欄位都必填，沒有變更用空陣列。只有已回查來源且這段確實無須增補事件時，才另填 `"noImportantEvents": true`。不要從候選 JSON 反推預期清單。
 3. 從步驟 1 記下的 `main` SHA 建立一個新的 `gh-sync/…` 暫存分支，將候選檔提交到暫存分支，等待該候選提交的 GitHub Actions **GH save data check** 通過。可先用 `node scripts/check-gh-sync.mjs 上一版.json 候選版.json` 核對。檢查失敗時由遊戲對話依錯誤補齊資料並重驗，期間維持待同步。核對器檢查寫入內容與預期清單，正式劇情的判讀仍由遊戲對話負責。
 4. 只將通過檢查的候選提交快轉到 `main`，使用原 `main` SHA 作為預期版本且禁止強制推送。若 `main` 已移動，從最新版本重新合併並檢查。再從 `main` 讀回檔案確認時間軸、任務、待領款及庫存，確認主分支同一提交的檢查通過後才回報成功及歸零。正式存檔的原計數器依原規則處理。
 
