@@ -39,6 +39,7 @@
 - `timeline` 逐筆登錄重要事件的遊戲日期、時間、標題與簡短 `summary`，並依來源保留 `details`、`steps`、`location`、`people`、`outcome`、`source` 供展開查看。採集、鑑定、交付或結算各自有重要成果時分筆記錄。來源時刻只到時段時沿用原時段。事件一律寫入 `timeline`。若 `events`、`latestEvents`、同步備註或 `currentScene` 另有已確認的重要事件，先核對並合併到 `timeline`。如保留 `latestEvents` 供摘要使用，摘要的 `id` 必須對應同一筆 `timeline[].id`。只有摘要的條目會在網站標記「摘要待補」。
 - `quests[].taskDetails` 依正式紀錄更新委託需求、資格、發布與接取時點、報名與交付截止、驗收、報酬及進度。玩家發布的委託沿用原任務 ID，在 `commission.awards`、`commission.leads`、`commission.history` 保留懸賞與付款、線索及歷程。找不到來源的欄位維持缺漏標記。同一任務的 `status`、付款、進度與下一步須一併比對；`paymentPendingCopper` 只記已核准尚未入帳的金額，完成付款後清除或設為零。
 - `inventory` 按穩定 ID 合併每次收納、鑑定、轉交、出售、消耗與物權判定。每筆保留名稱、持有或移交狀態、數量、保管地點、詳情及正式來源。成批物資用 `items` 列出各品項與數量，尚未清點時明示；已移交的批次保留歷史狀態，勿再計入私人庫存。單獨核對庫存時可用 `inventoryReview` 顯示核對時點，沿用全站快照。之後同步若未覆蓋該核對時點，保留已核對的庫存紀錄。
+- 專案來源 `20_物品進出明細.md` 按異動 ID 合併至 `inventoryLedger.movements`，保留日期時間、名稱、異動、去向及來源。已反映在庫存的歷史異動只補登明細。新發生且已確認的數量或保管變更須同時更新 `inventory`，讀回時核對兩處。
 - 提交前對照正式存檔與上次時間軸覆蓋範圍，列出本次應補登或更新的事件 ID、確認時點，以及需更新的任務、庫存 ID。逐筆核對 `timeline`、`quests`、`inventory`；例如任務正式接取、付款、現場發現與驗收可各有條目。核對完成後，將 `sync.timelineVerifiedThrough` 寫成與本次 `snapshot.gameDay`、`snapshot.gameTime` 相同的 `{ "gameDay": ..., "gameTime": "HH:MM" }`，表示已檢查至該時點。沒有新增重要事件時也須先核對才填寫。
 - 提交後重新讀取 GitHub `main` 的 `data/latest.json`，對照事件 ID、概要與展開詳情、任務狀態與付款、庫存收納與移交，以及 `sync.timelineVerifiedThrough`。若任何應更新資料未寫入，依第三節回報未完成並補登。全部核對後才回報成功與歸零。
 - 同步回執須列出提交版本、時間軸新增／更新筆數與最後一筆已核對事件的遊戲時間及標題。若此次確實沒有應新增或更新的事件，明列「時間軸 0 筆，已核對無新增重要事件」。

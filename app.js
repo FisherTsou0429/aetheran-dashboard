@@ -452,11 +452,27 @@ function inventoryList(rows){
  }).join("")+'</ul>';
 }
 
+function renderInventoryLedger(){
+ const ledger=DATA.inventoryLedger;
+ if(filter||!ledger?.movements?.length)return "";
+ const matches=ledger.movements.filter(allMatch);
+ if(!matches.length)return "";
+ const items=[...matches].reverse().map(row=>'<li><button type="button" class="inventory-name" data-inventory-movement="'+
+  safe(row.id)+'" aria-haspopup="dialog">'+safe(row.name)+'</button></li>').join("");
+ const notes=ledger.notes?.length?'<details class="inventory-history"><summary>核對備註</summary><ul>'+
+  ledger.notes.map(note=>'<li>'+safe(note)+'</li>').join("")+'</ul></details>':"";
+ return '<details class="inventory-history"'+(query?' open':'')+'><summary>物品進出明細 <small>'+
+  countShown(matches.length)+'</small></summary><p>來源 '+safe(ledger.source)+' '+safe(ledger.version)+
+  '，核對至'+safe(ledger.reviewedThrough)+'。數量與去向以各筆異動當時的紀錄為準。</p>'+
+  '<ul class="inventory-list">'+items+'</ul>'+notes+'</details>';
+}
+
 function renderInventory(rows){
  const review=DATA.inventoryReview;
  const note=review?.gameDay?'<div class="info-banner">新增物資核對至第'+safe(review.gameDay)+'日 '+safe(review.gameTime)+
   '。頁首顯示全站 GH 快照。'+safe(review.scope||"")+'</div>':"";
- if(!rows.length)return note+cardGrid(rows);
+ const ledger=renderInventoryLedger();
+ if(!rows.length)return note+(ledger||cardGrid(rows));
  const groups=INVENTORY_SECTIONS.map(category=>{
   const group=rows.filter(row=>row.category===category);
   return group.length?section(category,inventoryList(group)):"";
@@ -468,8 +484,28 @@ function renderInventory(rows){
   return group.length?'<details class="inventory-history"'+(query||filter?' open':'')+'>'+
    '<summary>'+safe(title)+' <small>'+countShown(group.length)+'</small></summary>'+inventoryList(group)+'</details>':"";
  }).join("");
- return note+groups+(other.length?section("其他庫存",inventoryList(other)):"")+
+ return note+ledger+groups+(other.length?section("其他庫存",inventoryList(other)):"")+
   (archive?section("歷史與代管紀錄",archive):"");
+}
+
+function inventoryDialogFacts(values){
+ return '<dl class="inventory-dialog-facts">'+values.map(([name,value])=>
+  '<div><dt>'+safe(name)+'</dt><dd>'+safe(value)+'</dd></div>').join("")+'</dl>';
+}
+
+function openInventoryDialog(title,body){
+ $("inventory-dialog-title").textContent=title;
+ $("inventory-dialog-body").innerHTML=body;
+ $("inventory-dialog").showModal();
+}
+
+function showInventoryMovement(id){
+ const row=DATA.inventoryLedger?.movements.find(entry=>entry.id===id);
+ if(!row)return;
+ openInventoryDialog(row.name,inventoryDialogFacts([
+  ["遊戲時間",row.time],["異動",row.movement],["異動後狀態及去向",row.result],
+  ["異動 ID",row.id],["來源",row.source]
+ ]));
 }
 
 function showInventoryDetail(button){
@@ -487,16 +523,12 @@ function showInventoryDetail(button){
   ["批次成交",!item&&Number.isSafeInteger(row.soldForCopper)?fmt(row.soldForCopper)+" 銅幣":""],["紀錄 ID",row.id],
   ["最近核對",row.updatedDay!=null?"第"+row.updatedDay+"日":""],["來源",row.source]
  ].filter(([,value])=>value!=null&&value!=="");
- const details=values=>'<dl class="inventory-dialog-facts">'+values.map(([name,value])=>
-  '<div><dt>'+safe(name)+'</dt><dd>'+safe(value)+'</dd></div>').join("")+'</dl>';
- $("inventory-dialog-title").textContent=item?.[0]??row.name??row.title??row.id;
- $("inventory-dialog-body").innerHTML=details(facts)+
+ openInventoryDialog(item?.[0]??row.name??row.title??row.id,inventoryDialogFacts(facts)+
   (row.details?'<p>'+safe(row.details)+'</p>':"")+
-  (!item&&row.items?.length?'<h3>批次品項</h3>'+details(row.items.map(([name,count])=>{
+  (!item&&row.items?.length?'<h3>批次品項</h3>'+inventoryDialogFacts(row.items.map(([name,count])=>{
     const quote=row.itemQuoteCopper?.[name];
     return [name,count+(Number.isSafeInteger(quote)?" · 原報價 "+fmt(quote)+" 銅幣":"")];
-   })):"");
- $("inventory-dialog").showModal();
+   })):""));
 }
 
 function render(){
@@ -535,6 +567,11 @@ function init(){
  document.querySelectorAll("#nav button").forEach(b=>b.addEventListener("click",()=>navigate(b.dataset.page)));
  $("menu-toggle").addEventListener("click",()=>document.querySelector(".sidebar").classList.toggle("open"));
  $("content").addEventListener("click",event=>{
+  const movement=event.target.closest("[data-inventory-movement]");
+  if(movement){
+   showInventoryMovement(movement.dataset.inventoryMovement);
+   return;
+  }
   const button=event.target.closest("[data-inventory-id]");
   if(button)showInventoryDetail(button);
  });

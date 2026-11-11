@@ -112,6 +112,20 @@ function validateSync(previous, candidate) {
     }
   }
 
+  if (previous.inventoryLedger || candidate.inventoryLedger) {
+    const ledger = candidate.inventoryLedger;
+    const { changed } = changedRecords(previous.inventoryLedger ?? { movements: [] },
+      ledger ?? { movements: [] }, "movements", errors);
+    if (ledger && ![ledger.source, ledger.version, ledger.reviewedThrough].every(nonempty)) {
+      errors.push("物品進出明細缺少來源、版本或核對時點。");
+    }
+    for (const row of changed) {
+      if (![row.time, row.name, row.movement, row.result, row.source].every(nonempty)) {
+        errors.push("物品異動 " + row.id + " 缺少時間、名稱、異動、去向或來源。");
+      }
+    }
+  }
+
   for (const row of timeline.changed) {
     const range = timeRange(row.time);
     if (!validDay(row.day) || row.day > snapshot.gameDay ||
