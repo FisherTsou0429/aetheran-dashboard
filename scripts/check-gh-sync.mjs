@@ -61,6 +61,35 @@ function checkExpectedIds(value, changed, label, errors) {
   }
 }
 
+function validateCommitments(previous, candidate, beforePoint, point, errors) {
+  const earlierReview = previous.sync?.commitmentsVerifiedThrough;
+  const review = candidate.sync?.commitmentsVerifiedThrough;
+  if (!earlierReview && !review) return 0;
+
+  if (position(review?.gameDay, review?.gameTime) !== point || !nonempty(review?.source)) {
+    errors.push("請核對正式來源中的承諾與待辦，更新 sync.commitmentsVerifiedThrough 至本次快照。");
+  }
+  const collect = data => [...(data.commitments ?? []), ...(data.openIssues ?? [])];
+  const earlier = collect(previous);
+  const before = earlierReview ? earlier : earlier.filter(row => nonempty(row?.id));
+  const { changed } = changedRecords({ commitments: before },
+    { commitments: collect(candidate) }, "commitments", errors);
+  const expected = candidate.sync?.changeSet?.commitmentIds;
+  if (point !== beforePoint || changed.length ||
+      !isDeepStrictEqual(previous.sync?.changeSet?.commitmentIds, expected)) {
+    checkExpectedIds(expected, changed, "commitmentIds", errors);
+  }
+  for (const row of changed) {
+    if (!["promise", "todo"].includes(row.kind) ||
+        ![row.name, row.status, row.owner, row.details, row.source].every(nonempty) ||
+        !validDay(row.updatedDay) || row.updatedDay > candidate.snapshot.gameDay ||
+        (row.closed != null && typeof row.closed !== "boolean")) {
+      errors.push("承諾與待辦 " + row.id + " 缺少類型、名稱、狀態、負責人、最後確認日、明細或來源。");
+    }
+  }
+  return changed.length;
+}
+
 function validateSync(previous, candidate) {
   const errors = [];
   const before = previous.snapshot ?? {};
@@ -74,8 +103,9 @@ function validateSync(previous, candidate) {
   const quests = changedRecords(previous, candidate, "quests", errors);
   const inventory = changedRecords(previous, candidate, "inventory", errors);
   const summaries = candidate.latestEvents ?? [];
-  const { inventoryIds, ...receipt } = candidate.sync?.changeSet ?? {};
-  const { inventoryIds: previousInventoryIds, ...previousReceipt } = previous.sync?.changeSet ?? {};
+  const commitmentChanged = validateCommitments(previous, candidate, beforePoint, point, errors);
+  const { inventoryIds, commitmentIds, ...receipt } = candidate.sync?.changeSet ?? {};
+  const { inventoryIds: previousInventoryIds, commitmentIds: previousCommitmentIds, ...previousReceipt } = previous.sync?.changeSet ?? {};
   const needsReceipt = !isDeepStrictEqual(before, snapshot) ||
     timeline.changed.length || quests.changed.length ||
     !isDeepStrictEqual(previous.latestEvents ?? [], summaries) ||
@@ -181,7 +211,7 @@ function validateSync(previous, candidate) {
     return !latest || order > latest.order ? { order, row } : latest;
   }, null)?.row;
   return { errors, timelineChanged: timeline.changed.length, questsChanged: quests.changed.length,
-    inventoryChanged: inventory.changed.length, lastEvent };
+    inventoryChanged: inventory.changed.length, commitmentChanged, lastEvent };
 }
 
 function checkCheckpointIndexes(candidate, paths, errors) {
@@ -216,7 +246,7 @@ try {
     checkCheckpointIndexes(candidate, paths, result.errors);
   }
   if (result.errors.length) throw new Error(result.errors.join("\n"));
-  console.log("GH 同步檢查通過｜時間軸 " + result.timelineChanged + " 筆｜任務 " + result.questsChanged + " 筆｜庫存 " + result.inventoryChanged + " 筆");
+  console.log("GH 同步檢查通過｜時間軸 " + result.timelineChanged + " 筆｜任務 " + result.questsChanged + " 筆｜庫存 " + result.inventoryChanged + " 筆｜承諾與待辦 " + result.commitmentChanged + " 筆");
   if (result.lastEvent) {
     const { day, time, title } = result.lastEvent;
     console.log("最新時間軸事件｜第" + day + "日 " + time + "｜" + title);

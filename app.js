@@ -13,7 +13,7 @@ const TABS={
  workforce:["夢想人力","道路工程、人力派遣、款項與待確認進度。"],
  sidelines:["世界支線","白樺莊園、星環、界錨、北境封印及其他支線。"],
  npcs:["NPC永久名冊","重要角色關係、職責、最近確認資訊；非全部歷史名冊。"],
- commitments:["承諾與待辦","尚未兌現的約定、提案與需要玩家決定的事項。"],
+ commitments:["承諾與待辦","承諾是已答應履行的事項。待辦是仍需行動、等待結果或核對的事項。"],
  timeline:["事件時間軸","按遊戲日回顧事件。點開任一事件，即可查看經過、人物、結果與來源。"]
 };
 let DATA=null,page="overview",query="",filter="",questFilter="";
@@ -61,6 +61,8 @@ function card(row){
  if(deadline)details.push("期限："+deadline);
  if(row.updatedDay!=null)details.push("最近來源：第"+row.updatedDay+"日");
  if(row.goal)details.push("下一步："+row.goal);
+ if(row.kind&&row.scheduled)details.push("安排 "+row.scheduled);
+ if(row.kind&&row.source)details.push("來源 "+row.source);
  return '<article class="card"><div class="card-head"><div><h3>'+safe(name)+'</h3><div class="sub">'+safe(row.id||"")+'</div></div>'+badge(row.status)+'</div><p class="description">'+safe(row.details||row.note||"")+'</p><div class="card-details">'+details.map(x=>"<span>"+safe(x)+"</span>").join("")+"</div></article>";
 }
 function section(title,content,count){return '<div class="section-heading"><h2>'+safe(title)+'</h2><span>'+safe(count||"")+'</span></div>'+content;}
@@ -117,6 +119,8 @@ function timelineRows(){
 function pageRows(){
  if(page==="timeline")return timelineRows();
  if(page==="player-commissions")return entries("quests").filter(isPlayerCommission);
+ if(page==="commitments")return [...entries("commitments"),...entries("openIssues").map(row=>
+  typeof row==="string"?{name:row,kind:"todo",status:"舊待辦"}:row)];
  const rows=entries(page);
  return page==="quests"&&questFilter?rows.filter(row=>questCategory(row)===questFilter):rows;
 }
@@ -531,6 +535,21 @@ function showInventoryDetail(button){
    })):""));
 }
 
+function renderCommitments(rows){
+ const review=DATA.sync?.commitmentsVerifiedThrough;
+ const note=review?'<div class="info-banner">依 '+safe(review.source)+' 核對至第'+
+  safe(review.gameDay)+'日 '+safe(review.gameTime)+'。</div>':"";
+ if(!rows.length)return note+cardGrid(rows);
+ const open=rows.filter(row=>!row.closed);
+ const groups=[
+  ["待履行承諾",open.filter(row=>row.kind!=="todo")],
+  ["待辦事項",open.filter(row=>row.kind==="todo")],
+  ["已履行與結案",rows.filter(row=>row.closed)]
+ ];
+ return note+groups.map(([title,items])=>items.length?
+  section(title,cardGrid(items),countShown(items.length)):"").join("");
+}
+
 function render(){
  if(!DATA)return;
  const cfg=TABS[page],p=$("content");
@@ -554,6 +573,7 @@ function render(){
  if(page==="equipment"){p.innerHTML=renderEquipment(result);return;}
  if(page==="inventory"){p.innerHTML=renderInventory(result);return;}
  if(page==="quests"){p.innerHTML=renderQuestCategories(result);return;}
+ if(page==="commitments"){p.innerHTML=renderCommitments(result);return;}
  if(page==="player-commissions"){p.innerHTML=renderPlayerCommissions(result);return;}
  if(page==="timeline"){p.innerHTML=section("事件時間軸",timelineCoverage()+renderTimeline(result),countShown(result.length));return;}
  let heading=cfg[0]; 

@@ -33,13 +33,15 @@
 - 不公布未經澈得知的幕後真相或未來規劃；角色資訊隔離與世界自主性仍依既有規則運行。
 - 因為公開網站，禁止放入任何現實帳號密碼、API密鑰或真實隱私資料。
 
-### 每次同步的事件、委託與庫存
+### 每次同步的事件、委託、庫存、承諾與待辦
 
 - 從 GitHub `main` 最新的 `data/latest.json` 開始合併，回看上次成功同步之後已確認且應收錄的事件。發現可核實的舊漏項一併補登。既有紀錄按 ID 保留，同一事件追加細節時更新原筆。
 - `timeline` 逐筆登錄重要事件的遊戲日期、時間、標題與簡短 `summary`，並依來源保留 `details`、`steps`、`location`、`people`、`outcome`、`source` 供展開查看。採集、鑑定、交付或結算各自有重要成果時分筆記錄。來源時刻只到時段時沿用原時段。事件一律寫入 `timeline`。若 `events`、`latestEvents`、同步備註或 `currentScene` 另有已確認的重要事件，先核對並合併到 `timeline`。如保留 `latestEvents` 供摘要使用，摘要的 `id` 必須對應同一筆 `timeline[].id`。只有摘要的條目會在網站標記「摘要待補」。
 - `quests[].taskDetails` 依正式紀錄更新委託需求、資格、發布與接取時點、報名與交付截止、驗收、報酬及進度。玩家發布的委託沿用原任務 ID，在 `commission.awards`、`commission.leads`、`commission.history` 保留懸賞與付款、線索及歷程。找不到來源的欄位維持缺漏標記。同一任務的 `status`、付款、進度與下一步須一併比對；`paymentPendingCopper` 只記已核准尚未入帳的金額，完成付款後清除或設為零。
 - `inventory` 按穩定 ID 合併每次收納、鑑定、轉交、出售、消耗與物權判定。每筆保留名稱、持有或移交狀態、數量、保管地點、詳情及正式來源。成批物資用 `items` 列出各品項與數量，尚未清點時明示；已移交的批次保留歷史狀態，勿再計入私人庫存。單獨核對庫存時可用 `inventoryReview` 顯示核對時點，沿用全站快照。之後同步若未覆蓋該核對時點，保留已核對的庫存紀錄。
 - 專案來源 `20_物品進出明細.md` 按異動 ID 合併至 `inventoryLedger.movements`，保留日期時間、名稱、異動、去向及來源。已反映在庫存的歷史異動只補登明細。新發生且已確認的數量或保管變更須同時更新 `inventory`，讀回時核對兩處。
+- `commitments` 登記已答應履行的約定，`openIssues` 登記需要行動、等待結果或核對的事項。提議、詢價及待審核放在待辦。每筆按同一穩定 ID 記錄 `kind`（`promise` 或 `todo`）、名稱、狀態、負責人、最後確認日、明細與來源，有正式安排及期限時一併填寫。履行或結案時更新同筆並填 `closed: true`，保留歷史。公開版只收錄可公開查閱的內容。
+- 每次推進快照前從正式存檔及已確認劇情回查承諾與待辦，含履行、付款、否決與期限變更。將 `sync.commitmentsVerifiedThrough` 更新至本次快照日期時間並附來源，再於 `sync.changeSet.commitmentIds` 列出兩陣列中本次應增修的 ID。確實無增修時填空陣列。提交後讀回核對。
 - 提交前對照正式存檔與上次時間軸覆蓋範圍，列出本次應補登或更新的事件 ID、確認時點，以及需更新的任務、庫存 ID。逐筆核對 `timeline`、`quests`、`inventory`；例如任務正式接取、付款、現場發現與驗收可各有條目。核對完成後，將 `sync.timelineVerifiedThrough` 寫成與本次 `snapshot.gameDay`、`snapshot.gameTime` 相同的 `{ "gameDay": ..., "gameTime": "HH:MM" }`，表示已檢查至該時點。沒有新增重要事件時也須先核對才填寫。
 - 提交後重新讀取 GitHub `main` 的 `data/latest.json`，對照事件 ID、概要與展開詳情、任務狀態與付款、庫存收納與移交，以及 `sync.timelineVerifiedThrough`。若任何應更新資料未寫入，依第三節回報未完成並補登。全部核對後才回報成功與歸零。
 - 同步回執須列出提交版本、時間軸新增／更新筆數與最後一筆已核對事件的遊戲時間及標題。若此次確實沒有應新增或更新的事件，明列「時間軸 0 筆，已核對無新增重要事件」。
@@ -49,7 +51,7 @@
 - `saves/` 的 GH 接續索引是存檔指引。只有索引的提交不算看板同步。若本次附上接續索引，必須同時確認 `data/latest.json` 已更新到該正式存檔，且依成交清單逐筆銷帳。賣出、移交、代管及成交後餘量未明的批次，應離開現有庫存清單，保留可追查的歷史紀錄。
 
 1. 由執行存檔的遊戲對話讀取本規則及最新 `main`，記下主分支 SHA 與上一版的時間軸核對時點。先從正式劇情／存檔獨立列出應補登或更新的事件、任務及庫存 ID，再按 ID 合併 `data/latest.json`。保留所有既有歷史。
-2. 在候選檔的 `sync.changeSet` 填入 `timelineIds`、`questIds`、`inventoryIds` 三個陣列，逐筆列出本次實際應新增或變更的 ID。三個欄位都必填，沒有變更用空陣列。只有已回查來源且這段確實無須增補事件時，才另填 `"noImportantEvents": true`。不要從候選 JSON 反推預期清單。
+2. 在候選檔的 `sync.changeSet` 填入 `timelineIds`、`questIds`、`inventoryIds`、`commitmentIds`，逐筆列出本次實際應新增或變更的 ID。四個欄位都必填，沒有變更用空陣列。只有已回查來源且這段確實無須增補事件時，才另填 `"noImportantEvents": true`。不要從候選 JSON 反推預期清單。
 3. 從步驟 1 記下的 `main` SHA 建立一個新的 `gh-sync/…` 暫存分支，將候選檔提交到暫存分支，等待該候選提交的 GitHub Actions **GH save data check** 通過。可先用 `node scripts/check-gh-sync.mjs 上一版.json 候選版.json` 核對。檢查失敗時由遊戲對話依錯誤補齊資料並重驗，期間維持待同步。核對器檢查寫入內容與預期清單，正式劇情的判讀仍由遊戲對話負責。
 4. 只將通過檢查的候選提交快轉到 `main`，使用原 `main` SHA 作為預期版本且禁止強制推送。若 `main` 已移動，從最新版本重新合併並檢查。再從 `main` 讀回檔案確認時間軸、任務、待領款及庫存，確認主分支同一提交的檢查通過後才回報成功及歸零。正式存檔的原計數器依原規則處理。
 

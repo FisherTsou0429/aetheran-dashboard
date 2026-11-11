@@ -48,7 +48,45 @@
         "MOV-196-POLAROID-FRAME-01",
         "MOV-196-FROSTBONE-TRAVEL-01",
         "MOV-196-QUEST-REWARD-01"
+      ],
+      "commitmentIds": [
+        "C-STAR-GAZING",
+        "C-RAYMOND-MEAL",
+        "C-RAYMOND-REFERRAL",
+        "C-ESTATE-RENOVATION",
+        "C-XIAOMENG-ARROWS",
+        "C-NO196-OBSERVATION",
+        "C-DUEL-VALEN",
+        "C-ELIN-HOME-VIEW",
+        "T-G189-WORKSHOP-REPORT",
+        "T-MORNING-DEW-HANDOVER",
+        "T-WORKSHOP-COMPARISON",
+        "T-CAP195-ASSEMBLY",
+        "T-MIL194-L08",
+        "T-MINERAL-REPLIES",
+        "T-H190-BONUS",
+        "T-G188-BONUS",
+        "T-G169-START",
+        "T-OLD-BRIDGE-REPAIR",
+        "T-WAR-SALVAGE-AGREEMENT",
+        "T-LOGISTICS-GRAIN-NEGOTIATION",
+        "C-VALEN-ARMOR",
+        "C-XIAOMENG-TEAM",
+        "T-ELIN-CELEBRATION",
+        "T-TOM-LOW-FLIGHT",
+        "T-NORTH-THIRD-CONTROL",
+        "T-ANCHOR-THIRD-NODE",
+        "T-FROSTBONE-TESTING",
+        "T-MORITZ-SAGE",
+        "T-N190-SETTLEMENT",
+        "T-GUILD-APPROVED-5470000",
+        "T-FSN188-CORE-RETURN"
       ]
+    },
+    "commitmentsVerifiedThrough": {
+      "gameDay": 196,
+      "gameTime": "14:34",
+      "source": "V125、V124、V123及歷史附錄"
     }
   },
   "hero": {
@@ -2637,44 +2675,86 @@
   ],
   "commitments": [
     {
-      "id": "C-DUEL-VALEN",
-      "name": "與瓦倫切磋",
-      "status": "未履行",
-      "details": "澈與瓦倫約定的較量尚未舉行。",
-      "updatedDay": 191
-    },
-    {
-      "id": "C-VALEN-ARMOR",
-      "name": "資助瓦倫專屬甲",
-      "status": "待報價與本人同意",
-      "details": "澈願支付費用，但未核預算、未扣款、瓦倫尚未同意相容性量測。",
-      "updatedDay": 191
-    },
-    {
-      "id": "C-XIAOMENG-TEAM",
-      "name": "瓦倫與小夢未來組隊",
-      "status": "僅提案",
-      "details": "小夢尚未答應，瓦倫願待她自主決定。",
-      "updatedDay": 191
-    },
-    {
       "id": "C-STAR-GAZING",
+      "kind": "promise",
       "name": "與露薇娜觀星",
       "status": "未履行",
-      "details": "雙方先前約定，尚未完成。",
-      "updatedDay": 191
+      "owner": "澈、露薇娜",
+      "updatedDay": 196,
+      "source": "V125｜快速接續、A 節",
+      "details": "雙方的觀星約定仍未履行，尚未確認日期。"
+    },
+    {
+      "id": "C-RAYMOND-MEAL",
+      "kind": "promise",
+      "name": "與雷蒙德喝酒、吃宵夜",
+      "status": "未履行",
+      "owner": "澈、雷蒙德・克萊恩",
+      "updatedDay": 194,
+      "source": "V123｜快速接續、B、I 節",
+      "details": "下次喝酒和吃宵夜由澈請客。日期未定，無已確認支出。"
+    },
+    {
+      "id": "C-RAYMOND-REFERRAL",
+      "kind": "promise",
+      "name": "雷蒙德通知合適的高報酬委託",
+      "status": "等條件成就",
+      "owner": "雷蒙德・克萊恩",
+      "updatedDay": 194,
+      "source": "V123｜快速接續、B、I 節",
+      "details": "有適合且報酬高的委託時，雷蒙德會通知澈。澈收到通知後自行決定是否接取。"
     },
     {
       "id": "C-ESTATE-RENOVATION",
+      "kind": "promise",
       "name": "白樺莊園無障礙改造",
-      "status": "已約定／施工進度待報",
-      "details": "承包哈洛德・費恩350,000計畫第191日開工，目標5–7日；不得當作已驗收。",
-      "updatedDay": 191
+      "status": "施工中・待驗收",
+      "owner": "哈洛德・費恩、奧斯文・貝克",
+      "updatedDay": 192,
+      "source": "V120｜第192日15:24正式覆蓋層",
+      "details": "坡道基礎已完成，防滑、扶手與浴室仍有工項。澈核准追加18,600銅幣，原工程350,000，合計授權368,600。奧斯文已接受修繕及付款代理，追加款實際支付與驗收均待確認。"
     },
     {
-      "name": "北方第三外部控制區調查",
-      "status": "線索已取得",
-      "details": "獨立供能反應仍存在；格拉穆曾被轉移至北方第三区域，實際現況尚未確認。"
+      "id": "C-XIAOMENG-ARROWS",
+      "kind": "promise",
+      "name": "小夢的箭矢與箭袋",
+      "status": "待確認交付",
+      "owner": "布魯克、小夢",
+      "updatedDay": 192,
+      "source": "V120｜第192日15:24正式覆蓋層",
+      "details": "布魯克同意免費製作30支練習箭、20支正式箭及箭袋。須調整複合弓拉距並確認箭桿適配，交付結果待確認。"
+    },
+    {
+      "id": "C-NO196-OBSERVATION",
+      "kind": "promise",
+      "name": "北方觀測總站的非侵擾約定",
+      "status": "持續遵守",
+      "owner": "澈、北方觀測總站、艾絲",
+      "updatedDay": 196,
+      "source": "V125｜快速接續、A 節",
+      "details": "總站暫停主動追蹤、保留一般遠距安全觀測。澈答應保密，艾絲承諾收斂活動並避開觀測站附近低飛。"
+    },
+    {
+      "id": "C-DUEL-VALEN",
+      "kind": "promise",
+      "name": "與瓦倫切磋",
+      "status": "已履行",
+      "owner": "澈、賽德里克・瓦倫",
+      "updatedDay": 192,
+      "source": "V120｜第192日15:24正式覆蓋層",
+      "details": "第192日11:38～12:46的訓練時段，兩人已在公會訓練場友好切磋，瓦倫確認夢想一號機的重心問題。",
+      "closed": true
+    },
+    {
+      "id": "C-ELIN-HOME-VIEW",
+      "kind": "promise",
+      "name": "與艾琳一起看房",
+      "status": "已履行",
+      "owner": "澈、艾琳",
+      "updatedDay": 194,
+      "source": "V124｜B 節；V118｜I 節",
+      "details": "第194日晚已一起看三棟房並選購晨露花園宅。驗屋和尾款另有待辦。",
+      "closed": true
     }
   ],
   "timeline": [
@@ -4467,13 +4547,251 @@
     "restStarted": false
   },
   "openIssues": [
-    "TMP-N190-S01尚未結案與付款，基礎7200000、情報獎金上限1300000",
-    "舊石橋修復責任與費用待正式裁定，不可擅自扣款",
-    "莫里茲・凱恩與賽格・羅文去向未明",
-    "兩具攻城構裝體藏澈無限空間，軍方不知；三方案未簽約",
-    "已核准未支付任務合計5470000銅幣",
-    "北側礦道疑似賽格後勤標記，莫里茲及賽格身分位置尚未確認",
-    "橋梁主拱可保留，東側引道加固施工中，責任與費用未定"
+    {
+      "id": "T-G189-WORKSHOP-REPORT",
+      "kind": "todo",
+      "name": "G-189-M01 工坊礦石報告",
+      "status": "待工坊回報",
+      "owner": "夢想工坊、澈",
+      "updatedDay": 196,
+      "source": "V125｜快速接續、A 節",
+      "details": "礦源委託仍進行中，第196日下午的工坊報告待接續。確證礦源獎300,000銅幣待驗收。",
+      "scheduled": "第196日下午",
+      "deadlineDay": 219,
+      "deadlineTime": "08:20"
+    },
+    {
+      "id": "T-MORNING-DEW-HANDOVER",
+      "kind": "todo",
+      "name": "晨露花園宅驗屋與交屋",
+      "status": "待驗屋、付尾款",
+      "owner": "澈、賣方",
+      "updatedDay": 196,
+      "source": "V125｜快速接續；V124｜快速接續、E 節",
+      "details": "總價4,360,000銅幣，已付訂金436,000，驗屋交屋時付尾款3,924,000。賣方須處理地下室潮濕角落並搬離私人物品。",
+      "scheduled": "第197日"
+    },
+    {
+      "id": "T-WORKSHOP-COMPARISON",
+      "kind": "todo",
+      "name": "工坊初步技術比較",
+      "status": "待階段報告",
+      "owner": "夢想工坊",
+      "updatedDay": 195,
+      "source": "V124｜快速接續、E 節",
+      "details": "安排第197～199日做初步比較。可重熔聚魔合金與武器材料為優先研究，尚無已確認的比較結果。",
+      "scheduled": "第197～199日"
+    },
+    {
+      "id": "T-CAP195-ASSEMBLY",
+      "kind": "todo",
+      "name": "CAP-195-S014 王都封印文書護送集合",
+      "status": "已接取・待集合",
+      "owner": "澈、王國封印院",
+      "updatedDay": 196,
+      "source": "V125｜快速接續、A 節",
+      "details": "B級單人特許已核准，澈已承接。第199日集合，整項契約報酬4,800,000銅幣，尚未啟程或領預付款。",
+      "scheduled": "第199日集合",
+      "deadlineDay": 208,
+      "deadlineTime": "18:00"
+    },
+    {
+      "id": "T-MIL194-L08",
+      "kind": "todo",
+      "name": "MIL-194-L08 軍方暫留財物申領",
+      "status": "待軍法處查證",
+      "owner": "澈、軍法處",
+      "updatedDay": 194,
+      "source": "V123｜快速接續、B、I 節",
+      "details": "已領回初審核准的錢袋、戒指和飾物。尚有戒指2枚、飾物1件、軍官懷錶1只及原始登記簿由軍法處暫留查證。",
+      "deadlineDay": 201,
+      "deadlineTime": "18:00"
+    },
+    {
+      "id": "T-MINERAL-REPLIES",
+      "kind": "todo",
+      "name": "礦工與銀紋商會寄售方答覆",
+      "status": "回覆待核對",
+      "owner": "礦工、銀紋商會、澈",
+      "updatedDay": 195,
+      "source": "V124｜快速接續、E 節",
+      "details": "原安排第195日追蹤礦源線索及寄售方回覆。V124當時未收到新答覆，V125未記載後續結果。",
+      "scheduled": "原追蹤日第195日"
+    },
+    {
+      "id": "T-H190-BONUS",
+      "kind": "todo",
+      "name": "TMP-H190-S01 觀測站保全附加款",
+      "status": "待核定",
+      "owner": "公會",
+      "updatedDay": 195,
+      "source": "V124｜快速接續、E 節",
+      "details": "附加款600,000銅幣仍待審核。基本報酬已入帳。"
+    },
+    {
+      "id": "T-G188-BONUS",
+      "kind": "todo",
+      "name": "TMP-G188-B05 採石場附加款",
+      "status": "待核定",
+      "owner": "公會",
+      "updatedDay": 195,
+      "source": "V124｜快速接續、E 節",
+      "details": "附加款38,000銅幣仍待審核。基本報酬已入帳。"
+    },
+    {
+      "id": "T-G169-START",
+      "kind": "todo",
+      "name": "G-169-001 霜角委託",
+      "status": "已接取・待啟動",
+      "owner": "澈",
+      "updatedDay": 196,
+      "source": "V125｜快速接續、A 節",
+      "details": "正式接取後尚未開始。"
+    },
+    {
+      "id": "T-OLD-BRIDGE-REPAIR",
+      "kind": "todo",
+      "name": "舊石橋東側引道修復",
+      "status": "工程進度待核對・責任待裁定",
+      "owner": "軍方工兵",
+      "updatedDay": 194,
+      "source": "V122｜F 節；第193日14:29正式複測",
+      "details": "主拱可保留，損壞集中在東側引道與相鄰護牆。最近正式存檔仍列引道封閉，修復責任、金額及通行恢復時間待確認。"
+    },
+    {
+      "id": "T-WAR-SALVAGE-AGREEMENT",
+      "kind": "todo",
+      "name": "軍需保留項目處置",
+      "status": "草案未簽署",
+      "owner": "澈、軍方",
+      "updatedDay": 194,
+      "source": "V121｜未完成事項；V123｜軍需成交與保留範圍",
+      "details": "原三種處置草案未簽。第194日已結清另行議定的四批軍需成交，保留項目未納入此次交割。"
+    },
+    {
+      "id": "T-LOGISTICS-GRAIN-NEGOTIATION",
+      "kind": "todo",
+      "name": "夢想物流西方糧商運輸談判",
+      "status": "接洽中・未簽約",
+      "owner": "卡爾・布倫、西方糧商",
+      "updatedDay": 196,
+      "source": "V125｜快速接續；V124｜快速接續",
+      "details": "三名糧商洽談20趟隔日運輸。對方報價每趟14,000銅幣，卡爾反提16,500銅幣及首五趟半額預付。"
+    },
+    {
+      "id": "C-VALEN-ARMOR",
+      "kind": "todo",
+      "name": "資助瓦倫專屬甲",
+      "status": "設計中・量測與預算待確認",
+      "owner": "澈、瓦倫、夢想工坊",
+      "updatedDay": 192,
+      "source": "V120｜第192日15:24正式覆蓋層",
+      "details": "澈曾表示願資助。第192日15:30已排定第一輪動作、關節及靈魂反應量測，設計持續。量測結果、實際預算及付款未見更新。"
+    },
+    {
+      "id": "C-XIAOMENG-TEAM",
+      "kind": "todo",
+      "name": "瓦倫與小夢未來組隊",
+      "status": "僅提案",
+      "owner": "瓦倫、小夢",
+      "updatedDay": 192,
+      "source": "V120｜第192日15:24正式覆蓋層",
+      "details": "兩人已完成一次北側灌溉渠F級合作委託，各已領1,400銅幣。未確認小夢已同意長期組隊。"
+    },
+    {
+      "id": "T-ELIN-CELEBRATION",
+      "kind": "todo",
+      "name": "與艾琳共餐或小慶祝",
+      "status": "僅提議",
+      "owner": "澈、艾琳",
+      "updatedDay": 194,
+      "source": "V123｜快速接續、B、I 節",
+      "details": "艾琳提出日後一起吃飯或小慶祝，尚未約定日期，無已確認支出。"
+    },
+    {
+      "id": "T-TOM-LOW-FLIGHT",
+      "kind": "todo",
+      "name": "托姆體驗低速飛行",
+      "status": "尚未安排",
+      "owner": "澈、托姆",
+      "updatedDay": 194,
+      "source": "V122｜B、F 節",
+      "details": "托姆希望體驗安全低速飛行。尚無確認日期或完成紀錄。"
+    },
+    {
+      "id": "T-NORTH-THIRD-CONTROL",
+      "kind": "todo",
+      "name": "北方第三外部控制區調查",
+      "status": "線索已取得・待查證",
+      "owner": "澈",
+      "updatedDay": 191,
+      "source": "V119 看板基準｜原調查紀錄",
+      "details": "獨立供能反應仍存在，格拉穆曾被轉移至北方第三區域。現場線索的後續查證待核對。"
+    },
+    {
+      "id": "T-ANCHOR-THIRD-NODE",
+      "kind": "todo",
+      "name": "界錨第三轉接節點",
+      "status": "待調查",
+      "owner": "澈",
+      "updatedDay": 196,
+      "source": "V125｜沿用支線；V118｜H 節",
+      "details": "第三未知轉接節點的調查仍未結案，節點身分及外部操作者待確認。"
+    },
+    {
+      "id": "T-FROSTBONE-TESTING",
+      "kind": "todo",
+      "name": "霜骨龍 V0.2 後續測試",
+      "status": "測試未完成",
+      "owner": "澈、夢想工坊",
+      "updatedDay": 196,
+      "source": "V125｜快速接續；V124｜快速接續",
+      "details": "已喚醒、載人飛行並實際往返霜寂山脈。續航上限、冰息、再生、重載及緊急機動尚無已確認測試。"
+    },
+    {
+      "id": "T-MORITZ-SAGE",
+      "kind": "todo",
+      "name": "確認莫里茲與賽格去向",
+      "status": "已移交軍方",
+      "owner": "澈、軍方",
+      "updatedDay": 193,
+      "source": "V122｜B、F 節",
+      "details": "北側通風井曾發現軍官線索。第193日17:23已活捉莫里茲・凱恩與賽格・羅文，18:06交軍方。",
+      "closed": true
+    },
+    {
+      "id": "T-N190-SETTLEMENT",
+      "kind": "todo",
+      "name": "TMP-N190-S01 任務結案及領款",
+      "status": "已結案、已付款",
+      "owner": "澈、公會",
+      "updatedDay": 194,
+      "source": "V123｜快速接續、B、I 節",
+      "details": "第194日14:04領取基礎7,200,000銅幣及正式核定情報獎金1,100,000，合計8,300,000銅幣。",
+      "closed": true
+    },
+    {
+      "id": "T-GUILD-APPROVED-5470000",
+      "kind": "todo",
+      "name": "公會原核准款5,470,000銅幣",
+      "status": "已付款",
+      "owner": "澈、公會",
+      "updatedDay": 194,
+      "source": "V123｜快速接續、B、I 節",
+      "details": "第194日14:00三筆原核准款已領取：TMP-G192-S03 4,200,000、DM-G192-P02 620,000、DM-G192-B01 650,000銅幣。",
+      "closed": true
+    },
+    {
+      "id": "T-FSN188-CORE-RETURN",
+      "kind": "todo",
+      "name": "FS-N188-01 研究樣品歸還",
+      "status": "已歸還",
+      "owner": "格雷文・索爾、澈",
+      "updatedDay": 195,
+      "source": "V124｜快速接續、B 節",
+      "details": "第195日09:43格雷文已完整歸還逾期借用的樣品，並交付三份研究報告。",
+      "closed": true
+    }
   ],
   "inventoryReview": {
     "gameDay": 195,
