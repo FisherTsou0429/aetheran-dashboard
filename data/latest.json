@@ -22,8 +22,8 @@
     "lastGameDay": 195,
     "lastGameTime": "10:08",
     "lastSourceSave": "V124完整存檔＋06 V18／12 V68／20物品明細",
-    "status": "候選待驗證",
-    "note": "補登第193日14:40至第195日10:08重大事件、任務付款與申請、霜骨龍及FS-N188-01歸還；保留既有歷史",
+    "status": "成功同步",
+    "note": "V124第195日10:08：GH save data check通過；12筆時間軸、17筆任務、3筆庫存及3筆異動已合併並讀回。",
     "timelineVerifiedThrough": {
       "gameDay": 195,
       "gameTime": "10:08"
