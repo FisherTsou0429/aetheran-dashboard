@@ -427,7 +427,11 @@ function renderEquipment(rows){
 }
 
 const INVENTORY_SECTIONS=[
- "完整構裝體","第193日日間回收","第193～194日夜間回收","已移交紀錄"
+ "完整構裝體","交易後確認保留","第193日日間回收","第193～194日夜間回收"
+];
+const INVENTORY_ARCHIVE_SECTIONS=[
+ ["已出售紀錄","已出售"],["軍方代管","軍方代管"],
+ ["成交後待核對","原回收清冊・成交後待核對"],["已移交紀錄","已移交軍方"]
 ];
 
 function inventoryButton(row,name,index){
@@ -455,10 +459,17 @@ function renderInventory(rows){
  if(!rows.length)return note+cardGrid(rows);
  const groups=INVENTORY_SECTIONS.map(category=>{
   const group=rows.filter(row=>row.category===category);
-  return group.length?section(category==="已移交紀錄"?"已移交軍方":category,inventoryList(group)):"";
+  return group.length?section(category,inventoryList(group)):"";
  }).join("");
- const other=rows.filter(row=>!INVENTORY_SECTIONS.includes(row.category));
- return note+groups+(other.length?section("其他庫存",inventoryList(other)):"");
+ const other=rows.filter(row=>!INVENTORY_SECTIONS.includes(row.category)&&
+  !INVENTORY_ARCHIVE_SECTIONS.some(([category])=>category===row.category));
+ const archive=INVENTORY_ARCHIVE_SECTIONS.map(([category,title])=>{
+  const group=rows.filter(row=>row.category===category);
+  return group.length?'<details class="inventory-history"'+(query||filter?' open':'')+'>'+
+   '<summary>'+safe(title)+' <small>'+countShown(group.length)+'</small></summary>'+inventoryList(group)+'</details>':"";
+ }).join("");
+ return note+groups+(other.length?section("其他庫存",inventoryList(other)):"")+
+  (archive?section("歷史與代管紀錄",archive):"");
 }
 
 function showInventoryDetail(button){
@@ -467,9 +478,13 @@ function showInventoryDetail(button){
  if(!row)return;
  const item=inventoryItem==null?null:row.items?.[Number(inventoryItem)];
  if(inventoryItem!=null&&!item)return;
+ const quote=item?row.itemQuoteCopper?.[item[0]]:null;
+ const quantityLabel=Number.isSafeInteger(quote)?"報價記載數量":row.category==="成交後待核對"?"原紀錄數量":"數量";
  const facts=[
-  ["狀態",row.status],["數量",item?.[1]??row.count],["保管位置",row.place],
-  ["所屬批次",item?row.name:""],["紀錄 ID",row.id],
+  ["狀態",row.status],[quantityLabel,item?.[1]??row.count],["保管位置",row.place],
+  ["所屬批次",item?row.name:""],
+  ["原報價",Number.isSafeInteger(quote)?fmt(quote)+" 銅幣":""],
+  ["批次成交",!item&&Number.isSafeInteger(row.soldForCopper)?fmt(row.soldForCopper)+" 銅幣":""],["紀錄 ID",row.id],
   ["最近核對",row.updatedDay!=null?"第"+row.updatedDay+"日":""],["來源",row.source]
  ].filter(([,value])=>value!=null&&value!=="");
  const details=values=>'<dl class="inventory-dialog-facts">'+values.map(([name,value])=>
@@ -477,7 +492,10 @@ function showInventoryDetail(button){
  $("inventory-dialog-title").textContent=item?.[0]??row.name??row.title??row.id;
  $("inventory-dialog-body").innerHTML=details(facts)+
   (row.details?'<p>'+safe(row.details)+'</p>':"")+
-  (!item&&row.items?.length?'<h3>批次品項</h3>'+details(row.items):"");
+  (!item&&row.items?.length?'<h3>批次品項</h3>'+details(row.items.map(([name,count])=>{
+    const quote=row.itemQuoteCopper?.[name];
+    return [name,count+(Number.isSafeInteger(quote)?" · 原報價 "+fmt(quote)+" 銅幣":"")];
+   })):"");
  $("inventory-dialog").showModal();
 }
 

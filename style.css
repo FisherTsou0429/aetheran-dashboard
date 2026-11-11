@@ -49,6 +49,10 @@ select{max-width:195px;padding:0 14px;font-size:12px;min-width:150px}
 .inventory-batch{grid-column:1/-1;border:1px solid var(--border);border-radius:10px;padding:10px 12px 12px;background:#eef3f2}
 .inventory-batch h3{margin:0 0 6px}
 .inventory-batch h3 .inventory-name{background:transparent;border-color:transparent;padding-left:0;font-weight:700}
+.inventory-history{margin:10px 0;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:#eef3f2}
+.inventory-history summary{cursor:pointer;font-weight:650}
+.inventory-history summary small{margin-left:6px;font-weight:400;color:var(--muted)}
+.inventory-history>.inventory-list{margin-top:8px}
 .inventory-dialog{width:min(520px,calc(100% - 28px));max-height:85dvh;padding:20px;border:1px solid var(--border);border-radius:14px;color:var(--ink);background:var(--white);box-shadow:var(--shadow);overflow:auto}
 .inventory-dialog::backdrop{background:rgb(18 30 42 / 55%)}
 .inventory-dialog-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}

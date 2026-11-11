@@ -31,4 +31,5 @@ jobs:
             fi
           fi
           git show "$baseline:data/latest.json" > "$RUNNER_TEMP/aetheran-previous.json"
-          node scripts/check-gh-sync.mjs "$RUNNER_TEMP/aetheran-previous.json" data/latest.json
+          git diff --name-only -z --diff-filter=AMR "$baseline" HEAD -- saves/ > "$RUNNER_TEMP/aetheran-checkpoint-paths"
+          node scripts/check-gh-sync.mjs "$RUNNER_TEMP/aetheran-previous.json" data/latest.json "$RUNNER_TEMP/aetheran-checkpoint-paths"

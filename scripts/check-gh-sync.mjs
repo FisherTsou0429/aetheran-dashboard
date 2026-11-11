@@ -170,11 +170,37 @@ function validateSync(previous, candidate) {
     inventoryChanged: inventory.changed.length, lastEvent };
 }
 
+function checkCheckpointIndexes(candidate, paths, errors) {
+  const snapshot = candidate.snapshot ?? {};
+  const snapshotPoint = position(snapshot.gameDay, snapshot.gameTime);
+  for (const path of paths) {
+    if (!path.endsWith("_GH接續索引.md")) continue;
+    const match = /第(\d+)日(\d{2})(\d{2})_(V\d+)_GH接續索引\.md$/.exec(path);
+    if (!match) {
+      errors.push("GH 接續索引檔名缺少遊戲日時或版本：" + path);
+      continue;
+    }
+    const [, day, hour, minute, version] = match;
+    const time = hour + ":" + minute;
+    const expected = position(Number(day), time);
+    const saveVersion = /^V(\d+)$/.exec(snapshot.officialSave)?.[1];
+    if (expected === null || snapshotPoint < expected || Number(saveVersion ?? 0) < Number(version.slice(1))) {
+      errors.push("接續索引為第" + day + "日 " + time + " " + version +
+        "，看板 data/latest.json 尚未同步到該存檔。");
+    }
+  }
+}
+
 try {
-  const [previousPath, candidatePath] = process.argv.slice(2);
+  const [previousPath, candidatePath, checkpointPathsFile] = process.argv.slice(2);
   if (!previousPath || !candidatePath) throw new Error("用法：node scripts/check-gh-sync.mjs 上一版.json 候選版.json");
   const load = path => JSON.parse(readFileSync(path, "utf8").replace(/^\uFEFF/, ""));
-  const result = validateSync(load(previousPath), load(candidatePath));
+  const candidate = load(candidatePath);
+  const result = validateSync(load(previousPath), candidate);
+  if (checkpointPathsFile) {
+    const paths = readFileSync(checkpointPathsFile, "utf8").split("\0");
+    checkCheckpointIndexes(candidate, paths, result.errors);
+  }
   if (result.errors.length) throw new Error(result.errors.join("\n"));
   console.log("GH 同步檢查通過｜時間軸 " + result.timelineChanged + " 筆｜任務 " + result.questsChanged + " 筆｜庫存 " + result.inventoryChanged + " 筆");
   if (result.lastEvent) {
