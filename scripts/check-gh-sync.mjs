@@ -61,10 +61,10 @@ function checkExpectedIds(value, changed, label, errors) {
   }
 }
 
-function validateCommitments(previous, candidate, beforePoint, point, errors) {
+function validateCommitments(previous, candidate, point, fullSync, errors) {
   const earlierReview = previous.sync?.commitmentsVerifiedThrough;
   const review = candidate.sync?.commitmentsVerifiedThrough;
-  if (!earlierReview && !review) return 0;
+  if (!fullSync && !earlierReview && !review) return 0;
 
   if (position(review?.gameDay, review?.gameTime) !== point || !nonempty(review?.source)) {
     errors.push("請核對正式來源中的承諾與待辦，更新 sync.commitmentsVerifiedThrough 至本次快照。");
@@ -75,7 +75,7 @@ function validateCommitments(previous, candidate, beforePoint, point, errors) {
   const { changed } = changedRecords({ commitments: before },
     { commitments: collect(candidate) }, "commitments", errors);
   const expected = candidate.sync?.changeSet?.commitmentIds;
-  if (point !== beforePoint || changed.length ||
+  if (fullSync || changed.length ||
       !isDeepStrictEqual(previous.sync?.changeSet?.commitmentIds, expected)) {
     checkExpectedIds(expected, changed, "commitmentIds", errors);
   }
@@ -90,7 +90,49 @@ function validateCommitments(previous, candidate, beforePoint, point, errors) {
   return changed.length;
 }
 
-function validateSync(previous, candidate) {
+const dashboardSections = [
+  "overview", "characters", "equipment", "inventory", "prices", "quests", "player-commissions",
+  "research", "logistics", "workforce", "sidelines", "npcs", "commitments", "timeline"
+];
+const additionalRecords = {
+  characters: "characterIds", equipment: "equipmentIds", prices: "priceIds",
+  logistics: "logisticsIds", workforce: "workforceIds", sidelines: "sidelineIds", npcs: "npcIds"
+};
+
+function validateDashboardReview(previous, candidate, point, fullSync, errors) {
+  const review = candidate.sync?.dashboardReview;
+  if (fullSync) {
+    if (position(review?.gameDay, review?.gameTime) !== point ||
+        !nonempty(review?.id) || review.id === previous.sync?.dashboardReview?.id) {
+      errors.push("每次 GH 存檔須建立新的 sync.dashboardReview，時點與快照一致。");
+    }
+    for (const page of dashboardSections) {
+      if (!nonempty(review?.sections?.[page])) errors.push("全站核對缺少頁面 " + page + " 的正式來源。");
+    }
+  }
+  const receipt = candidate.sync?.changeSet ?? {};
+  const oldReceipt = previous.sync?.changeSet ?? {};
+  const check = (key, changed) => {
+    if (fullSync || changed.length || !isDeepStrictEqual(receipt[key], oldReceipt[key])) {
+      checkExpectedIds(receipt[key], changed, key, errors);
+    }
+  };
+  // The original NPC index has one historical row without an ID.
+  const npcRows = data => data.npcs.map(row => row.id || row.name !== "伊瑟菈" || row.role !== "雷脈之靈" ?
+    row : { ...row, id: "NPC-YSERA" });
+  for (const [key, receiptKey] of Object.entries(additionalRecords)) {
+    const baseline = key === "npcs" ? { npcs: npcRows(previous) } : previous;
+    const next = key === "npcs" ? { npcs: npcRows(candidate) } : candidate;
+    check(receiptKey, changedRecords(baseline, next, key, errors).changed);
+  }
+  const changes = ["world", "currentScene"].filter(key => !isDeepStrictEqual(previous[key], candidate[key]));
+  for (const key of new Set([...Object.keys(previous.hero ?? {}), ...Object.keys(candidate.hero ?? {})])) {
+    if (!isDeepStrictEqual(previous.hero?.[key], candidate.hero?.[key])) changes.push("hero." + key);
+  }
+  check("overviewFields", changes.map(id => ({ id })));
+}
+
+function validateSync(previous, candidate, paths = []) {
   const errors = [];
   const before = previous.snapshot ?? {};
   const snapshot = candidate.snapshot ?? {};
@@ -99,27 +141,33 @@ function validateSync(previous, candidate) {
   if (beforePoint === null || point === null) throw new Error("快照必須有正確的遊戲日期與時間。");
   if (point < beforePoint) errors.push("快照早於上一版，請以最新 main 重新合併。");
 
+  const fullSync = !isDeepStrictEqual(before, snapshot) ||
+    ["lastGameDay", "lastGameTime", "lastSourceSave", "turnsSinceSuccessfulSync", "status", "dashboardReview"]
+      .some(key => !isDeepStrictEqual(previous.sync?.[key], candidate.sync?.[key])) ||
+    paths.some(path => path.endsWith("_GH接續索引.md"));
+  validateDashboardReview(previous, candidate, point, fullSync, errors);
   const timeline = changedRecords(previous, candidate, "timeline", errors);
   const quests = changedRecords(previous, candidate, "quests", errors);
   const inventory = changedRecords(previous, candidate, "inventory", errors);
   const research = changedRecords(previous, candidate, "research", errors);
   const summaries = candidate.latestEvents ?? [];
-  const commitmentChanged = validateCommitments(previous, candidate, beforePoint, point, errors);
-  const { inventoryIds, commitmentIds, researchIds, ...receipt } = candidate.sync?.changeSet ?? {};
-  const { inventoryIds: previousInventoryIds, commitmentIds: previousCommitmentIds, researchIds: previousResearchIds, ...previousReceipt } = previous.sync?.changeSet ?? {};
-  if (point !== beforePoint || research.changed.length || !isDeepStrictEqual(previousResearchIds, researchIds)) {
+  const commitmentChanged = validateCommitments(previous, candidate, point, fullSync, errors);
+  const receipt = candidate.sync?.changeSet ?? {};
+  const oldReceipt = previous.sync?.changeSet ?? {};
+  const { inventoryIds, researchIds } = receipt;
+  if (fullSync || research.changed.length || !isDeepStrictEqual(oldReceipt.researchIds, researchIds)) {
     checkExpectedIds(researchIds, research.changed, "researchIds", errors);
   }
-  if (point !== beforePoint || previous.sync?.researchVerifiedThrough || candidate.sync?.researchVerifiedThrough) {
+  if (fullSync || previous.sync?.researchVerifiedThrough || candidate.sync?.researchVerifiedThrough) {
     const reviewed = candidate.sync?.researchVerifiedThrough;
     if (position(reviewed?.gameDay, reviewed?.gameTime) !== point || !nonempty(reviewed?.source)) {
       errors.push("請核對工坊的製造、研究、驗收和交付，更新 sync.researchVerifiedThrough 至本次快照。");
     }
   }
-  const needsReceipt = !isDeepStrictEqual(before, snapshot) ||
+  const needsReceipt = fullSync ||
     timeline.changed.length || quests.changed.length ||
     !isDeepStrictEqual(previous.latestEvents ?? [], summaries) ||
-    !isDeepStrictEqual(previousReceipt, receipt);
+    ["timelineIds", "questIds", "noImportantEvents"].some(key => !isDeepStrictEqual(oldReceipt[key], receipt[key]));
   if (needsReceipt) {
     const reviewed = candidate.sync?.timelineVerifiedThrough;
     const sync = candidate.sync;
@@ -139,7 +187,7 @@ function validateSync(previous, candidate) {
     }
   }
 
-  if (needsReceipt || inventory.changed.length || !isDeepStrictEqual(previousInventoryIds, inventoryIds)) {
+  if (needsReceipt || inventory.changed.length || !isDeepStrictEqual(oldReceipt.inventoryIds, inventoryIds)) {
     checkExpectedIds(inventoryIds, inventory.changed, "inventoryIds", errors);
   }
   for (const row of inventory.changed) {
@@ -152,10 +200,13 @@ function validateSync(previous, candidate) {
     }
   }
 
-  if (previous.inventoryLedger || candidate.inventoryLedger) {
+  if (fullSync || previous.inventoryLedger || candidate.inventoryLedger) {
     const ledger = candidate.inventoryLedger;
     const { changed } = changedRecords(previous.inventoryLedger ?? { movements: [] },
       ledger ?? { movements: [] }, "movements", errors);
+    if (fullSync || changed.length || !isDeepStrictEqual(oldReceipt.movementIds, receipt.movementIds)) {
+      checkExpectedIds(receipt.movementIds, changed, "movementIds", errors);
+    }
     if (ledger && ![ledger.source, ledger.version, ledger.reviewedThrough].every(nonempty)) {
       errors.push("物品進出明細缺少來源、版本或核對時點。");
     }
@@ -250,11 +301,9 @@ try {
   if (!previousPath || !candidatePath) throw new Error("用法：node scripts/check-gh-sync.mjs 上一版.json 候選版.json");
   const load = path => JSON.parse(readFileSync(path, "utf8").replace(/^\uFEFF/, ""));
   const candidate = load(candidatePath);
-  const result = validateSync(load(previousPath), candidate);
-  if (checkpointPathsFile) {
-    const paths = readFileSync(checkpointPathsFile, "utf8").split("\0");
-    checkCheckpointIndexes(candidate, paths, result.errors);
-  }
+  const paths = checkpointPathsFile ? readFileSync(checkpointPathsFile, "utf8").split("\0") : [];
+  const result = validateSync(load(previousPath), candidate, paths);
+  checkCheckpointIndexes(candidate, paths, result.errors);
   if (result.errors.length) throw new Error(result.errors.join("\n"));
   console.log("GH 同步檢查通過｜時間軸 " + result.timelineChanged + " 筆｜任務 " + result.questsChanged + " 筆｜庫存 " + result.inventoryChanged + " 筆｜承諾與待辦 " + result.commitmentChanged + " 筆");
   if (result.lastEvent) {

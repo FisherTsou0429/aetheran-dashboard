@@ -47,12 +47,19 @@
 - 提交後重新讀取 GitHub `main` 的 `data/latest.json`，對照事件 ID、概要與展開詳情、任務狀態與付款、庫存收納與移交，以及 `sync.timelineVerifiedThrough`。若任何應更新資料未寫入，依第三節回報未完成並補登。全部核對後才回報成功與歸零。
 - 同步回執須列出提交版本、時間軸新增／更新筆數與最後一筆已核對事件的遊戲時間及標題。若此次確實沒有應新增或更新的事件，明列「時間軸 0 筆，已核對無新增重要事件」。
 
+### 每次 GH 存檔須核對全站
+
+- 以最新正式存檔與後續確認劇情逐頁核對。設定 `sync.dashboardReview`，包含本次專用且與上次不同的 `id`、與快照相同的 `gameDay`／`gameTime`，以及 `sections`。每個頁面鍵的值填實際回查的正式存檔版本、章節或劇情時段。各頁都核對，即使回查後無增修。
+- 必填頁面鍵為 `overview`（總覽、主角與財物）、`characters`、`equipment`、`inventory`（含物品進出）、`prices`、`quests`、`player-commissions`、`research`、`logistics`、`workforce`、`sidelines`、`npcs`、`commitments`（含待辦）、`timeline`。公會與玩家委託共用 `quests`，按原任務 ID 合併。瀏覽器內的「我的待辦」由使用者自行管理。
+- `sync.changeSet` 一併填入 `characterIds`、`equipmentIds`、`priceIds`、`logisticsIds`、`workforceIds`、`sidelineIds`、`npcIds`、`movementIds`、`overviewFields`。按正式來源列出預期變更，無變更填空陣列。`overviewFields` 使用 `hero.cashCopper` 等主角欄位名稱，以及適用的 `world`、`currentScene`。原無 ID 的伊瑟菈紀錄對應 `NPC-YSERA`。
+- 即使遊戲日期時間相同，手動 GH 存檔也需更新本次核對 ID。提交候選分支檢查後，再快轉發布並讀回核對各頁預期變更。
+
 ### 「GH存檔」發布前檢查
 
 - `saves/` 的 GH 接續索引是存檔指引。只有索引的提交不算看板同步。若本次附上接續索引，必須同時確認 `data/latest.json` 已更新到該正式存檔，且依成交清單逐筆銷帳。賣出、移交、代管及成交後餘量未明的批次，應離開現有庫存清單，保留可追查的歷史紀錄。
 
 1. 由執行存檔的遊戲對話讀取本規則及最新 `main`，記下主分支 SHA 與上一版的時間軸核對時點。先從正式劇情／存檔獨立列出應補登或更新的事件、任務及庫存 ID，再按 ID 合併 `data/latest.json`。保留所有既有歷史。
-2. 在候選檔的 `sync.changeSet` 填入 `timelineIds`、`questIds`、`inventoryIds`、`commitmentIds`、`researchIds`，逐筆列出本次實際應新增或變更的 ID。五個欄位都必填，沒有變更用空陣列。只有已回查來源且這段確實無須增補事件時，才另填 `"noImportantEvents": true`。不要從候選 JSON 反推預期清單。
+2. 在候選檔的 `sync.changeSet` 填入 `timelineIds`、`questIds`、`inventoryIds`、`commitmentIds`、`researchIds`，逐筆列出本次實際應新增或變更的 ID。上述欄位與全站核對欄位都必填，沒有變更用空陣列。只有已回查來源且這段確實無須增補事件時，才另填 `"noImportantEvents": true`。不要從候選 JSON 反推預期清單。
 3. 從步驟 1 記下的 `main` SHA 建立一個新的 `gh-sync/…` 暫存分支，將候選檔提交到暫存分支，等待該候選提交的 GitHub Actions **GH save data check** 通過。可先用 `node scripts/check-gh-sync.mjs 上一版.json 候選版.json` 核對。檢查失敗時由遊戲對話依錯誤補齊資料並重驗，期間維持待同步。核對器檢查寫入內容與預期清單，正式劇情的判讀仍由遊戲對話負責。
 4. 只將通過檢查的候選提交快轉到 `main`，使用原 `main` SHA 作為預期版本且禁止強制推送。若 `main` 已移動，從最新版本重新合併並檢查。再從 `main` 讀回檔案確認時間軸、任務、待領款及庫存，確認主分支同一提交的檢查通過後才回報成功及歸零。正式存檔的原計數器依原規則處理。
 
