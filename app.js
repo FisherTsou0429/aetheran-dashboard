@@ -429,7 +429,7 @@ function renderEquipment(rows){
    (mode.details?'<span>'+safe(mode.details)+'</span>':"")+'</li>').join("")+'</ul>'+
   '<p class="equipment-modes-note">模式名稱依正式存檔列出。完整測試與驗收狀態待核對。</p>'):"";
  const weaponPanels=EQUIPMENT_SECTIONS.map(([category,title])=>{
-  const group=rows.filter(row=>row.category===category);
+  const group=remaining.filter(row=>row.category===category);
   return group.length?section(title,cardGrid(group),countShown(group.length)):"";
  }).join("");
  const other=rows.filter(row=>!EQUIPMENT_SECTIONS.some(([category])=>category===row.category));
@@ -484,18 +484,21 @@ function renderInventory(rows){
   '。頁首顯示全站 GH 快照。'+safe(review.scope||"")+'</div>':"";
  const ledger=renderInventoryLedger();
  if(!rows.length)return note+(ledger||cardGrid(rows));
+ const recent=rows.filter(row=>row.updatedDay===review?.gameDay&&
+  !INVENTORY_ARCHIVE_SECTIONS.some(([category])=>category===row.category));
+ const remaining=rows.filter(row=>!recent.includes(row));
  const groups=INVENTORY_SECTIONS.map(category=>{
   const group=rows.filter(row=>row.category===category);
   return group.length?section(category,inventoryList(group)):"";
  }).join("");
- const other=rows.filter(row=>!INVENTORY_SECTIONS.includes(row.category)&&
+ const other=remaining.filter(row=>!INVENTORY_SECTIONS.includes(row.category)&&
   !INVENTORY_ARCHIVE_SECTIONS.some(([category])=>category===row.category));
  const archive=INVENTORY_ARCHIVE_SECTIONS.map(([category,title])=>{
   const group=rows.filter(row=>row.category===category);
   return group.length?'<details class="inventory-history"'+(query||filter?' open':'')+'>'+
    '<summary>'+safe(title)+' <small>'+countShown(group.length)+'</small></summary>'+inventoryList(group)+'</details>':"";
  }).join("");
- return note+ledger+groups+(other.length?section("其他庫存",inventoryList(other)):"")+
+ return note+(recent.length?section("最近核對的物品",inventoryList(recent),countShown(recent.length)):"")+ledger+groups+(other.length?section("其他庫存",inventoryList(other)):"")+
   (archive?section("歷史與代管紀錄",archive):"");
 }
 

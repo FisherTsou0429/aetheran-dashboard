@@ -66,7 +66,8 @@ function validateCommitments(previous, candidate, point, fullSync, errors) {
   const review = candidate.sync?.commitmentsVerifiedThrough;
   if (!fullSync && !earlierReview && !review) return 0;
 
-  if (position(review?.gameDay, review?.gameTime) !== point || !nonempty(review?.source)) {
+  if ((fullSync || !isDeepStrictEqual(earlierReview, review)) &&
+      (position(review?.gameDay, review?.gameTime) !== point || !nonempty(review?.source))) {
     errors.push("請核對正式來源中的承諾與待辦，更新 sync.commitmentsVerifiedThrough 至本次快照。");
   }
   const collect = data => [...(data.commitments ?? []), ...(data.openIssues ?? [])];
@@ -189,6 +190,11 @@ function validateSync(previous, candidate, paths = []) {
 
   if (needsReceipt || inventory.changed.length || !isDeepStrictEqual(oldReceipt.inventoryIds, inventoryIds)) {
     checkExpectedIds(inventoryIds, inventory.changed, "inventoryIds", errors);
+  }
+  if (fullSync && inventory.changed.length &&
+      (position(candidate.inventoryReview?.gameDay, candidate.inventoryReview?.gameTime) !== point ||
+        !nonempty(candidate.inventoryReview?.scope))) {
+    errors.push("庫存有異動，須更新 inventoryReview 的核對日時及範圍。");
   }
   for (const row of inventory.changed) {
     if (![row.name, row.status, row.place, row.count, row.details, row.source].every(nonempty)) {

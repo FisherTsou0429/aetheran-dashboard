@@ -39,7 +39,7 @@
 - `timeline` 逐筆登錄重要事件的遊戲日期、時間、標題與簡短 `summary`，並依來源保留 `details`、`steps`、`location`、`people`、`outcome`、`source` 供展開查看。採集、鑑定、交付或結算各自有重要成果時分筆記錄。來源時刻只到時段時沿用原時段。事件一律寫入 `timeline`。若 `events`、`latestEvents`、同步備註或 `currentScene` 另有已確認的重要事件，先核對並合併到 `timeline`。如保留 `latestEvents` 供摘要使用，摘要的 `id` 必須對應同一筆 `timeline[].id`。只有摘要的條目會在網站標記「摘要待補」。
 - `quests[].taskDetails` 依正式紀錄更新委託需求、資格、發布與接取時點、報名與交付截止、驗收、報酬及進度。玩家發布的委託沿用原任務 ID，在 `commission.awards`、`commission.leads`、`commission.history` 保留懸賞與付款、線索及歷程。找不到來源的欄位維持缺漏標記。同一任務的 `status`、付款、進度與下一步須一併比對；`paymentPendingCopper` 只記已核准尚未入帳的金額，完成付款後清除或設為零。
 - `inventory` 按穩定 ID 合併每次收納、鑑定、轉交、出售、消耗與物權判定。每筆保留名稱、持有或移交狀態、數量、保管地點、詳情及正式來源。成批物資用 `items` 列出各品項與數量，尚未清點時明示；已移交的批次保留歷史狀態，勿再計入私人庫存。單獨核對庫存時可用 `inventoryReview` 顯示核對時點，沿用全站快照。之後同步若未覆蓋該核對時點，保留已核對的庫存紀錄。
-- 專案來源 `20_物品進出明細.md` 按異動 ID 合併至 `inventoryLedger.movements`，保留日期時間、名稱、異動、去向及來源。已反映在庫存的歷史異動只補登明細。新發生且已確認的數量或保管變更須同時更新 `inventory`，讀回時核對兩處。
+- 專案來源 `20_物品進出明細.md` 按異動 ID 合併至 `inventoryLedger.movements`，保留日期時間、名稱、異動、去向及來源。每筆異動都要填寫 `id`、`time`、`name`、`movement`、`result`、`source`，網頁以這些欄位顯示標題與詳情。已有現況紀錄的歷史異動只補登明細。新發生且已確認的數量或保管變更須同時更新 `inventory`，讀回時核對兩處。
 - `commitments` 登記已答應履行的約定，`openIssues` 登記需要行動、等待結果或核對的事項。提議、詢價及待審核放在待辦。每筆按同一穩定 ID 記錄 `kind`（`promise` 或 `todo`）、名稱、狀態、負責人、最後確認日、明細與來源，有正式安排及期限時一併填寫。履行或結案時更新同筆並填 `closed: true`，保留歷史。公開版只收錄可公開查閱的內容。
 - 每次推進快照前從正式存檔及已確認劇情回查承諾與待辦，含履行、付款、否決與期限變更。將 `sync.commitmentsVerifiedThrough` 更新至本次快照日期時間並附來源，再於 `sync.changeSet.commitmentIds` 列出兩陣列中本次應增修的 ID。確實無增修時填空陣列。提交後讀回核對。
 - 推進快照前核對 `research` 的研究、製造、測試、驗收與交付，按原 ID 更新已確認的進度，保留原排程與來源。將 `sync.researchVerifiedThrough` 設為本次快照日期時間並附上 `source`，以 `sync.changeSet.researchIds` 列出應更新的 ID，確實無變更時填空陣列。提交後讀回核對。
