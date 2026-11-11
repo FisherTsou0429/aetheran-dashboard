@@ -2,52 +2,66 @@
   "schemaVersion": "1.0",
   "world": "艾瑟蘭異界物語：新世界",
   "snapshot": {
-    "gameDay": 196,
-    "gameTime": "14:34",
-    "location": "格林鎮北區・北方觀測聯絡所二樓資料室",
-    "officialSave": "V125",
-    "npcIndex": "V69",
-    "detailIndex": "V19",
-    "baseline": "第196日14:34",
+    "gameDay": 201,
+    "gameTime": "02:48",
+    "location": "王都冒險者公會・夜間受理櫃檯",
+    "officialSave": "V127＋後續正式劇情覆蓋至第201日02:48",
+    "npcIndex": "V71＋後續正式劇情",
+    "detailIndex": "V21＋後續正式劇情",
+    "baseline": "第201日02:48",
     "authority": "最新有效完整存檔及後續正式劇情優先；本看板只作唯讀查詢，不是正式存檔",
-    "scope": "V125完整存檔及配套06 V19／12 V69／20第196日14:34同步",
+    "scope": "第200日17:05 V127＋來源20 V3＋第201日02:48正式劇情",
     "paused": false,
-    "incrementalCounter": 0,
-    "fullCounter": 0
+    "incrementalCounter": 14,
+    "fullCounter": 14
   },
   "sync": {
     "intervalTurns": 20,
     "turnsSinceSuccessfulSync": 0,
     "triggerOnFormalSave": true,
-    "lastGameDay": 196,
-    "lastGameTime": "14:34",
-    "lastSourceSave": "V125完整存檔＋06 V19／12 V69／20第196日1434同步",
-    "status": "成功同步",
-    "note": "第196日14:34手動GH存檔；四筆新增時間軸、任務結算、NPC、商品價格及物品異動，保密古龍幼女與山谷座標。",
+    "lastGameDay": 201,
+    "lastGameTime": "02:48",
+    "lastSourceSave": "V127＋來源20 V3＋正式劇情至第201日02:48",
+    "status": "提交待讀回驗證",
+    "note": "手動GH存檔；按正式劇情更新任務、現金、召喚物、庫存異動。公眾看板不公開機密研究原件、未公開人物與位置細節。",
     "timelineVerifiedThrough": {
-      "gameDay": 196,
-      "gameTime": "14:34"
+      "gameDay": 201,
+      "gameTime": "02:48"
     },
     "changeSet": {
       "timelineIds": [
-        "EV-196-NORTHERN-OBSERVATORY-QUEST",
-        "EV-196-ICE-DRAGON-NURSERY-RESTORED",
-        "EV-196-ICE-DRAGON-PHOTOGRAPHS",
-        "EV-196-ICE-DRAGON-QUEST-SETTLEMENT"
+        "EV-200-1705-QUEST-SETTLE",
+        "EV-200-2008-ARCHIVE",
+        "EV-200-2031-RESEARCH",
+        "EV-200-2123-UNDEAD-CONTROL",
+        "EV-200-2126-SUM",
+        "EV-200-2311-HORSE-SPEED",
+        "EV-201-0147-ARRIVAL",
+        "EV-201-0224-QUEST-APPROVAL",
+        "EV-201-0248-HEIRLOOM-VERIFY"
       ],
       "questIds": [
-        "NO-196-A001",
-        "CAP-195-S014"
+        "CAP-199-S01",
+        "PRIVATE-199-HEIRLOOM"
       ],
       "inventoryIds": [
-        "INV-196-POLAROID-PHOTO-CHEN",
-        "INV-196-POLAROID-FRAME-GIFT"
+        "INV-FROST-BONE",
+        "INV-CAP199-HEADLESS-KNIGHTS",
+        "INV-CAP199-SKELETAL-HORSES",
+        "INV-SILENT-LIBRARY-RESEARCH",
+        "INV-HEIRLOOM-CASE",
+        "INV-HEIRLOOM-RECEIPT"
       ],
       "movementIds": [
-        "MOV-196-POLAROID-PHOTO-01",
-        "MOV-196-POLAROID-FRAME-01",
-        "MOV-196-FROSTBONE-TRAVEL-01",
-        "MOV-196-QUEST-REWARD-01"
+        "MOV-200-027",
+        "MOV-200-028",
+        "MOV-200-029",
+        "MOV-200-030",
+        "MOV-200-031",
+        "MOV-200-032",
+        "MOV-201-001",
+        "MOV-201-002",
+        "MOV-201-003"
       ],
       "commitmentIds": [
         "C-STAR-GAZING",
@@ -105,7 +119,7 @@
       "hard": 19,
       "hardTarget": 18
     },
-    "cashCopper": 94747738,
+    "cashCopper": 100892098,
     "thirdPartyHeldCopper": 400000,
     "thirdPartyHeldBy": "奧斯文・貝克",
     "uncollectedBaseCopper": 0,
@@ -133,9 +147,9 @@
       "冰封"
     ],
     "note": "不採用HP／MP。其他已確立能力見正式完整存檔；看板未列出不代表失去。",
-    "uncollectedApprovedCopper": 0,
-    "currentLocation": "格林鎮北區・北方觀測聯絡所二樓資料室",
-    "status": "健康，霜骨龍V0.2在北境封印站外空地已喚醒站立；CAP-195-S014僅申請特審"
+    "uncollectedApprovedCopper": 3200000,
+    "currentLocation": "王都冒險者公會・夜間受理櫃檯",
+    "status": "健康；私人委託階段1、2核准待付款；階段3初驗通過、原件仍保管；無首騎士4與骨馬4安全收容"
   },
   "characters": [
     {
@@ -496,12 +510,12 @@
     },
     {
       "id": "INV-FROST-BONE",
-      "name": "霜骨龍V0.2原骨架及藍色龍魂核心",
-      "status": "已重建並喚醒展示",
-      "place": "北境霜墓封印前進站外空地",
+      "name": "霜骨龍V0.2",
+      "status": "SUM-001收容",
+      "place": "澈的無限空間",
       "count": "1具",
-      "details": "第195日01:02喚醒認主、低空飛行成功；09:31載人抵北境，10:08重新喚醒站立；非新購買，原藍色龍魂核心不等於FS-N188-01。",
-      "updatedDay": 195,
+      "details": "召喚物；既有藍色龍魂核心；本次騎乘後召回，未轉交",
+      "updatedDay": 201,
       "source": "V124完整存檔／20_物品進出明細_第195日1008同步.md"
     },
     {
@@ -1421,6 +1435,51 @@
       "count": "1組",
       "updatedDay": 196,
       "details": "相框商城實付68銅幣；艾絲保管並以獨立冰寒屏障保護。"
+    },
+    {
+      "id": "INV-CAP199-HEADLESS-KNIGHTS",
+      "name": "無首騎士",
+      "count": "4具",
+      "status": "SUM-002收容／權屬待審",
+      "details": "本地獨立控制成功；原軍用遠端網路隔離；不與A區重複計數",
+      "place": "澈的無限空間",
+      "updatedDay": 201
+    },
+    {
+      "id": "INV-CAP199-SKELETAL-HORSES",
+      "name": "亡靈骨馬",
+      "count": "4匹",
+      "status": "SUM-003收容／權屬待審",
+      "details": "一般62、高速86、短距離最高124 km/h；本次騎乘後召回；不與A區重複計數",
+      "place": "澈的無限空間",
+      "updatedDay": 201
+    },
+    {
+      "id": "INV-SILENT-LIBRARY-RESEARCH",
+      "name": "靜默庫研究設備",
+      "count": "核心1、基座12、模組3批",
+      "status": "隔離保存／權屬待審",
+      "details": "技術材料估值14,840,000銅幣；無交易，禁用活體能源",
+      "place": "澈的無限空間",
+      "updatedDay": 201
+    },
+    {
+      "id": "INV-HEIRLOOM-CASE",
+      "name": "家族雙封印金屬匣及銀白十二節折疊器",
+      "count": "各1",
+      "status": "持有／初驗通過",
+      "details": "第三階段驗證申請受理，未永久移交；不公開未確認用途",
+      "place": "澈的無限空間",
+      "updatedDay": 201
+    },
+    {
+      "id": "INV-HEIRLOOM-RECEIPT",
+      "name": "第三階段驗證受理憑證",
+      "count": "1份",
+      "status": "持有",
+      "details": "第201日02:48取得；非付款收據",
+      "place": "澈的無限空間",
+      "updatedDay": 201
     }
   ],
   "quests": [
@@ -2206,6 +2265,40 @@
         "originalId": "TMP-NO196-A01",
         "source": "第196日14:34正式劇情",
         "progress": "北方觀測總站驗收、380000銅幣入帳、合格任務+1；不公開幼龍與山谷精確位置"
+      }
+    },
+    {
+      "id": "CAP-199-S01",
+      "name": "封王古道無首騎士",
+      "status": "已完成／已驗收／已結算（不可重複）",
+      "rewardCopper": 3200000,
+      "updatedDay": 200
+    },
+    {
+      "id": "PRIVATE-199-HEIRLOOM",
+      "name": "失落的家族繼承信物",
+      "status": "階段1、2核准待付款；階段3初驗通過待移交；階段4未完成",
+      "rewardCopper": 12000000,
+      "updatedDay": 201,
+      "taskDetails": {
+        "phase1": {
+          "approvedCopper": 1200000,
+          "paid": false
+        },
+        "phase2": {
+          "approvedCopper": 2000000,
+          "paid": false
+        },
+        "phase3": {
+          "potentialCopper": 6000000,
+          "paid": false,
+          "verifiedInitial": true,
+          "handedOver": false
+        },
+        "phase4": {
+          "potentialCopper": 2800000,
+          "completed": false
+        }
       }
     }
   ],
@@ -4354,6 +4447,123 @@
       ],
       "outcome": "NO-196-A001（原TMP-NO196-A01）驗收，380000銅幣入帳、晉升合格43/65；總站同意不公開山谷位置、不主動追蹤、不轉討伐，保留遠距安全觀測。",
       "source": "第196日正式劇情／完整存檔V125"
+    },
+    {
+      "id": "EV-200-1705-QUEST-SETTLE",
+      "day": 200,
+      "time": "17:43",
+      "title": "封王古道S級委託結算",
+      "summary": "CAP-199-S01已完成驗收，3,200,000銅幣已入帳；不得重複結算。",
+      "location": "北境及王都",
+      "people": [
+        "澈"
+      ],
+      "outcome": "CAP-199-S01已完成驗收，3,200,000銅幣已入帳；不得重複結算。",
+      "source": "第200日17:05 V127＋後續正式劇情至第201日02:48；來源20 V3"
+    },
+    {
+      "id": "EV-200-2008-ARCHIVE",
+      "day": 200,
+      "time": "20:08",
+      "title": "古代物資與文件整理",
+      "summary": "42個封存容器已開啟、文件分A至H區；原軍方證物已依簽收移交，非澈庫存。",
+      "location": "北境及王都",
+      "people": [
+        "澈"
+      ],
+      "outcome": "42個封存容器已開啟、文件分A至H區；原軍方證物已依簽收移交，非澈庫存。",
+      "source": "第200日17:05 V127＋後續正式劇情至第201日02:48；來源20 V3"
+    },
+    {
+      "id": "EV-200-2031-RESEARCH",
+      "day": 200,
+      "time": "20:31",
+      "title": "研究設備深度鑑定",
+      "summary": "靜默庫設備技術材料參考估值14,840,000銅幣，未出售未入帳。",
+      "location": "北境及王都",
+      "people": [
+        "澈"
+      ],
+      "outcome": "靜默庫設備技術材料參考估值14,840,000銅幣，未出售未入帳。",
+      "source": "第200日17:05 V127＋後續正式劇情至第201日02:48；來源20 V3"
+    },
+    {
+      "id": "EV-200-2123-UNDEAD-CONTROL",
+      "day": 200,
+      "time": "21:23",
+      "title": "亡靈騎兵本地控制",
+      "summary": "無首騎士4、骨馬4已建立獨立本地控制，非戰鬥測試通過，權屬待審。",
+      "location": "北境及王都",
+      "people": [
+        "澈"
+      ],
+      "outcome": "無首騎士4、骨馬4已建立獨立本地控制，非戰鬥測試通過，權屬待審。",
+      "source": "第200日17:05 V127＋後續正式劇情至第201日02:48；來源20 V3"
+    },
+    {
+      "id": "EV-200-2126-SUM",
+      "day": 200,
+      "time": "21:26",
+      "title": "召喚物重新分類",
+      "summary": "霜骨龍V0.2、無首騎士4、骨馬4統一歸類SUM，未增加個體數。",
+      "location": "北境及王都",
+      "people": [
+        "澈"
+      ],
+      "outcome": "霜骨龍V0.2、無首騎士4、骨馬4統一歸類SUM，未增加個體數。",
+      "source": "第200日17:05 V127＋後續正式劇情至第201日02:48；來源20 V3"
+    },
+    {
+      "id": "EV-200-2311-HORSE-SPEED",
+      "day": 200,
+      "time": "23:11",
+      "title": "亡靈骨馬速度測試",
+      "summary": "一般62、高速86、短距離峰值124 km/h；小夢正式分析尚未交付。",
+      "location": "北境及王都",
+      "people": [
+        "澈"
+      ],
+      "outcome": "一般62、高速86、短距離峰值124 km/h；小夢正式分析尚未交付。",
+      "source": "第200日17:05 V127＋後續正式劇情至第201日02:48；來源20 V3"
+    },
+    {
+      "id": "EV-201-0147-ARRIVAL",
+      "day": 201,
+      "time": "01:47",
+      "title": "返回王都",
+      "summary": "霜骨龍騎乘後召回，無首騎士與骨馬均安全收容。",
+      "location": "王都",
+      "people": [
+        "澈"
+      ],
+      "outcome": "霜骨龍騎乘後召回，無首騎士與骨馬均安全收容。",
+      "source": "第200日17:05 V127＋後續正式劇情至第201日02:48；來源20 V3"
+    },
+    {
+      "id": "EV-201-0224-QUEST-APPROVAL",
+      "day": 201,
+      "time": "02:24",
+      "title": "私人委託階段核准",
+      "summary": "階段1、2核准合計3,200,000銅幣，尚未付款。",
+      "location": "王都",
+      "people": [
+        "澈"
+      ],
+      "outcome": "階段1、2核准合計3,200,000銅幣，尚未付款。",
+      "source": "第200日17:05 V127＋後續正式劇情至第201日02:48；來源20 V3"
+    },
+    {
+      "id": "EV-201-0248-HEIRLOOM-VERIFY",
+      "day": 201,
+      "time": "02:48",
+      "title": "私人委託第三階段初驗",
+      "summary": "信物初驗通過，仍由澈保管；第三階段6,000,000銅幣未結算，權屬交付待處理。",
+      "location": "王都",
+      "people": [
+        "澈"
+      ],
+      "outcome": "信物初驗通過，仍由澈保管；第三階段6,000,000銅幣未結算，權屬交付待處理。",
+      "source": "第200日17:05 V127＋後續正式劇情至第201日02:48；來源20 V3"
     }
   ],
   "prices": [
@@ -4547,11 +4757,11 @@
     }
   ],
   "currentScene": {
-    "location": "格林鎮北區・北方觀測聯絡所二樓資料室",
+    "location": "王都冒險者公會・夜間受理櫃檯",
     "npcs": [
-      "奧倫・梅爾"
+      "王都冒險者公會夜間值勤接待人員（姓名未確立）"
     ],
-    "prompt": "澈剛交付NO-196-A001並領取380000銅幣；下一步由玩家決定",
+    "prompt": "第三階段驗證申請已受理，原件由澈保管；下一步由玩家決定",
     "restStarted": false
   },
   "openIssues": [
@@ -4807,9 +5017,12 @@
     "scope": "V124及20號物品進出明細同步；已成交批次依V123交割保留歷史、不再視為私有現貨"
   },
   "inventoryLedger": {
-    "source": "20_物品進出明細_第196日1434同步.md",
-    "version": "第196日14:34同步 V4",
-    "reviewedThrough": "第196日14:34",
+    "source": "第200日17:05 V127＋第200日20:08來源20 V2＋第201日02:48來源20 V3",
+    "version": "第201日02:48 GH同步 V3",
+    "reviewedThrough": {
+      "gameDay": 201,
+      "gameTime": "02:48"
+    },
     "notes": [
       "第194日軍方四批成交合計 25,530,000 銅幣，商城三項收購合計 609,000 銅幣。合計僅用於對帳。研究補貼 960,000 銅幣在 12:12 被拒絕，庫存變動為零。",
       "軍法返還的 18,640 銅幣依正式財物帳入帳。此處的返還物品明細只記實物。",
@@ -5673,6 +5886,60 @@
         "movement": "銅幣+380000",
         "result": "唯一個人帳戶94747738銅幣，任務去重已結算",
         "source": "V125／20第196日同步"
+      },
+      {
+        "id": "MOV-200-027",
+        "summary": "設備鑑定無交易",
+        "source": "來源20 V3；第201日02:48",
+        "cashDeltaCopper": 0
+      },
+      {
+        "id": "MOV-200-028",
+        "summary": "亡靈騎兵本地控制無數量異動",
+        "source": "來源20 V3；第201日02:48",
+        "cashDeltaCopper": 0
+      },
+      {
+        "id": "MOV-200-029",
+        "summary": "A區至SUM分類調整",
+        "source": "來源20 V3；第201日02:48",
+        "cashDeltaCopper": 0
+      },
+      {
+        "id": "MOV-200-030",
+        "summary": "骨馬召喚1匹",
+        "source": "來源20 V3；第201日02:48",
+        "cashDeltaCopper": 0
+      },
+      {
+        "id": "MOV-200-031",
+        "summary": "骨馬召回1匹",
+        "source": "來源20 V3；第201日02:48",
+        "cashDeltaCopper": 0
+      },
+      {
+        "id": "MOV-200-032",
+        "summary": "霜骨龍召喚並召回",
+        "source": "來源20 V3；第201日02:48",
+        "cashDeltaCopper": 0
+      },
+      {
+        "id": "MOV-201-001",
+        "summary": "私人委託核准未付款",
+        "source": "來源20 V3；第201日02:48",
+        "cashDeltaCopper": 0
+      },
+      {
+        "id": "MOV-201-002",
+        "summary": "家族信物展示後收回",
+        "source": "來源20 V3；第201日02:48",
+        "cashDeltaCopper": 0
+      },
+      {
+        "id": "MOV-201-003",
+        "summary": "驗證受理憑證取得1份",
+        "source": "來源20 V3；第201日02:48",
+        "cashDeltaCopper": 0
       }
     ]
   }
