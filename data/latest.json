@@ -2,15 +2,15 @@
   "schemaVersion": "1.0",
   "world": "艾瑟蘭異界物語：新世界",
   "snapshot": {
-    "gameDay": 195,
-    "gameTime": "10:08",
-    "location": "北境霜墓封印前進站外空地",
-    "officialSave": "V124",
-    "npcIndex": "V68",
-    "detailIndex": "V18",
-    "baseline": "第195日10:08",
+    "gameDay": 196,
+    "gameTime": "14:34",
+    "location": "格林鎮北區・北方觀測聯絡所二樓資料室",
+    "officialSave": "V125",
+    "npcIndex": "V69",
+    "detailIndex": "V19",
+    "baseline": "第196日14:34",
     "authority": "最新有效完整存檔及後續正式劇情優先；本看板只作唯讀查詢，不是正式存檔",
-    "scope": "V124完整存檔及配套06 V18／12 V68／20號明細至第195日10:08",
+    "scope": "V125完整存檔及配套06 V19／12 V69／20第196日14:34同步",
     "paused": false,
     "incrementalCounter": 0,
     "fullCounter": 0
@@ -19,53 +19,35 @@
     "intervalTurns": 20,
     "turnsSinceSuccessfulSync": 0,
     "triggerOnFormalSave": true,
-    "lastGameDay": 195,
-    "lastGameTime": "10:08",
-    "lastSourceSave": "V124完整存檔＋06 V18／12 V68／20物品明細",
+    "lastGameDay": 196,
+    "lastGameTime": "14:34",
+    "lastSourceSave": "V125完整存檔＋06 V19／12 V69／20第196日1434同步",
     "status": "成功同步",
-    "note": "V124第195日10:08：GH save data check通過；12筆時間軸、17筆任務、3筆庫存及3筆異動已合併並讀回。",
+    "note": "第196日14:34手動GH存檔；四筆新增時間軸、任務結算、NPC、商品價格及物品異動，保密古龍幼女與山谷座標。",
     "timelineVerifiedThrough": {
-      "gameDay": 195,
-      "gameTime": "10:08"
+      "gameDay": 196,
+      "gameTime": "14:34"
     },
     "changeSet": {
       "timelineIds": [
-        "EV-193-POST-1440-WEST-CAMPAIGN",
-        "EV-194-OVERNIGHT-CAPTURES",
-        "EV-194-MILITARY-SETTLEMENT",
-        "EV-194-GUILD-REWARDS",
-        "EV-194-NEW-HOME-DEPOSIT",
-        "EV-195-WORKSHOP-RESEARCH",
-        "EV-195-FROST-DRAGON-AWAKEN",
-        "EV-195-GUILD-BOARD",
-        "EV-195-S-ESCORT-APPLICATION",
-        "EV-195-DRAGON-FLIGHT-NORTH",
-        "EV-195-ARTIFICIAL-CORE-RETURN",
-        "EV-195-FROST-DRAGON-DISPLAY"
+        "EV-196-NORTHERN-OBSERVATORY-QUEST",
+        "EV-196-ICE-DRAGON-NURSERY-RESTORED",
+        "EV-196-ICE-DRAGON-PHOTOGRAPHS",
+        "EV-196-ICE-DRAGON-QUEST-SETTLEMENT"
       ],
       "questIds": [
-        "TMP-N190-S01",
-        "DM-G192-B01",
-        "DM-G192-P02",
-        "TMP-G192-S03",
-        "CAP-195-S014",
-        "WEST-195-S-P03",
-        "TMP-G195-B01",
-        "TMP-G195-A01",
-        "TMP-G195-C01",
-        "TMP-G195-B02",
-        "TMP-G194-B03",
-        "TMP-G194-A02",
-        "TMP-G194-B04",
-        "TMP-G193-A03",
-        "TMP-D195-S01",
-        "TMP-D194-S02",
-        "TMP-F195-01"
+        "NO-196-A001",
+        "CAP-195-S014"
       ],
       "inventoryIds": [
-        "INV-FROST-BONE",
-        "INV-ARTIFICIAL-CORE",
-        "INV-FS-N188-01-REPORTS"
+        "INV-196-POLAROID-PHOTO-CHEN",
+        "INV-196-POLAROID-FRAME-GIFT"
+      ],
+      "movementIds": [
+        "MOV-196-POLAROID-PHOTO-01",
+        "MOV-196-POLAROID-FRAME-01",
+        "MOV-196-FROSTBONE-TRAVEL-01",
+        "MOV-196-QUEST-REWARD-01"
       ]
     }
   },
@@ -75,12 +57,12 @@
     "identity": "穿越者／非勇者",
     "rank": "B",
     "advancement": {
-      "qualified": 42,
+      "qualified": 43,
       "qualifiedTarget": 65,
       "hard": 19,
       "hardTarget": 18
     },
-    "cashCopper": 93783166,
+    "cashCopper": 94747738,
     "thirdPartyHeldCopper": 400000,
     "thirdPartyHeldBy": "奧斯文・貝克",
     "uncollectedBaseCopper": 0,
@@ -109,7 +91,7 @@
     ],
     "note": "不採用HP／MP。其他已確立能力見正式完整存檔；看板未列出不代表失去。",
     "uncollectedApprovedCopper": 0,
-    "currentLocation": "北境霜墓封印前進站外空地",
+    "currentLocation": "格林鎮北區・北方觀測聯絡所二樓資料室",
     "status": "健康，霜骨龍V0.2在北境封印站外空地已喚醒站立；CAP-195-S014僅申請特審"
   },
   "characters": [
@@ -1378,6 +1360,24 @@
       "details": "第195日09:43格雷文交付，涉及三環機制、風險與第六地脈觀測井技術線索。",
       "updatedDay": 195,
       "source": "V124完整存檔／20_物品進出明細_第195日1008同步.md"
+    },
+    {
+      "id": "INV-196-POLAROID-PHOTO-CHEN",
+      "name": "澈與艾絲拍立得合照",
+      "status": "澈持有",
+      "place": "澈隨身",
+      "count": "1張",
+      "updatedDay": 196,
+      "details": "第196日12:33拍攝；另有母女合照已贈艾絲，不在澈庫存。"
+    },
+    {
+      "id": "INV-196-POLAROID-FRAME-GIFT",
+      "name": "雪花小熊拍立得相框與艾絲希露合照",
+      "status": "已贈送／非澈庫存",
+      "place": "霜寂山脈隱蔽山谷第六封育石柱（精確位置保密）",
+      "count": "1組",
+      "updatedDay": 196,
+      "details": "相框商城實付68銅幣；艾絲保管並以獨立冰寒屏障保護。"
     }
   ],
   "quests": [
@@ -1980,9 +1980,9 @@
     {
       "id": "CAP-195-S014",
       "name": "王都封印文書護送",
-      "status": "單人特殊資格申請已受理，未接取",
+      "status": "特許核准／已承接；第199日集合；未啟程未結算",
       "rewardCopper": 4800000,
-      "updatedDay": 195,
+      "updatedDay": 196,
       "taskDetails": {
         "client": "王國封印院／王都冒險者公會",
         "acceptedAt": "第195日07:51僅受理資格申請，非任務接取",
@@ -2150,6 +2150,19 @@
         "source": "第195日07:17–07:36正式公會公告",
         "next": "依正式公告期限自行申請；不可視為已接取",
         "progress": "第195日公告／申請狀態已登錄，尚未完成或接取。"
+      }
+    },
+    {
+      "id": "NO-196-A001",
+      "name": "霜寂山脈異常翼影實地調查",
+      "status": "已完成／已驗收／已結算（不可重複）",
+      "rewardCopper": 380000,
+      "updatedDay": 196,
+      "taskDetails": {
+        "rank": "A（B級單人特許）",
+        "originalId": "TMP-NO196-A01",
+        "source": "第196日14:34正式劇情",
+        "progress": "北方觀測總站驗收、380000銅幣入帳、合格任務+1；不公開幼龍與山谷精確位置"
       }
     }
   ],
@@ -2596,6 +2609,30 @@
       "role": "雷脈之靈",
       "status": "已自由",
       "details": "原被拘束於無雷谷中央封存艙；澈修復調律所後解除18條鎖鏈；目前在谷內，已試飛。"
+    },
+    {
+      "id": "NPC-ICE-DRAGON-AIS",
+      "name": "艾絲緹蕾雅",
+      "role": "冰霜古龍／希露菲雅之母",
+      "status": "霜寂山脈隱蔽山谷守護幼女",
+      "details": "接受澈稱呼艾絲；感激澈修復封育平台，與澈合照；承諾收斂魔力與避開觀測站低空飛行；不知澈商城及無限空間完整秘密。",
+      "updatedDay": 196
+    },
+    {
+      "id": "NPC-ICE-DRAGON-SYLPHIA",
+      "name": "希露菲雅",
+      "role": "冰霜古龍幼女",
+      "status": "沉睡於完美修復的古代六柱封育平台",
+      "details": "尚未甦醒；母女合照掛於第六柱。外界不知其存在與精確位置。",
+      "updatedDay": 196
+    },
+    {
+      "id": "NPC-OBSERVATORY-OREN",
+      "name": "奧倫・梅爾",
+      "role": "格林鎮北方觀測聯絡所人員",
+      "status": "第196日14:34協助任務結算",
+      "details": "知道冰霜古龍活動及異常原因、總站不侵擾決議；不知希露及山谷位置。",
+      "updatedDay": 196
     }
   ],
   "commitments": [
@@ -4177,6 +4214,58 @@
       ],
       "outcome": "格雷文與兩名研究員目睹原霜骨龍重建後站立，骨龍現仍在站外空地。",
       "source": "完整存檔V124（第195日10:08）及其內嵌V123正式歷史"
+    },
+    {
+      "id": "EV-196-NORTHERN-OBSERVATORY-QUEST",
+      "day": 196,
+      "time": "09:29",
+      "title": "澈接取霜寂山脈異常翼影A級調查",
+      "summary": "北方觀測總站批准B級單人特許，基本報酬380000銅幣，禁止主動攻擊疑似古龍。",
+      "location": "霜寂山脈",
+      "people": [
+        "澈"
+      ],
+      "outcome": "北方觀測總站批准B級單人特許，基本報酬380000銅幣，禁止主動攻擊疑似古龍。",
+      "source": "第196日正式劇情／完整存檔V125"
+    },
+    {
+      "id": "EV-196-ICE-DRAGON-NURSERY-RESTORED",
+      "day": 196,
+      "time": "12:07",
+      "title": "修復冰霜古龍幼女的六柱封育平台",
+      "summary": "艾絲緹蕾雅母女初見；澈將六柱、基座與七層晶膜修復至原始功能100%，希露菲雅仍沉睡；精確位置保密。",
+      "location": "霜寂山脈",
+      "people": [
+        "澈"
+      ],
+      "outcome": "艾絲緹蕾雅母女初見；澈將六柱、基座與七層晶膜修復至原始功能100%，希露菲雅仍沉睡；精確位置保密。",
+      "source": "第196日正式劇情／完整存檔V125"
+    },
+    {
+      "id": "EV-196-ICE-DRAGON-PHOTOGRAPHS",
+      "day": 196,
+      "time": "12:49",
+      "title": "與艾絲合照、贈母女照片及雪花相框",
+      "summary": "兩張拍立得照片；澈持與艾絲合照，母女合照及68銅幣相框贈艾絲並掛第六柱。",
+      "location": "霜寂山脈",
+      "people": [
+        "澈"
+      ],
+      "outcome": "兩張拍立得照片；澈持與艾絲合照，母女合照及68銅幣相框贈艾絲並掛第六柱。",
+      "source": "第196日正式劇情／完整存檔V125"
+    },
+    {
+      "id": "EV-196-ICE-DRAGON-QUEST-SETTLEMENT",
+      "day": 196,
+      "time": "14:34",
+      "title": "古龍翼影調查完成並結算",
+      "summary": "NO-196-A001（原TMP-NO196-A01）驗收，380000銅幣入帳、晉升合格43/65；總站同意不公開山谷位置、不主動追蹤、不轉討伐，保留遠距安全觀測。",
+      "location": "格林鎮北區・北方觀測聯絡所二樓資料室",
+      "people": [
+        "澈"
+      ],
+      "outcome": "NO-196-A001（原TMP-NO196-A01）驗收，380000銅幣入帳、晉升合格43/65；總站同意不公開山谷位置、不主動追蹤、不轉討伐，保留遠距安全觀測。",
+      "source": "第196日正式劇情／完整存檔V125"
     }
   ],
   "prices": [
@@ -4256,6 +4345,17 @@
       "category": "不動產",
       "details": "第190日已購；產權後續手續待辦，400,000代管改造專款與成交價分開。",
       "updatedDay": 191
+    },
+    {
+      "id": "P-196-POLAROID-FRAME-01",
+      "name": "雪花小熊・拍立得專用相框",
+      "status": "已成交永久價",
+      "originalCopper": 680,
+      "paidCopper": 68,
+      "quantity": "1個",
+      "category": "商城商品",
+      "details": "第196日購買，贈艾絲，掛第六封育石柱",
+      "updatedDay": 196
     }
   ],
   "latestEvents": [
@@ -4328,16 +4428,42 @@
       "time": "10:08",
       "title": "霜骨龍在北境前進站外重新喚醒展示",
       "summary": "格雷文與兩名研究員目睹原霜骨龍重建後站立，骨龍現仍在站外空地。"
+    },
+    {
+      "id": "EV-196-NORTHERN-OBSERVATORY-QUEST",
+      "gameDay": 196,
+      "time": "09:29",
+      "title": "澈接取霜寂山脈異常翼影A級調查",
+      "summary": "北方觀測總站批准B級單人特許，基本報酬380000銅幣，禁止主動攻擊疑似古龍。"
+    },
+    {
+      "id": "EV-196-ICE-DRAGON-NURSERY-RESTORED",
+      "gameDay": 196,
+      "time": "12:07",
+      "title": "修復冰霜古龍幼女的六柱封育平台",
+      "summary": "艾絲緹蕾雅母女初見；澈將六柱、基座與七層晶膜修復至原始功能100%，希露菲雅仍沉睡；精確位置保密。"
+    },
+    {
+      "id": "EV-196-ICE-DRAGON-PHOTOGRAPHS",
+      "gameDay": 196,
+      "time": "12:49",
+      "title": "與艾絲合照、贈母女照片及雪花相框",
+      "summary": "兩張拍立得照片；澈持與艾絲合照，母女合照及68銅幣相框贈艾絲並掛第六柱。"
+    },
+    {
+      "id": "EV-196-ICE-DRAGON-QUEST-SETTLEMENT",
+      "gameDay": 196,
+      "time": "14:34",
+      "title": "古龍翼影調查完成並結算",
+      "summary": "NO-196-A001（原TMP-NO196-A01）驗收，380000銅幣入帳、晉升合格43/65；總站同意不公開山谷位置、不主動追蹤、不轉討伐，保留遠距安全觀測。"
     }
   ],
   "currentScene": {
-    "location": "北境霜墓封印前進站外空地",
+    "location": "格林鎮北區・北方觀測聯絡所二樓資料室",
     "npcs": [
-      "格雷文・索爾",
-      "兩名研究員",
-      "封印站守衛"
+      "奧倫・梅爾"
     ],
-    "prompt": "格雷文詢問澈接下來是否回格林鎮或探訪北境其他地方；由玩家決定",
+    "prompt": "澈剛交付NO-196-A001並領取380000銅幣；下一步由玩家決定",
     "restStarted": false
   },
   "openIssues": [
@@ -4355,9 +4481,9 @@
     "scope": "V124及20號物品進出明細同步；已成交批次依V123交割保留歷史、不再視為私有現貨"
   },
   "inventoryLedger": {
-    "source": "20_物品進出明細.md",
-    "version": "第195日10:08同步",
-    "reviewedThrough": "第195日10:08",
+    "source": "20_物品進出明細_第196日1434同步.md",
+    "version": "第196日14:34同步 V4",
+    "reviewedThrough": "第196日14:34",
     "notes": [
       "第194日軍方四批成交合計 25,530,000 銅幣，商城三項收購合計 609,000 銅幣。合計僅用於對帳。研究補貼 960,000 銅幣在 12:12 被拒絕，庫存變動為零。",
       "軍法返還的 18,640 銅幣依正式財物帳入帳。此處的返還物品明細只記實物。",
@@ -5189,6 +5315,38 @@
         "movement": "由無限空間取出展示，非新購買",
         "result": "北境前進站外空地，已喚醒站立",
         "source": "20_物品進出明細_第195日1008同步.md；V124"
+      },
+      {
+        "id": "MOV-196-POLAROID-PHOTO-01",
+        "time": "第196日12:33–12:44",
+        "name": "拍立得相紙及照片",
+        "movement": "消耗相紙2張，生成照片2張；母女照贈艾絲",
+        "result": "澈持與艾絲合照1張；艾絲持母女合照1張；相紙原餘量未確認",
+        "source": "V125／20第196日同步"
+      },
+      {
+        "id": "MOV-196-POLAROID-FRAME-01",
+        "time": "第196日12:46–12:49",
+        "name": "雪花小熊拍立得相框",
+        "movement": "購買+1，贈送−1，實付68銅幣",
+        "result": "第六柱由艾絲保管，非澈庫存",
+        "source": "V125／20第196日同步"
+      },
+      {
+        "id": "MOV-196-FROSTBONE-TRAVEL-01",
+        "time": "第196日",
+        "name": "霜骨龍V0.2",
+        "movement": "往返霜寂山脈（非新增）",
+        "result": "返航後具體收納狀態未確認",
+        "source": "V125／20第196日同步"
+      },
+      {
+        "id": "MOV-196-QUEST-REWARD-01",
+        "time": "第196日14:34",
+        "name": "NO-196-A001任務報酬",
+        "movement": "銅幣+380000",
+        "result": "唯一個人帳戶94747738銅幣，任務去重已結算",
+        "source": "V125／20第196日同步"
       }
     ]
   }
