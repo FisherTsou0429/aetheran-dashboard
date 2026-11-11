@@ -22,8 +22,8 @@
     "lastGameDay": 201,
     "lastGameTime": "02:48",
     "lastSourceSave": "V127＋來源20 V3＋正式劇情至第201日02:48",
-    "status": "提交待讀回驗證",
-    "note": "手動GH存檔；按正式劇情更新任務、現金、召喚物、庫存異動。公眾看板不公開機密研究原件、未公開人物與位置細節。",
+    "status": "成功同步",
+    "note": "手動GH存檔；按正式劇情更新任務、現金、召喚物、庫存異動。公眾看板不公開機密研究原件、未公開人物與位置細節。 GitHub main 提交後已讀回核對核心庫存與9筆新明細。",
     "timelineVerifiedThrough": {
       "gameDay": 201,
       "gameTime": "02:48"
