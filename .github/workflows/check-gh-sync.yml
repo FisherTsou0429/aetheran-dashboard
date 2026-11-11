@@ -5,31 +5,79 @@ on:
     branches:
       - main
       - 'gh-sync/**'
+  workflow_dispatch:
 
 permissions:
   contents: read
+
+concurrency:
+  group: aetheran-dashboard-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   verify:
     name: Verify GH save data
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           fetch-depth: 0
           persist-credentials: false
-      - name: Compare with the current main snapshot
+      - name: Verify against the last successful version
         shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           if [[ "$GITHUB_REF" == refs/heads/main ]]; then
-            baseline="$(node -p 'require(process.env.GITHUB_EVENT_PATH).before')"
+            # Last verified deployment before this workflow started publishing Pages.
+            initial_verified="4fb2424b54df917f5147a95323e17437705e23e2"
+            published="$(gh api --method GET \
+              "repos/$GITHUB_REPOSITORY/actions/workflows/check-gh-sync.yml/runs" \
+              -f branch=main -f status=success -f per_page=1 \
+              --jq '.workflow_runs[0].head_sha // empty')"
+            baseline="$initial_verified"
+            if [[ -n "$published" ]] && git merge-base --is-ancestor "$initial_verified" "$published"; then
+              baseline="$published"
+            fi
           else
             baseline="$(git rev-parse refs/remotes/origin/main)"
-            if ! git merge-base --is-ancestor "$baseline" HEAD; then
-              echo "main 已更新，請從最新 main 重新合併。"
-              exit 1
-            fi
+          fi
+
+          if ! git merge-base --is-ancestor "$baseline" HEAD; then
+            echo "候選提交須以最新核對基準為祖先。"
+            exit 1
           fi
           git show "$baseline:data/latest.json" > "$RUNNER_TEMP/aetheran-previous.json"
           git diff --name-only -z --diff-filter=AMR "$baseline" HEAD -- saves/ > "$RUNNER_TEMP/aetheran-checkpoint-paths"
           node scripts/check-gh-sync.mjs "$RUNNER_TEMP/aetheran-previous.json" data/latest.json "$RUNNER_TEMP/aetheran-checkpoint-paths"
+      - name: Prepare the verified site files
+        if: github.ref == 'refs/heads/main'
+        shell: bash
+        run: |
+          mkdir -p _site/data
+          cp index.html app.js style.css personal-todos.js _site/
+          cp data/latest.json _site/data/
+      - name: Upload verified Pages artifact
+        if: github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
+        with:
+          path: _site
+
+  publish:
+    name: Publish verified dashboard
+    if: github.ref == 'refs/heads/main'
+    needs: verify
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy verified Pages artifact
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4

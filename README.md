@@ -9,7 +9,7 @@
 
 ## GitHub Pages 啟用
 
-首次請到儲存庫的 **Settings → Pages → Build and deployment → Deploy from a branch**，選 **main** 與 **/(root)**，按 **Save**。部署完成後開啟上面的網站入口。若GitHub Pages尚未啟用，網址可能暫時無法顯示。
+在儲存庫 **Settings → Pages → Build and deployment → Source** 選 **GitHub Actions**，讓「GH save data check」負責發布。資料驗證通過後才部署看板。若剛切換來源，可在 **Actions → GH save data check → Run workflow** 選 `main` 執行一次。
 
 ## 看板同步約定（玩家第191日暫停設定）
 
