@@ -6,8 +6,9 @@
   <meta name="theme-color" content="#101b27" />
   <meta name="description" content="《艾瑟蘭異界物語：新世界》玩家唯讀資料看板：角色、裝備、任務、研究、夢想事業與未完成事項。" />
   <title>艾瑟蘭世界管理中心</title>
-  <link rel="stylesheet" href="./style.css?v=inventory-status" />
-  <script src="./app.js?v=commitments-and-todos" defer></script>
+  <link rel="stylesheet" href="./style.css?v=personal-todos" />
+  <script src="./app.js?v=personal-todos" defer></script>
+  <script src="./personal-todos.js?v=1" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">跳至主要內容</a>
@@ -32,10 +33,11 @@
         <button type="button" data-page="sidelines"><span aria-hidden="true">◇</span> 世界支線</button>
         <button type="button" data-page="npcs"><span aria-hidden="true">♟</span> NPC名冊</button>
         <button type="button" data-page="commitments"><span aria-hidden="true">✓</span> 承諾與待辦</button>
+        <button type="button" data-page="personal-todos"><span aria-hidden="true">▤</span> 我的待辦</button>
         <button type="button" data-page="timeline"><span aria-hidden="true">◷</span> 事件時間軸</button>
       </nav>
       <div class="aside-foot">
-        <span class="read-only">● 唯讀 · GitHub公開版</span>
+        <span class="read-only">● 遊戲資料唯讀 · GitHub公開版</span>
         <span id="side-sync">讀取資料中…</span>
         <a href="https://github.com/FisherTsou0429/aetheran-dashboard" target="_blank" rel="noopener noreferrer">在 GitHub 查看資料 ↗</a>
       </div>
@@ -59,7 +61,7 @@
         </section>
         <div id="quest-category-filter" class="quest-category-filter" role="group" aria-label="任務分類篩選" hidden></div>
         <div id="quest-priority" role="region" aria-label="優先追蹤任務" hidden></div>
-        <section class="toolbar" aria-label="搜尋與篩選">
+        <section id="dashboard-toolbar" class="toolbar" aria-label="搜尋與篩選">
           <label for="search" class="sr-only">搜尋目前分類</label>
           <div class="search-wrap"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="搜尋名稱、任務ID、物品位置、NPC或研究…" autocomplete="off" /></div>
           <label for="status-filter" class="sr-only">依狀態篩選</label>
@@ -68,10 +70,58 @@
         </section>
         <div id="notice" class="notice" role="status" hidden></div>
         <div id="content" aria-live="polite"><p class="loading">正在載入最新資料…</p></div>
-        <footer class="footer"><span>《艾瑟蘭異界物語：新世界》玩家專用 · 非遊戲權威存檔</span><span>公開唯讀 · 所有遊戲日期皆為世界內日期</span></footer>
+        <section id="personal-todos" class="todo-layout" aria-label="我的待辦" hidden>
+          <form id="todo-form" class="card todo-form" autocomplete="off" aria-labelledby="todo-form-title">
+            <h2 id="todo-form-title">新增待辦</h2>
+            <label for="todo-title">待辦名稱</label>
+            <input id="todo-title" type="text" maxlength="160" required />
+            <div class="todo-deadline">
+              <div>
+                <label for="todo-day">遊戲到期日</label>
+                <input id="todo-day" type="number" min="1" step="1" placeholder="例 197" />
+              </div>
+              <div>
+                <label for="todo-time">到期時間</label>
+                <input id="todo-time" type="time" />
+              </div>
+            </div>
+            <label for="todo-notes">備註</label>
+            <textarea id="todo-notes" maxlength="2000" rows="4"></textarea>
+            <div class="todo-actions">
+              <button id="todo-submit" class="small-btn todo-primary" type="submit">新增待辦</button>
+              <button id="todo-cancel" class="small-btn" type="button" hidden>取消編輯</button>
+            </div>
+            <p id="todo-message" class="todo-message" role="status" aria-atomic="true"></p>
+          </form>
+          <div class="todo-lists">
+            <section aria-labelledby="todo-open-title">
+              <div class="section-heading"><h2 id="todo-open-title">待處理</h2><span id="todo-open-count"></span></div>
+              <ul id="todo-open" class="todo-list"></ul>
+              <p id="todo-open-empty" class="empty">目前沒有待處理的事項。</p>
+            </section>
+            <section aria-labelledby="todo-done-title">
+              <div class="section-heading"><h2 id="todo-done-title">已完成</h2><span id="todo-done-count"></span></div>
+              <ul id="todo-done" class="todo-list"></ul>
+              <p id="todo-done-empty" class="empty">完成的事項會顯示在這裡。</p>
+            </section>
+          </div>
+        </section>
+        <footer class="footer"><span>《艾瑟蘭異界物語：新世界》玩家專用 · 非遊戲權威存檔</span><span>公開遊戲資料唯讀 · 所有遊戲日期皆為世界內日期</span></footer>
       </main>
     </div>
   </div>
+  <template id="todo-item">
+    <li class="card todo-item">
+      <h3></h3>
+      <p class="todo-item-deadline" hidden></p>
+      <p class="description todo-item-notes" hidden></p>
+      <div class="todo-actions">
+        <label class="todo-check"><input type="checkbox" data-todo-done /> 完成</label>
+        <button class="small-btn" type="button" data-todo-action="edit">編輯</button>
+        <button class="small-btn" type="button" data-todo-action="delete">刪除</button>
+      </div>
+    </li>
+  </template>
   <dialog id="inventory-dialog" class="inventory-dialog" aria-labelledby="inventory-dialog-title">
     <div class="inventory-dialog-head">
       <h2 id="inventory-dialog-title"></h2>

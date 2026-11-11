@@ -1,4 +1,4 @@
-/* 艾瑟蘭世界管理中心 — 唯讀介面。正式遊戲內容以聊天和正式存檔為準。 */
+/* 艾瑟蘭世界管理中心。正式遊戲內容以聊天和正式存檔為準。 */
 "use strict";
 const TABS={
  overview:["總覽","最重要的角色、逾期研究、任務與最近事件集中在這裡。"],
@@ -14,6 +14,7 @@ const TABS={
  sidelines:["世界支線","白樺莊園、星環、界錨、北境封印及其他支線。"],
  npcs:["NPC永久名冊","重要角色關係、職責、最近確認資訊；非全部歷史名冊。"],
  commitments:["承諾與待辦","承諾是已答應履行的事項。待辦是仍需行動、等待結果或核對的事項。"],
+ "personal-todos":["我的待辦","新增自己的追蹤事項，可填寫遊戲期限與備註。待辦儲存在此瀏覽器。"],
  timeline:["事件時間軸","按遊戲日回顧事件。點開任一事件，即可查看經過、人物、結果與來源。"]
 };
 let DATA=null,page="overview",query="",filter="",questFilter="";
@@ -537,8 +538,9 @@ function showInventoryDetail(button){
 
 function renderCommitments(rows){
  const review=DATA.sync?.commitmentsVerifiedThrough;
- const note=review?'<div class="info-banner">依 '+safe(review.source)+' 核對至第'+
-  safe(review.gameDay)+'日 '+safe(review.gameTime)+'。</div>':"";
+ const source=review?'依 '+safe(review.source)+' 核對至第'+safe(review.gameDay)+'日 '+safe(review.gameTime)+'。':"";
+ const note='<div class="info-banner">'+source+
+  ' <button class="inline-link" type="button" data-goto="personal-todos">前往我的待辦</button></div>';
  if(!rows.length)return note+cardGrid(rows);
  const open=rows.filter(row=>!row.closed);
  const groups=[
@@ -551,12 +553,17 @@ function renderCommitments(rows){
 }
 
 function render(){
- if(!DATA)return;
  const cfg=TABS[page],p=$("content");
+ const personal=page==="personal-todos";
+ $("personal-todos").hidden=!personal;
+ $("dashboard-toolbar").hidden=personal;
+ $("notice").hidden=personal||!DATA;
+ p.hidden=personal;
  $("page-title").textContent=cfg[0];
  $("page-description").textContent=cfg[1];
  $("quest-category-filter").hidden=page!=="quests";
  $("quest-priority").hidden=page!=="quests";
+ if(personal||!DATA)return;
  const rows=pageRows();
  const showToolbar=page!=="overview";
  const placeholder=page==="timeline"?"搜尋事件、人物、地點或任務 ID…":"搜尋名稱、任務ID、物品位置、NPC或研究…";
@@ -640,8 +647,7 @@ async function load(){
    $("location-label").textContent="目前位置："+d.snapshot.location;
    $("save-label").textContent="正式來源："+d.snapshot.officialSave;
    $("side-sync").textContent=currentCounters();
-   const n=$("notice");
-   n.hidden=false;n.textContent="玩家查詢專用看板｜"+d.snapshot.scope;
+   $("notice").textContent="玩家查詢專用看板｜"+d.snapshot.scope;
    refreshPageFilters();
    loadedPayload=payload;
   }
@@ -656,4 +662,4 @@ async function load(){
   $("content").innerHTML='<div class="empty">無法載入資料檔。請再點左側選單重試，或檢查 <a href="./data/latest.json">latest.json</a> 是否已部署。<p>'+safe(err.message)+'</p></div>';
  }
 }
-document.addEventListener("DOMContentLoaded",()=>{init();load()});
+document.addEventListener("DOMContentLoaded",()=>{init();render();load()});
