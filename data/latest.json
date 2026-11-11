@@ -2,72 +2,70 @@
   "schemaVersion": "1.0",
   "world": "艾瑟蘭異界物語：新世界",
   "snapshot": {
-    "gameDay": 193,
-    "gameTime": "14:40",
-    "location": "西線軍方前進營・預備休息區・第三休息帳",
-    "officialSave": "V121",
-    "npcIndex": "V65",
-    "detailIndex": "V15",
-    "baseline": "第193日13:11",
+    "gameDay": 195,
+    "gameTime": "10:08",
+    "location": "北境霜墓封印前進站外空地",
+    "officialSave": "V124",
+    "npcIndex": "V68",
+    "detailIndex": "V18",
+    "baseline": "第195日10:08",
     "authority": "最新有效完整存檔及後續正式劇情優先；本看板只作唯讀查詢，不是正式存檔",
-    "scope": "V121正式完整存檔及後續已確認正式劇情至第193日14:40（GitHub唯讀增量同步）",
+    "scope": "V124完整存檔及配套06 V18／12 V68／20號明細至第195日10:08",
     "paused": false,
-    "incrementalCounter": 14,
-    "fullCounter": 14
+    "incrementalCounter": 0,
+    "fullCounter": 0
   },
   "sync": {
     "intervalTurns": 20,
     "turnsSinceSuccessfulSync": 0,
     "triggerOnFormalSave": true,
-    "lastGameDay": 193,
-    "lastGameTime": "14:40",
-    "lastSourceSave": "V121完整存檔（13:11）＋後續14回合正式劇情至14:40",
-    "status": "成功同步",
-    "note": "依第193日14:40已確認正式劇情，核對並補齊 7 筆時間軸詳情及黑曜軍團委託進度。正式存檔來源仍為 V121／06 V15／12 V65。",
+    "lastGameDay": 195,
+    "lastGameTime": "10:08",
+    "lastSourceSave": "V124完整存檔＋06 V18／12 V68／20物品明細",
+    "status": "候選待驗證",
+    "note": "補登第193日14:40至第195日10:08重大事件、任務付款與申請、霜骨龍及FS-N188-01歸還；保留既有歷史",
     "timelineVerifiedThrough": {
-      "gameDay": 193,
-      "gameTime": "14:40"
+      "gameDay": 195,
+      "gameTime": "10:08"
     },
     "changeSet": {
       "timelineIds": [
-        "EV-193-CAMP-BANN-HEALED",
-        "EV-193-CAMP-REST",
-        "EV-193-BRIDGE-WITHDRAWAL",
-        "EV-193-CAMP-SWORD",
-        "EV-193-NORTH-TUNNEL",
-        "EV-193-OLD-BRIDGE-REPAIR-PLAN",
-        "EV-193-CAMP-TALENT"
+        "EV-193-POST-1440-WEST-CAMPAIGN",
+        "EV-194-OVERNIGHT-CAPTURES",
+        "EV-194-MILITARY-SETTLEMENT",
+        "EV-194-GUILD-REWARDS",
+        "EV-194-NEW-HOME-DEPOSIT",
+        "EV-195-WORKSHOP-RESEARCH",
+        "EV-195-FROST-DRAGON-AWAKEN",
+        "EV-195-GUILD-BOARD",
+        "EV-195-S-ESCORT-APPLICATION",
+        "EV-195-DRAGON-FLIGHT-NORTH",
+        "EV-195-ARTIFICIAL-CORE-RETURN",
+        "EV-195-FROST-DRAGON-DISPLAY"
       ],
       "questIds": [
-        "TMP-N190-S01"
+        "TMP-G192-S03",
+        "DM-G192-P02",
+        "DM-G192-B01",
+        "TMP-N190-S01",
+        "CAP-195-S014",
+        "WEST-195-S-P03",
+        "TMP-G195-B01",
+        "TMP-G195-A01",
+        "TMP-G195-C01",
+        "TMP-G195-B02",
+        "TMP-G194-B03",
+        "TMP-G194-A02",
+        "TMP-G194-B04",
+        "TMP-G193-A03",
+        "TMP-D195-S01",
+        "TMP-D194-S02",
+        "TMP-F195-01"
       ],
       "inventoryIds": [
-        "INV-OBSIDIAN-SIEGE-CANNON",
-        "INV-OBSIDIAN-BREACH-CONSTRUCT",
-        "INV-OBSIDIAN-VANGUARD-CONVOY",
-        "INV-OBSIDIAN-GROUND-SALVAGE",
-        "INV-OBSIDIAN-ISOLATION-PANELS",
-        "INV-OBSIDIAN-ANCIENT-CALIBRATION",
-        "INV-OBSIDIAN-QINGHENG-CRYSTALS",
-        "INV-OBSIDIAN-AIMING-CORES",
-        "INV-NIGHT-GREYRIDGE4",
-        "INV-NIGHT-TRANSPORT-AXLE",
-        "INV-NIGHT-BLACKSTONE",
-        "INV-NIGHT-REDRIDGE",
-        "INV-NIGHT-FROSTFANG",
-        "INV-NIGHT-GREYCROWN",
-        "INV-NIGHT-CROWHAVEN",
-        "INV-V123-RETAINED-SIEGE-CARGO",
-        "INV-V123-Z0",
-        "INV-V123-ANCIENT-COMPUTATION-CORE",
-        "INV-V123-WHITEHOOK-CORES",
-        "INV-V123-RESTRICTED-RESEARCH",
-        "INV-V123-MIL-194-P07-SALE",
-        "INV-V123-MARKET-SALE",
-        "INV-V123-BLACK-RELAY-SALE",
-        "INV-V123-MIL-194-L08",
-        "INV-V123-TRANSFER-POINT-SALE",
-        "INV-V123-WHITEHOOK-SALE"
+        "INV-FROST-BONE",
+        "INV-ARTIFICIAL-CORE",
+        "INV-FS-N188-01-REPORTS"
       ]
     }
   },
@@ -82,10 +80,10 @@
       "hard": 19,
       "hardTarget": 18
     },
-    "cashCopper": 54367866,
+    "cashCopper": 93783166,
     "thirdPartyHeldCopper": 400000,
     "thirdPartyHeldBy": "奧斯文・貝克",
-    "uncollectedBaseCopper": 865000,
+    "uncollectedBaseCopper": 0,
     "abilities": [
       "現代網購（10倍折扣）",
       "異世界收購",
@@ -110,9 +108,9 @@
       "冰封"
     ],
     "note": "不採用HP／MP。其他已確立能力見正式完整存檔；看板未列出不代表失去。",
-    "uncollectedApprovedCopper": 5470000,
-    "currentLocation": "西線軍方前進營・預備休息區・第三休息帳",
-    "status": "無傷，夢想二號機收甲；第三休息帳交談中，未入睡"
+    "uncollectedApprovedCopper": 638000,
+    "currentLocation": "北境霜墓封印前進站外空地",
+    "status": "健康，霜骨龍V0.2在北境封印站外空地已喚醒站立；CAP-195-S014僅申請特審"
   },
   "characters": [
     {
@@ -473,12 +471,12 @@
     },
     {
       "id": "INV-FROST-BONE",
-      "name": "霜骨龍骨架及原生藍龍魂核",
-      "status": "研究保留",
-      "place": "夢想工坊",
-      "count": "1組",
-      "details": "霜骨龍V0.2未建造完成；不得與雙頭熔岩飛龍混同。",
-      "updatedDay": 191
+      "name": "霜骨龍V0.2原骨架及藍色龍魂核心",
+      "status": "已重建並喚醒展示",
+      "place": "北境霜墓封印前進站外空地",
+      "count": "1具",
+      "details": "第195日01:02喚醒認主、低空飛行成功；09:31載人抵北境，10:08重新喚醒站立；非新購買，原藍色龍魂核心不等於FS-N188-01。",
+      "updatedDay": 195
     },
     {
       "id": "INV-TWIN-WYVERN",
@@ -491,12 +489,12 @@
     },
     {
       "id": "INV-ARTIFICIAL-CORE",
-      "name": "人工亡靈動力核心 FS-N188-01",
-      "status": "借出研究",
-      "place": "北境封印站・格雷文・索爾",
-      "count": "1",
-      "details": "研究借用中，未確認歸還。",
-      "updatedDay": 191
+      "name": "FS-N188-01暗紅三環人工亡靈核心",
+      "status": "研究借用已歸還",
+      "place": "澈無限空間",
+      "count": "1具",
+      "details": "第195日09:43格雷文完整歸還，非新取得；另獲三份研究報告。",
+      "updatedDay": 195
     },
     {
       "id": "INV-ORE-560KG",
@@ -1368,6 +1366,15 @@
         "車輛備件、工具箱": 356000,
         "地下庫房非核心材料、能源單元及零散器材": 745000
       }
+    },
+    {
+      "id": "INV-FS-N188-01-REPORTS",
+      "name": "FS-N188-01三份階段研究報告",
+      "status": "已取得",
+      "place": "澈持有",
+      "count": "3份",
+      "details": "第195日09:43格雷文交付，涉及三環機制、風險與第六地脈觀測井技術線索。",
+      "updatedDay": 195
     }
   ],
   "quests": [
@@ -1426,10 +1433,10 @@
       "id": "TMP-N190-S01",
       "name": "黑曜軍團・第九裂刃攻城群",
       "rank": "S",
-      "status": "已接取、進行中",
+      "status": "已結算付款",
       "rewardCopper": 7200000,
       "bonusCopper": 1300000,
-      "bonusStatus": "情報獎上限",
+      "bonusStatus": "已正式結算之原獎金不再待領",
       "deadlineDay": 197,
       "deadlineTime": "18:00",
       "owner": "北境聯軍西線指揮部",
@@ -1441,14 +1448,15 @@
         "schedule": "第193日 08:00 簡報，09:00 行動開始。最終期限第197日 18:00。",
         "deliveryDeadline": "第197日 18:00",
         "risk": "前沿運輸隊約 180～240 人。敵地下指揮層曾送出增援訊號，東北殘部及軍官去向仍由軍方追查。",
-        "payment": "基本 7,200,000 銅幣及情報獎上限 1,300,000 銅幣，尚未正式核准結算或入帳。",
+        "payment": "第194日13:55–14:13正式付款，原已核准基本及獎金已入帳，不重複結算",
         "source": "正式完整存檔 V121 及第193日軍方簡報、活俘移交與回報紀錄",
         "acceptedAt": "第193日 08:00 簡報前已正式接取，確切時點未記載。",
         "completion": "兩具構裝體均已安全停用，地面攻勢瓦解，地下控制站失效。12:16 軍方接管瓦爾克及 25 名俘虜，收據 POW-193-041～066。任務未正式結案。",
         "progress": "敵增援主車隊已東撤，14:07 敵軍撤出橋東警戒位置。14:38 北側通風井發現疑似賽格後勤標記，尚未確認軍官去向。澈在第三休息帳待命。舊橋已確認主拱可保留，東引道準備臨時加固，責任及費用待裁定。",
-        "next": "軍方持續監視、封鎖廢棄礦道出口並比對情報。雷蒙德如遇重大戰況再通知澈。後續依正式結案及報酬核定處理。"
+        "next": "已完成"
       },
-      "updatedDay": 193
+      "updatedDay": 194,
+      "paymentPendingCopper": 0
     },
     {
       "id": "TMP-N187-S06",
@@ -1885,7 +1893,7 @@
       "id": "DM-G192-B01",
       "name": "蒼岩哨站失控守衛",
       "rank": "B+專屬",
-      "status": "雙機完整修復已驗收待公會付款",
+      "status": "已結算付款",
       "rewardCopper": 650000,
       "details": "第192日19:00軍方驗收，CG-01/02正常啟動，歷史資料保留，異常轉接模組與M-27資料已移交。調查操作者是獨立任務，澈未接取。",
       "taskDetails": {
@@ -1898,20 +1906,22 @@
         "deliveryDeadline": "第198日 18:00",
         "completion": "CG-01、CG-02 正常啟動、識別與武器鎖恢復，歷史資料完整；證物與調查資料交付哨站。",
         "reward": "安全排除 325,000 銅幣；雙機完整修復 650,000 銅幣。",
-        "payment": "第192日 19:00 軍方驗收確認雙機完整修復，650,000 銅幣待公會付款。",
-        "next": "持軍方正式驗收證明至公會結算。",
+        "payment": "第194日13:55–14:13正式付款，原已核准基本及獎金已入帳，不重複結算",
+        "next": "已完成",
         "source": "第192日已確認正式劇情・蒼岩哨站接取、修復及驗收"
       },
       "category": "夢想小隊專屬委託",
-      "paymentPendingCopper": 650000,
+      "paymentPendingCopper": 0,
       "deadlineDay": 198,
-      "deadlineTime": "18:00"
+      "deadlineTime": "18:00",
+      "bonusStatus": "已正式結算之原獎金不再待領",
+      "updatedDay": 194
     },
     {
       "id": "DM-G192-P02",
       "name": "銀砂河谷古代測繪箱",
       "rank": "A專屬豁免",
-      "status": "完成且正式驗收，待公會結算",
+      "status": "已結算付款",
       "rewardCopper": 540000,
       "bonusCopper": 80000,
       "deadlineDay": 204,
@@ -1927,19 +1937,20 @@
         "deliveryDeadline": "第204日 18:00",
         "completion": "三柱資料、古代測繪箱與地脈圖已完整交付並通過測繪院驗收。",
         "progress": "第193日 02:54 完成東柱校準、完整六小時測繪與資料寫入，依程序解除連線，安全取出測繪箱。03:18 完成測繪院驗收。",
-        "payment": "第193日 03:18 核准基本 540,000 銅幣及附加 80,000，合計 620,000 銅幣。公會付款尚未入帳。",
-        "next": "持驗收證明至公會結算。北側第七導流節點另案調查，尚未接取。",
+        "payment": "第194日13:55–14:13正式付款，原已核准基本及獎金已入帳，不重複結算",
+        "next": "已完成",
         "source": "第192日接洽紀錄及第193日 03:18 正式交付與驗收"
       },
       "category": "夢想小隊專屬委託",
-      "paymentPendingCopper": 620000,
-      "bonusStatus": "80,000 銅幣資料保存獎已核准，待付款"
+      "paymentPendingCopper": 0,
+      "bonusStatus": "已正式結算之原獎金不再待領",
+      "updatedDay": 194
     },
     {
       "id": "TMP-G192-S03",
       "name": "沉鐘古城黑霧巨像",
       "rank": "S特例",
-      "status": "已正式驗收，待公會結算",
+      "status": "已結算付款",
       "rewardCopper": 3800000,
       "bonusCopper": 400000,
       "deadlineDay": 209,
@@ -1951,17 +1962,179 @@
         "eligibility": "S 級個案越級核准。進入前須向北境封印署現場指揮官報到。",
         "completion": "完整停機並解除與主鐘的控制連線，主鐘及固定封印完整保留。現場安全檢查、所有權移轉及任務驗收均已完成。",
         "deliveryDeadline": "第209日 18:00",
-        "payment": "基本 3,800,000 銅幣＋主鐘保存獎 400,000 銅幣，全額核准，共 4,200,000 銅幣待公會入帳。",
+        "payment": "第194日13:55–14:13正式付款，原已核准基本及獎金已入帳，不重複結算",
         "source": "正式完整存檔 V121 及第193日沉鐘古城停機、驗收與資產移轉紀錄",
         "progress": "巨像軀體、核心和原始記憶完整。06:08 完成古城原始黑霧微粒回收，稍後連同巨像一併收入無限空間。封印局另行記錄回收成果。",
-        "next": "持正式驗收證明至公會結算。",
+        "next": "已完成",
         "client": "北境封印署／封印局現場指揮官奧德里克・凡恩",
         "schedule": "第193日 04:35 完成報到。04:48 核准有條件移轉，05:07 停機，05:23～05:29 驗收。"
       },
       "details": "第193日 05:23～05:29 正式驗收。約23公尺的古代重型封印工程巨像與核心已合法移轉給澈，後續連同回收微粒安全收納。",
-      "paymentPendingCopper": 4200000,
-      "bonusStatus": "主鐘保存獎全額核准，待付款",
-      "updatedDay": 193
+      "paymentPendingCopper": 0,
+      "bonusStatus": "已正式結算之原獎金不再待領",
+      "updatedDay": 194
+    },
+    {
+      "id": "CAP-195-S014",
+      "name": "王都封印文書護送",
+      "status": "單人特殊資格申請已受理，未接取",
+      "rewardCopper": 4800000,
+      "updatedDay": 195,
+      "taskDetails": {
+        "client": "王國封印院／王都冒險者公會",
+        "acceptedAt": "第195日07:51僅受理資格申請，非任務接取",
+        "eligibility": "B級澈以已完成S級熔冠地龍討伐免一般推薦人，護貨撤離能力與委託方同意待審",
+        "requirements": "封印文書、封印拓片與三件封印魔導器自王都護送至北境指定交接所，保護封印完整",
+        "payment": "4,800,000銅幣為整項契約總報酬，尚未核准、未簽約、未付款",
+        "applicationDeadline": "第197日18:00",
+        "reviewDeadline": "第195日18:00",
+        "schedule": "第199日王都集合，預估5–8日，最遲第208日18:00交付",
+        "next": "等待第195日18:00前具體初審回覆"
+      }
+    },
+    {
+      "id": "WEST-195-S-P03",
+      "name": "西境王室使節團護衛",
+      "status": "僅預審，未申請",
+      "rewardCopper": 6200000,
+      "updatedDay": 195,
+      "taskDetails": {
+        "client": "王國外交事務署西境聯絡處",
+        "payment": "6,200,000銅幣僅為暫定整體預算，非個人保證報酬",
+        "schedule": "第196日下午預計發布正式規格，可能第198日中午報名截止、第201日後出發"
+      }
+    },
+    {
+      "id": "TMP-G195-B01",
+      "name": "北部商道鐵甲狼群清剿",
+      "status": "第195日已公告，未接取",
+      "rewardCopper": 186000,
+      "updatedDay": 195,
+      "taskDetails": {
+        "rank": "B",
+        "source": "第195日07:17–07:36正式公會公告",
+        "next": "依正式公告期限自行申請；不可視為已接取"
+      }
+    },
+    {
+      "id": "TMP-G195-A01",
+      "name": "赤岩峽谷雙首岩蜥討伐",
+      "status": "第195日已公告，未接取",
+      "rewardCopper": 780000,
+      "updatedDay": 195,
+      "taskDetails": {
+        "rank": "A",
+        "source": "第195日07:17–07:36正式公會公告",
+        "next": "依正式公告期限自行申請；不可視為已接取"
+      }
+    },
+    {
+      "id": "TMP-G195-C01",
+      "name": "東郊水渠毒棘水藤清除",
+      "status": "第195日已公告，未接取",
+      "rewardCopper": 42000,
+      "updatedDay": 195,
+      "taskDetails": {
+        "rank": "C",
+        "source": "第195日07:17–07:36正式公會公告",
+        "next": "依正式公告期限自行申請；不可視為已接取"
+      }
+    },
+    {
+      "id": "TMP-G195-B02",
+      "name": "西南古橋失控石衛調查",
+      "status": "第195日已公告，未接取",
+      "rewardCopper": 224000,
+      "updatedDay": 195,
+      "taskDetails": {
+        "rank": "B",
+        "source": "第195日07:17–07:36正式公會公告",
+        "next": "依正式公告期限自行申請；不可視為已接取"
+      }
+    },
+    {
+      "id": "TMP-G194-B03",
+      "name": "南部鹽道貨隊失聯路段調查",
+      "status": "第195日已公告，未接取",
+      "rewardCopper": 205000,
+      "updatedDay": 195,
+      "taskDetails": {
+        "rank": "B",
+        "source": "第195日07:17–07:36正式公會公告",
+        "next": "依正式公告期限自行申請；不可視為已接取"
+      }
+    },
+    {
+      "id": "TMP-G194-A02",
+      "name": "黑杉林腐蝕巨蛛巢穴",
+      "status": "第195日已公告，未接取",
+      "rewardCopper": 920000,
+      "updatedDay": 195,
+      "taskDetails": {
+        "rank": "A",
+        "source": "第195日07:17–07:36正式公會公告",
+        "next": "依正式公告期限自行申請；不可視為已接取"
+      }
+    },
+    {
+      "id": "TMP-G194-B04",
+      "name": "白石河魔化河鰻群",
+      "status": "第195日已公告，未接取",
+      "rewardCopper": 168000,
+      "updatedDay": 195,
+      "taskDetails": {
+        "rank": "B",
+        "source": "第195日07:17–07:36正式公會公告",
+        "next": "依正式公告期限自行申請；不可視為已接取"
+      }
+    },
+    {
+      "id": "TMP-G193-A03",
+      "name": "斷牙高地地脈裂隙監測",
+      "status": "第195日已公告，未接取",
+      "rewardCopper": 610000,
+      "updatedDay": 195,
+      "taskDetails": {
+        "rank": "A",
+        "source": "第195日07:17–07:36正式公會公告",
+        "next": "依正式公告期限自行申請；不可視為已接取"
+      }
+    },
+    {
+      "id": "TMP-D195-S01",
+      "name": "西境舊哨封閉物資庫勘驗",
+      "status": "第195日已公告，未接取",
+      "rewardCopper": 340000,
+      "updatedDay": 195,
+      "taskDetails": {
+        "rank": "B",
+        "source": "第195日07:17–07:36正式公會公告",
+        "next": "依正式公告期限自行申請；不可視為已接取"
+      }
+    },
+    {
+      "id": "TMP-D194-S02",
+      "name": "東部商路高價貨物短程護送",
+      "status": "第195日已公告，未接取",
+      "rewardCopper": 260000,
+      "updatedDay": 195,
+      "taskDetails": {
+        "rank": "B",
+        "source": "第195日07:17–07:36正式公會公告",
+        "next": "依正式公告期限自行申請；不可視為已接取"
+      }
+    },
+    {
+      "id": "TMP-F195-01",
+      "name": "銀石城醫療藥材緊急轉運",
+      "status": "第195日已公告，未接取",
+      "rewardCopper": 180000,
+      "updatedDay": 195,
+      "taskDetails": {
+        "rank": "專屬",
+        "source": "第195日07:17–07:36正式公會公告",
+        "next": "依正式公告期限自行申請；不可視為已接取"
+      }
     }
   ],
   "research": [
@@ -3777,6 +3950,217 @@
       ],
       "outcome": "V121 之後的看板同步到此時點。澈仍在第三休息帳，西線 S 級委託尚未結案。",
       "source": "第193日13:11～14:40已確認正式劇情"
+    },
+    {
+      "id": "EV-193-POST-1440-WEST-CAMPAIGN",
+      "day": 193,
+      "time": "14:40–23:59",
+      "title": "西線戰場後續與夜間黑曜軍團行動",
+      "summary": "澈協助軍方控制多處黑曜軍團據點，活捉高階軍官；俘虜移交軍方，不屬澈私有。",
+      "location": "西線前進營及黑曜第九裂刃據點",
+      "people": [
+        "澈",
+        "雷蒙德・克萊恩"
+      ],
+      "steps": [
+        "保留各據點已確認收繳與移交的原始紀錄；白鉤堡主堡未清除。"
+      ],
+      "outcome": "澈協助軍方控制多處黑曜軍團據點，活捉高階軍官；俘虜移交軍方，不屬澈私有。",
+      "source": "完整存檔V124（第195日10:08）及其內嵌V123正式歷史"
+    },
+    {
+      "id": "EV-194-OVERNIGHT-CAPTURES",
+      "day": 194,
+      "time": "00:00–02:39",
+      "title": "黑曜軍團夜間行動完成與俘虜移交",
+      "summary": "夜間合計261人由軍方接應：206名確認敵軍、30名平民、25名待查；高階軍官交軍方收押。",
+      "location": "西線軍方前進營／乾溪谷",
+      "people": [
+        "澈",
+        "雷蒙德・克萊恩"
+      ],
+      "steps": [
+        "灰冠、馬提亞斯少將、羅德里克准將、伊凡上校、格雷戈爾上校等均已收押。"
+      ],
+      "outcome": "夜間合計261人由軍方接應：206名確認敵軍、30名平民、25名待查；高階軍官交軍方收押。",
+      "source": "完整存檔V124（第195日10:08）及其內嵌V123正式歷史"
+    },
+    {
+      "id": "EV-194-MILITARY-SETTLEMENT",
+      "day": 194,
+      "time": "12:28–13:00",
+      "title": "軍方四批物資與商城收購完成結算",
+      "summary": "軍方四批成交25,530,000銅幣、商城三項收購609,000銅幣均已入帳；研究補貼960,000遭拒。",
+      "location": "西線軍方前進營",
+      "people": [
+        "澈",
+        "雷蒙德・克萊恩"
+      ],
+      "steps": [
+        "軍方四批：3,810,000、13,202,000、6,668,000、1,850,000；成交物不得留在現有庫存。"
+      ],
+      "outcome": "軍方四批成交25,530,000銅幣、商城三項收購609,000銅幣均已入帳；研究補貼960,000遭拒。",
+      "source": "完整存檔V124（第195日10:08）及其內嵌V123正式歷史"
+    },
+    {
+      "id": "EV-194-GUILD-REWARDS",
+      "day": 194,
+      "time": "13:55–14:13",
+      "title": "格林鎮公會已結算四項任務",
+      "summary": "TMP-G192-S03、DM-G192-P02、DM-G192-B01、TMP-N190-S01正式付款；額外600,000與38,000仍待結算。",
+      "location": "格林鎮冒險者公會",
+      "people": [
+        "澈",
+        "艾琳"
+      ],
+      "steps": [
+        "已付款不得重複列入待領款；兩筆額外款不得提前入帳。"
+      ],
+      "outcome": "TMP-G192-S03、DM-G192-P02、DM-G192-B01、TMP-N190-S01正式付款；額外600,000與38,000仍待結算。",
+      "source": "完整存檔V124（第195日10:08）及其內嵌V123正式歷史"
+    },
+    {
+      "id": "EV-194-NEW-HOME-DEPOSIT",
+      "day": 194,
+      "time": "晚間",
+      "title": "晨露花園宅買賣簽約並付訂金",
+      "summary": "購屋總價4,360,000銅幣、已付訂金436,000，餘款3,924,000於第197日驗屋交屋時支付。",
+      "location": "格林鎮・晨露花園宅",
+      "people": [
+        "澈",
+        "艾琳"
+      ],
+      "steps": [
+        "室內318平方公尺、5房3衛、庭院書房；賣方須修復地下室潮濕角落並清空私人物品。"
+      ],
+      "outcome": "購屋總價4,360,000銅幣、已付訂金436,000，餘款3,924,000於第197日驗屋交屋時支付。",
+      "source": "完整存檔V124（第195日10:08）及其內嵌V123正式歷史"
+    },
+    {
+      "id": "EV-195-WORKSHOP-RESEARCH",
+      "day": 195,
+      "time": "00:38",
+      "title": "夢想工坊確認五類十七研究方向",
+      "summary": "可重熔聚魔合金與武器／彈藥灌注材料為首要研究；古代巨像黑霧微粒機器人仍僅是假說。",
+      "location": "格林鎮・夢想工坊",
+      "people": [
+        "澈",
+        "布魯克",
+        "維爾納",
+        "法恩",
+        "想想",
+        "小夢"
+      ],
+      "steps": [
+        "銀紋聚賦礦完整晶紋增益13.6–14.4%，熔後無可靠增益；未授權破壞性試驗。"
+      ],
+      "outcome": "可重熔聚魔合金與武器／彈藥灌注材料為首要研究；古代巨像黑霧微粒機器人仍僅是假說。",
+      "source": "完整存檔V124（第195日10:08）及其內嵌V123正式歷史"
+    },
+    {
+      "id": "EV-195-FROST-DRAGON-AWAKEN",
+      "day": 195,
+      "time": "01:02–01:12",
+      "title": "霜骨龍V0.2原藍色龍魂核心喚醒成功",
+      "summary": "原骨架重建完成，認主、意念飛行、8公尺懸停、降落與休眠測試成功。",
+      "location": "夢想工坊後空地",
+      "people": [
+        "澈",
+        "布魯克",
+        "維爾納",
+        "法恩",
+        "想想",
+        "小夢"
+      ],
+      "steps": [
+        "未使用FS-N188-01人工亡靈核心；未測冰息、再生及極限續航。"
+      ],
+      "outcome": "原骨架重建完成，認主、意念飛行、8公尺懸停、降落與休眠測試成功。",
+      "source": "完整存檔V124（第195日10:08）及其內嵌V123正式歷史"
+    },
+    {
+      "id": "EV-195-GUILD-BOARD",
+      "day": 195,
+      "time": "07:17–07:36",
+      "title": "格林鎮公會四區公告已查看",
+      "summary": "查看一般委託8、夢想小隊專屬2、飛天號急件1、隊伍招募10，皆未接取。",
+      "location": "格林鎮冒險者公會",
+      "people": [
+        "澈"
+      ],
+      "steps": [
+        "公告與價格、期限以第195日正式劇情為準；飛天號急件報名期限09:30。"
+      ],
+      "outcome": "查看一般委託8、夢想小隊專屬2、飛天號急件1、隊伍招募10，皆未接取。",
+      "source": "完整存檔V124（第195日10:08）及其內嵌V123正式歷史"
+    },
+    {
+      "id": "EV-195-S-ESCORT-APPLICATION",
+      "day": 195,
+      "time": "07:51",
+      "title": "CAP-195-S014單人特殊資格申請送達王都",
+      "summary": "瑪蒂娜提交B級個人獨立承接S級封印文書護送的特審申請；初審期限第195日18:00，尚未接取或簽約。",
+      "location": "格林鎮冒險者公會",
+      "people": [
+        "澈",
+        "瑪蒂娜"
+      ],
+      "steps": [
+        "S級熔冠地龍完成紀錄免一般推薦人，仍須護貨撤離能力及委託方同意；整體報酬4,800,000。"
+      ],
+      "outcome": "瑪蒂娜提交B級個人獨立承接S級封印文書護送的特審申請；初審期限第195日18:00，尚未接取或簽約。",
+      "source": "完整存檔V124（第195日10:08）及其內嵌V123正式歷史"
+    },
+    {
+      "id": "EV-195-DRAGON-FLIGHT-NORTH",
+      "day": 195,
+      "time": "07:53–09:31",
+      "title": "霜骨龍首次載人飛行抵北境",
+      "summary": "載澈北飛，穩定巡航約155km/h，本次最高觀測約218km/h，並非絕對極速。",
+      "location": "格林鎮城外至北境霜墓封印前進站",
+      "people": [
+        "澈",
+        "小夢"
+      ],
+      "steps": [
+        "約98分鐘含起降調整；實際航線里程未確認。"
+      ],
+      "outcome": "載澈北飛，穩定巡航約155km/h，本次最高觀測約218km/h，並非絕對極速。",
+      "source": "完整存檔V124（第195日10:08）及其內嵌V123正式歷史"
+    },
+    {
+      "id": "EV-195-ARTIFICIAL-CORE-RETURN",
+      "day": 195,
+      "time": "09:43",
+      "title": "格雷文歸還FS-N188-01與三份研究報告",
+      "summary": "人工暗紅三環核心完整歸還澈、收入無限空間；研究指出指令延遲、重複及停機風險。",
+      "location": "北境霜墓封印前進站",
+      "people": [
+        "澈",
+        "格雷文・索爾"
+      ],
+      "steps": [
+        "第一環整流、第二環轉換穩定、第三環可能維持指令；第三環與第六地脈觀測井設備有技術關聯。"
+      ],
+      "outcome": "人工暗紅三環核心完整歸還澈、收入無限空間；研究指出指令延遲、重複及停機風險。",
+      "source": "完整存檔V124（第195日10:08）及其內嵌V123正式歷史"
+    },
+    {
+      "id": "EV-195-FROST-DRAGON-DISPLAY",
+      "day": 195,
+      "time": "10:08",
+      "title": "霜骨龍在北境前進站外重新喚醒展示",
+      "summary": "格雷文與兩名研究員目睹原霜骨龍重建後站立，骨龍現仍在站外空地。",
+      "location": "北境霜墓封印前進站外空地",
+      "people": [
+        "澈",
+        "格雷文・索爾"
+      ],
+      "steps": [
+        "尚未測試冰息、再生或破壞性功能；下一步由澈決定。"
+      ],
+      "outcome": "格雷文與兩名研究員目睹原霜骨龍重建後站立，骨龍現仍在站外空地。",
+      "source": "完整存檔V124（第195日10:08）及其內嵌V123正式歷史"
     }
   ],
   "prices": [
@@ -3860,74 +4244,84 @@
   ],
   "latestEvents": [
     {
-      "id": "EV-193-CAMP-TALENT",
-      "gameDay": 193,
-      "time": "14:40",
-      "event": "澈向班恩、里克、哈洛稱武器掌握是天賦；眾人接受但不知能力真相。雷蒙德命令續查北側礦道及疑似賽格後勤標記。"
+      "id": "EV-194-MILITARY-SETTLEMENT",
+      "day": 194,
+      "time": "12:28–13:00",
+      "title": "軍方四批物資與商城收購完成結算",
+      "summary": "軍方四批成交25,530,000銅幣、商城三項收購609,000銅幣均已入帳；研究補貼960,000遭拒。"
     },
     {
-      "id": "EV-193-CAMP-SWORD",
-      "gameDay": 193,
-      "time": "14:29",
-      "event": "澈認為瓦爾克斷城劍術缺點是重心及出招後無後手。托姆向工兵展示澈用巨顎削出的木棍；舊石橋主拱可保留，東引道準備臨時加固。"
+      "id": "EV-194-GUILD-REWARDS",
+      "day": 194,
+      "time": "13:55–14:13",
+      "title": "格林鎮公會已結算四項任務",
+      "summary": "TMP-G192-S03、DM-G192-P02、DM-G192-B01、TMP-N190-S01正式付款；額外600,000與38,000仍待結算。"
     },
     {
-      "id": "EV-193-NORTH-TUNNEL",
-      "gameDay": 193,
-      "time": "14:21",
-      "event": "北側封閉通風井發現軍服、軍官識別牌及近期通行跡象，後續發現臨時停留點與疑似賽格後勤標記；人員身分未確定。"
+      "id": "EV-194-NEW-HOME-DEPOSIT",
+      "day": 194,
+      "time": "晚間",
+      "title": "晨露花園宅買賣簽約並付訂金",
+      "summary": "購屋總價4,360,000銅幣、已付訂金436,000，餘款3,924,000於第197日驗屋交屋時支付。"
     },
     {
-      "id": "EV-193-BRIDGE-WITHDRAWAL",
-      "gameDay": 193,
-      "time": "14:07",
-      "event": "敵軍退出橋東警戒位置，王國軍監視不追擊；班恩右臂醫療復查恢復正常。"
+      "id": "EV-195-WORKSHOP-RESEARCH",
+      "day": 195,
+      "time": "00:38",
+      "title": "夢想工坊確認五類十七研究方向",
+      "summary": "可重熔聚魔合金與武器／彈藥灌注材料為首要研究；古代巨像黑霧微粒機器人仍僅是假說。"
     },
     {
-      "id": "EV-193-CAMP-REST",
-      "gameDay": 193,
-      "time": "13:54",
-      "event": "澈在第三休息帳與里克、哈洛談及不屬軍隊、只接受委託；托姆帶走光滑木棍；未收新任務。"
+      "id": "EV-195-FROST-DRAGON-AWAKEN",
+      "day": 195,
+      "time": "01:02–01:12",
+      "title": "霜骨龍V0.2原藍色龍魂核心喚醒成功",
+      "summary": "原骨架重建完成，認主、意念飛行、8公尺懸停、降落與休眠測試成功。"
     },
     {
-      "id": "EV-193-CAMP-THIRD-TENT",
-      "gameDay": 193,
-      "time": "13:11",
-      "event": "澈進入前進營第三休息帳，與班恩、里克、托姆、哈洛初次交談；班恩右臂輕傷，問落月使用何種武器。"
+      "id": "EV-195-GUILD-BOARD",
+      "day": 195,
+      "time": "07:17–07:36",
+      "title": "格林鎮公會四區公告已查看",
+      "summary": "查看一般委託8、夢想小隊專屬2、飛天號急件1、隊伍招募10，皆未接取。"
     },
     {
-      "id": "EV-193-VALK-PRISONER-HANDOVER",
-      "gameDay": 193,
-      "time": "12:16",
-      "event": "瓦爾克・德拉森及25名敵軍俘虜正式移交王國軍，收據POW-193-041～066；TMP-N190-S01尚未結案。"
+      "id": "EV-195-S-ESCORT-APPLICATION",
+      "day": 195,
+      "time": "07:51",
+      "title": "CAP-195-S014單人特殊資格申請送達王都",
+      "summary": "瑪蒂娜提交B級個人獨立承接S級封印文書護送的特審申請；初審期限第195日18:00，尚未接取或簽約。"
     },
     {
-      "id": "EV-193-OLD-BRIDGE-FALLING-MOON",
-      "gameDay": 193,
-      "time": "12:05",
-      "event": "澈施展落月損壞舊石橋東側引道；王國軍11名觀察兵存活，班恩1人輕傷；修復責任待判定。"
+      "id": "EV-195-DRAGON-FLIGHT-NORTH",
+      "day": 195,
+      "time": "07:53–09:31",
+      "title": "霜骨龍首次載人飛行抵北境",
+      "summary": "載澈北飛，穩定巡航約155km/h，本次最高觀測約218km/h，並非絕對極速。"
     },
     {
-      "id": "EV-193-CAMP-TEA-GIFT",
-      "gameDay": 193,
-      "time": "12:36",
-      "event": "現代商城購茶具茶葉熱水實付1780銅幣；茶具與剩餘茶葉已贈雷蒙德。"
+      "id": "EV-195-ARTIFICIAL-CORE-RETURN",
+      "day": 195,
+      "time": "09:43",
+      "title": "格雷文歸還FS-N188-01與三份研究報告",
+      "summary": "人工暗紅三環核心完整歸還澈、收入無限空間；研究指出指令延遲、重複及停機風險。"
     },
     {
-      "id": "EV-193-SIEGE-REINFORCEMENT-WITHDRAWAL",
-      "gameDay": 193,
-      "time": "12:52",
-      "event": "敵軍增援主車隊向東撤離，約20名步兵留橋東警戒；軍方持續監視。"
+      "id": "EV-195-FROST-DRAGON-DISPLAY",
+      "day": 195,
+      "time": "10:08",
+      "title": "霜骨龍在北境前進站外重新喚醒展示",
+      "summary": "格雷文與兩名研究員目睹原霜骨龍重建後站立，骨龍現仍在站外空地。"
     }
   ],
   "currentScene": {
-    "location": "西線軍方前進營・預備休息區・第三休息帳",
+    "location": "北境霜墓封印前進站外空地",
     "npcs": [
-      "班恩",
-      "里克",
-      "哈洛"
+      "格雷文・索爾",
+      "兩名研究員",
+      "封印站守衛"
     ],
-    "prompt": "里克問澈：第一次拿起劍的時候，就已經知道該怎麼用了嗎？",
+    "prompt": "格雷文詢問澈接下來是否回格林鎮或探訪北境其他地方；由玩家決定",
     "restStarted": false
   },
   "openIssues": [
@@ -3940,14 +4334,14 @@
     "橋梁主拱可保留，東側引道加固施工中，責任與費用未定"
   ],
   "inventoryReview": {
-    "gameDay": 194,
-    "gameTime": "14:13",
-    "scope": "V123 已確認軍需四批成交25,530,000銅幣。已出售、保留與代管各自分列；原回收批次的銷帳數量仍待對帳。"
+    "gameDay": 195,
+    "gameTime": "10:08",
+    "scope": "V124及20號物品進出明細同步；已成交批次依V123交割保留歷史、不再視為私有現貨"
   },
   "inventoryLedger": {
     "source": "20_物品進出明細.md",
-    "version": "V2",
-    "reviewedThrough": "第194日 14:13",
+    "version": "第195日10:08同步",
+    "reviewedThrough": "第195日10:08",
     "notes": [
       "第194日軍方四批成交合計 25,530,000 銅幣，商城三項收購合計 609,000 銅幣。合計僅用於對帳。研究補貼 960,000 銅幣在 12:12 被拒絕，庫存變動為零。",
       "軍法返還的 18,640 銅幣依正式財物帳入帳。此處的返還物品明細只記實物。",
@@ -4755,6 +5149,30 @@
         "movement": "商城收購 −3 枚",
         "result": "此收購批次剩 0 枚，已自無限空間移出",
         "source": "實收 105,000 銅幣；V123"
+      },
+      {
+        "id": "MOV-195-FS-N188-01-RETURN",
+        "time": "第195日09:43",
+        "name": "FS-N188-01暗紅三環人工亡靈核心",
+        "movement": "研究借用歸還1件；原持有量不變",
+        "result": "澈無限空間，完整未拆解",
+        "source": "20_物品進出明細_第195日1008同步.md；V124"
+      },
+      {
+        "id": "MOV-195-FS-N188-01-REPORTS",
+        "time": "第195日09:43",
+        "name": "FS-N188-01研究報告",
+        "movement": "新增三份階段研究報告",
+        "result": "澈持有",
+        "source": "20_物品進出明細_第195日1008同步.md；V124"
+      },
+      {
+        "id": "MOV-195-FROST-BONE-DISPLAY",
+        "time": "第195日10:08",
+        "name": "霜骨龍V0.2原骨架與原藍色龍魂核心",
+        "movement": "由無限空間取出展示，非新購買",
+        "result": "北境前進站外空地，已喚醒站立",
+        "source": "20_物品進出明細_第195日1008同步.md；V124"
       }
     ]
   }
