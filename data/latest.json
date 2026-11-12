@@ -22,8 +22,8 @@
     "lastGameDay": 212,
     "lastGameTime": "16:22",
     "lastSourceSave": "V131＋第212日16:22正式劇情",
-    "status": "候選同步待檢查",
-    "note": "保留原ID與舊紀錄；新增第211–212日正式進度。未確認的細項不推定完成。",
+    "status": "成功同步",
+    "note": "第212日16:22正式劇情已合併至main並讀回核對；本儲存庫未回傳工作流程檢查結果。",
     "timelineVerifiedThrough": {
       "gameDay": 212,
       "gameTime": "16:22"
