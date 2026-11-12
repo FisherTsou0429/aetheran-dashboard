@@ -2,129 +2,66 @@
   "schemaVersion": "1.0",
   "world": "艾瑟蘭異界物語：新世界",
   "snapshot": {
-    "gameDay": 201,
-    "gameTime": "02:48",
-    "location": "王都冒險者公會・夜間受理櫃檯",
-    "officialSave": "V127＋後續正式劇情覆蓋至第201日02:48",
-    "npcIndex": "V71＋後續正式劇情",
-    "detailIndex": "V21＋後續正式劇情",
-    "baseline": "第201日02:48",
+    "gameDay": 212,
+    "gameTime": "16:22",
+    "location": "格林・白樺莊園一樓公共休息室",
+    "officialSave": "V131（第211日16:01）＋後續正式劇情至第212日16:22",
+    "npcIndex": "V75＋後續正式劇情",
+    "detailIndex": "V26＋後續正式劇情",
+    "baseline": "第212日16:22",
     "authority": "最新有效完整存檔及後續正式劇情優先；本看板只作唯讀查詢，不是正式存檔",
-    "scope": "第200日17:05 V127＋來源20 V3＋第201日02:48正式劇情",
+    "scope": "V131＋第211日至212日已確認正式劇情",
     "paused": false,
-    "incrementalCounter": 14,
-    "fullCounter": 14
+    "incrementalCounter": 33,
+    "fullCounter": 33
   },
   "sync": {
     "intervalTurns": 20,
     "turnsSinceSuccessfulSync": 0,
     "triggerOnFormalSave": true,
-    "lastGameDay": 201,
-    "lastGameTime": "02:48",
-    "lastSourceSave": "V127＋來源20 V3＋正式劇情至第201日02:48",
-    "status": "成功同步",
-    "note": "第201日02:48資料。已依《20》V3補齊公開庫存、物品進出及核准待付款欄位。",
+    "lastGameDay": 212,
+    "lastGameTime": "16:22",
+    "lastSourceSave": "V131＋第212日16:22正式劇情",
+    "status": "候選同步待檢查",
+    "note": "保留原ID與舊紀錄；新增第211–212日正式進度。未確認的細項不推定完成。",
     "timelineVerifiedThrough": {
-      "gameDay": 201,
-      "gameTime": "02:48"
+      "gameDay": 212,
+      "gameTime": "16:22"
     },
     "changeSet": {
-      "timelineIds": [],
+      "timelineIds": [
+        "EV-212-0920-MIL-SETTLEMENT",
+        "EV-212-1347-ANCIENT-ARRIVAL",
+        "EV-212-1543-MANOR-FUND",
+        "EV-212-1619-CARRIAGE",
+        "EV-212-1622-GREYSILVER"
+      ],
       "questIds": [
-        "PRIVATE-199-HEIRLOOM"
+        "SB-211-S03",
+        "SB-206-S02",
+        "G-189-M01",
+        "G-169-001",
+        "G-206-B04"
       ],
       "inventoryIds": [
-        "INV-FROST-BONE",
-        "INV-CAP199-HEADLESS-KNIGHTS",
-        "INV-CAP199-SKELETAL-HORSES",
-        "INV-SILENT-LIBRARY-RESEARCH",
-        "INV-HEIRLOOM-CASE",
-        "INV-HEIRLOOM-RECEIPT",
-        "INV-200-ANCIENT-GUARDS",
-        "INV-200-PRIVATE-ARCHIVE",
-        "INV-200-CARAVAN-CONTAINERS",
-        "INV-200-RECORD-CASES",
-        "INV-200-NORTHERN-RESEARCH-MATERIALS",
-        "INV-200-ORE-TS199015",
-        "INV-200-LOWGRADE-SALE",
-        "INV-200-TRANSFERRED-EVIDENCE"
+        "INV-212-MANOR-FUND",
+        "INV-212-LIFEPODS",
+        "INV-212-CARRIAGE",
+        "INV-212-GREYSILVER-SAMPLE"
       ],
       "movementIds": [
-        "MOV-200-027",
-        "MOV-200-028",
-        "MOV-200-029",
-        "MOV-200-030",
-        "MOV-200-031",
-        "MOV-200-032",
-        "MOV-201-001",
-        "MOV-201-002",
-        "MOV-201-003",
-        "MOV-200-012",
-        "MOV-200-013",
-        "MOV-200-014",
-        "MOV-200-015",
-        "MOV-200-016",
-        "MOV-200-017",
-        "MOV-200-018",
-        "MOV-200-019",
-        "MOV-200-020",
-        "MOV-200-021",
-        "MOV-200-022",
-        "MOV-200-023",
-        "MOV-200-024",
-        "MOV-200-025",
-        "MOV-200-026",
-        "MOV-200-001",
-        "MOV-200-002",
-        "MOV-200-003",
-        "MOV-200-004",
-        "MOV-200-005",
-        "MOV-200-006",
-        "MOV-200-007",
-        "MOV-200-008",
-        "MOV-200-009",
-        "MOV-200-010",
-        "MOV-200-011"
+        "MOV-212-001-MIL-SALE",
+        "MOV-212-002-MANOR-FUND"
       ],
       "commitmentIds": [
-        "C-STAR-GAZING",
-        "C-RAYMOND-MEAL",
-        "C-RAYMOND-REFERRAL",
-        "C-ESTATE-RENOVATION",
-        "C-XIAOMENG-ARROWS",
-        "C-NO196-OBSERVATION",
-        "C-DUEL-VALEN",
-        "C-ELIN-HOME-VIEW",
-        "T-G189-WORKSHOP-REPORT",
-        "T-MORNING-DEW-HANDOVER",
-        "T-WORKSHOP-COMPARISON",
-        "T-CAP195-ASSEMBLY",
-        "T-MIL194-L08",
-        "T-MINERAL-REPLIES",
-        "T-H190-BONUS",
-        "T-G188-BONUS",
-        "T-G169-START",
-        "T-OLD-BRIDGE-REPAIR",
-        "T-WAR-SALVAGE-AGREEMENT",
-        "T-LOGISTICS-GRAIN-NEGOTIATION",
-        "C-VALEN-ARMOR",
-        "C-XIAOMENG-TEAM",
-        "T-ELIN-CELEBRATION",
-        "T-TOM-LOW-FLIGHT",
-        "T-NORTH-THIRD-CONTROL",
-        "T-ANCHOR-THIRD-NODE",
-        "T-FROSTBONE-TESTING",
-        "T-MORITZ-SAGE",
-        "T-N190-SETTLEMENT",
-        "T-GUILD-APPROVED-5470000",
-        "T-FSN188-CORE-RETURN"
+        "C-212-POWER-ADAPTER",
+        "C-212-STAFF-SEARCH"
       ],
       "researchIds": [
-        "R-TRUCK-04",
-        "R-TRUCK-05",
-        "R-TRUCK-06"
+        "R-212-GREYSILVER",
+        "R-212-LIFEPOD-POWER"
       ],
-      "noImportantEvents": true
+      "noImportantEvents": false
     },
     "commitmentsVerifiedThrough": {
       "gameDay": 196,
@@ -143,7 +80,7 @@
       "hard": 19,
       "hardTarget": 18
     },
-    "cashCopper": 100892098,
+    "cashCopper": 122896037,
     "thirdPartyHeldCopper": 400000,
     "thirdPartyHeldBy": "奧斯文・貝克",
     "uncollectedBaseCopper": 0,
@@ -171,9 +108,9 @@
       "冰封"
     ],
     "note": "不採用HP／MP。其他已確立能力見正式完整存檔；看板未列出不代表失去。",
-    "uncollectedApprovedCopper": 3200000,
-    "currentLocation": "王都冒險者公會・夜間受理櫃檯",
-    "status": "健康；私人委託階段1、2核准待付款；階段3初驗通過、原件仍保管；無首騎士4與骨馬4安全收容"
+    "uncollectedApprovedCopper": 0,
+    "currentLocation": "白樺莊園一樓公共休息室",
+    "status": "健康；已撥付白樺莊園生活經費2,000,000銅幣；未兌付憑票70,000銅幣"
   },
   "characters": [
     {
@@ -1722,6 +1659,38 @@
       "place": "北境聯防署",
       "updatedDay": 201,
       "source": "《20》V3（第201日02:48，含第200日附錄）"
+    },
+    {
+      "id": "INV-212-LIFEPODS",
+      "name": "白霜古代維生艙",
+      "count": "3座",
+      "status": "白樺莊園一樓休息室供能穩定，三人休養中",
+      "place": "白樺莊園",
+      "updatedDay": 212
+    },
+    {
+      "id": "INV-212-CARRIAGE",
+      "name": "霜骨龍牽引式獨立浮空豪華車廂",
+      "count": "1輛",
+      "status": "已完成驗收待澈領取",
+      "place": "夢想工坊成品停放區",
+      "updatedDay": 212
+    },
+    {
+      "id": "INV-212-GREYSILVER-SAMPLE",
+      "name": "夢想灰銀改良試錠",
+      "count": "小批量試錠",
+      "status": "實測導魔103.8%原版；大型構件未驗證",
+      "place": "夢想工坊",
+      "updatedDay": 212
+    },
+    {
+      "id": "INV-212-MANOR-FUND",
+      "name": "白樺莊園日常專款",
+      "count": "2,000,000銅幣",
+      "status": "雷薩克代管，獨立經費，非澈可支用餘額",
+      "place": "白樺莊園",
+      "updatedDay": 212
     }
   ],
   "quests": [
@@ -1833,9 +1802,9 @@
     },
     {
       "id": "G-169-001",
-      "name": "霜角委託",
+      "name": "G-169-001",
       "rank": "A",
-      "status": "已接取未開始",
+      "status": "未完成",
       "rewardCopper": 320000,
       "bonusCopper": null,
       "deadlineDay": null,
@@ -1850,13 +1819,14 @@
         "contacts": "代表諾維爾・哈特，主管馬爾文。伊凡・洛德的私人原圖尚未議定價格。",
         "next": "由澈正式通知公會啟動，之後才起算首報期限。",
         "source": "正式完整存檔 V119（第191日 11:18）"
-      }
+      },
+      "updatedDay": 212
     },
     {
       "id": "G-189-M01",
-      "name": "賦能增幅型礦源懸賞",
+      "name": "G-189-M01",
       "rank": "玩家發布",
-      "status": "公開徵集中",
+      "status": "未完成",
       "rewardCopper": null,
       "bonusCopper": null,
       "deadlineDay": 219,
@@ -1971,7 +1941,8 @@
             "details": "四種特殊原礦共 3,710 公斤入庫。確證礦源獎尚未辦理。"
           }
         ]
-      }
+      },
+      "updatedDay": 212
     },
     {
       "id": "TMP-N190-S02",
@@ -2544,6 +2515,24 @@
         "payment": "階段1及2共3,200,000銅幣已核准待付款。階段3初驗通過，尚未核准付款。"
       },
       "paymentPendingCopper": 3200000
+    },
+    {
+      "id": "SB-211-S03",
+      "name": "白霜相關公會回報",
+      "status": "待公會驗收",
+      "updatedDay": 212
+    },
+    {
+      "id": "SB-206-S02",
+      "name": "七日驗證委託",
+      "status": "驗證中",
+      "updatedDay": 212
+    },
+    {
+      "id": "G-206-B04",
+      "name": "G-206-B04",
+      "status": "未接取",
+      "updatedDay": 212
     }
   ],
   "research": [
@@ -2713,6 +2702,22 @@
       "goal": "鎮內穩定遠距連接測試",
       "details": "早期僅本地AR眼鏡連線；不能推定已建跨鎮通訊塔。",
       "updatedDay": 97
+    },
+    {
+      "id": "R-212-GREYSILVER",
+      "name": "夢想灰銀改良試錠",
+      "status": "小型試錠實測完成",
+      "lead": "布魯克／維爾納／小夢／法恩",
+      "details": "原版導魔100%，第202日舊試片92.4%實測，C-1先前預測97.6%，第212日改良試錠103.8%實測；大型構件與量產未驗證；墜星銀核未動用",
+      "updatedDay": 212
+    },
+    {
+      "id": "R-212-LIFEPOD-POWER",
+      "name": "三座古代維生艙魔晶轉電能供能改造",
+      "status": "初步可行性與模擬測試通過；首套原型製作中",
+      "lead": "維爾納／布魯克／法恩",
+      "details": "目標3套，首套第212日傍晚，另兩套第213日初步驗證目標；未直接接入維生艙，第二座需隔離測試",
+      "updatedDay": 212
     }
   ],
   "logistics": [
@@ -2807,6 +2812,14 @@
       "place": "格林鎮",
       "details": "早期受影響84名；援助基金、就業、勞動派遣最新狀態須以更新的正式劇情判定，不能把第93日數字視為第191日即時現況。",
       "updatedDay": 93
+    },
+    {
+      "id": "W-212-MANOR",
+      "name": "白樺莊園照護與家務招募",
+      "status": "待招募與面談",
+      "lead": "雷薩克，奧斯文協助帳務",
+      "details": "2照護者、1家務傭人、1廚房助手，薪資預算80,000銅幣/月，尚未聘用",
+      "updatedDay": 212
     }
   ],
   "sidelines": [
@@ -3016,6 +3029,27 @@
       "status": "第196日14:34協助任務結算",
       "details": "知道冰霜古龍活動及異常原因、總站不侵擾決議；不知希露及山谷位置。",
       "updatedDay": 196
+    },
+    {
+      "id": "NPC-212-SEF",
+      "name": "賽芙琳・艾斯維爾",
+      "role": "古代白霜封印研究首席及末任代理管理者",
+      "status": "白樺莊園休養；希望入住，澈尚未正式分配房間",
+      "updatedDay": 212
+    },
+    {
+      "id": "NPC-212-LIS",
+      "name": "莉瑟雅・溫德爾",
+      "role": "古代生命保存醫療研究者",
+      "status": "白樺莊園休養；希望入住，澈尚未正式分配房間",
+      "updatedDay": 212
+    },
+    {
+      "id": "NPC-212-LORN",
+      "name": "洛恩・凱斯",
+      "role": "古代魔力循環技師",
+      "status": "白樺莊園休養；希望入住，澈尚未正式分配房間",
+      "updatedDay": 212
     }
   ],
   "commitments": [
@@ -4808,6 +4842,51 @@
       ],
       "outcome": "信物初驗通過，仍由澈保管；第三階段6,000,000銅幣未結算，權屬交付待處理。",
       "source": "第200日17:05 V127＋後續正式劇情至第201日02:48；來源20 V3"
+    },
+    {
+      "id": "EV-212-0920-MIL-SETTLEMENT",
+      "time": "10:02",
+      "title": "六處魔族據點與白霜一般軍用戰利品結算",
+      "summary": "軍方已支付15,240,000銅幣，古代研究原件與危險核心保留",
+      "day": 212,
+      "location": "格林",
+      "source": "第212日正式劇情"
+    },
+    {
+      "id": "EV-212-1347-ANCIENT-ARRIVAL",
+      "time": "13:47",
+      "title": "三位古代研究者抵達白樺莊園",
+      "summary": "賽芙琳、莉瑟雅、洛恩及3座維生艙抵達；與既有古代住客見面，住宿尚未正式核准",
+      "day": 212,
+      "location": "格林",
+      "source": "第212日正式劇情"
+    },
+    {
+      "id": "EV-212-1543-MANOR-FUND",
+      "time": "15:43",
+      "title": "莊園生活專款撥付",
+      "summary": "澈撥2,000,000銅幣交雷薩克管理，招募照護與家務人員待面談",
+      "day": 212,
+      "location": "格林",
+      "source": "第212日正式劇情"
+    },
+    {
+      "id": "EV-212-1619-CARRIAGE",
+      "time": "16:19",
+      "title": "浮空豪華車廂正式驗收",
+      "summary": "靜載、脫鉤、備援緩降測試通過，今日可領",
+      "day": 212,
+      "location": "格林",
+      "source": "第212日正式劇情"
+    },
+    {
+      "id": "EV-212-1622-GREYSILVER",
+      "time": "16:22",
+      "title": "夢想灰銀導魔實測",
+      "summary": "改良試錠相對原版103.8%；大型構件未驗證",
+      "day": 212,
+      "location": "格林",
+      "source": "第212日正式劇情"
     }
   ],
   "prices": [
@@ -4998,14 +5077,60 @@
       "time": "14:34",
       "title": "古龍翼影調查完成並結算",
       "summary": "NO-196-A001（原TMP-NO196-A01）驗收，380000銅幣入帳、晉升合格43/65；總站同意不公開山谷位置、不主動追蹤、不轉討伐，保留遠距安全觀測。"
+    },
+    {
+      "id": "EV-212-0920-MIL-SETTLEMENT",
+      "gameDay": 212,
+      "time": "10:02",
+      "title": "六處魔族據點與白霜一般軍用戰利品結算",
+      "summary": "軍方已支付15,240,000銅幣，古代研究原件與危險核心保留"
+    },
+    {
+      "id": "EV-212-1347-ANCIENT-ARRIVAL",
+      "gameDay": 212,
+      "time": "13:47",
+      "title": "三位古代研究者抵達白樺莊園",
+      "summary": "賽芙琳、莉瑟雅、洛恩及3座維生艙抵達；與既有古代住客見面，住宿尚未正式核准"
+    },
+    {
+      "id": "EV-212-1543-MANOR-FUND",
+      "gameDay": 212,
+      "time": "15:43",
+      "title": "莊園生活專款撥付",
+      "summary": "澈撥2,000,000銅幣交雷薩克管理，招募照護與家務人員待面談"
+    },
+    {
+      "id": "EV-212-1619-CARRIAGE",
+      "gameDay": 212,
+      "time": "16:19",
+      "title": "浮空豪華車廂正式驗收",
+      "summary": "靜載、脫鉤、備援緩降測試通過，今日可領"
+    },
+    {
+      "id": "EV-212-1622-GREYSILVER",
+      "gameDay": 212,
+      "time": "16:22",
+      "title": "夢想灰銀導魔實測",
+      "summary": "改良試錠相對原版103.8%；大型構件未驗證"
     }
   ],
   "currentScene": {
-    "location": "王都冒險者公會・夜間受理櫃檯",
+    "location": "格林・白樺莊園一樓公共休息室",
     "npcs": [
-      "王都冒險者公會夜間值勤接待人員（姓名未確立）"
+      "澈",
+      "小夢",
+      "布魯克",
+      "維爾納",
+      "法恩",
+      "雷薩克",
+      "賽芙琳",
+      "莉瑟雅",
+      "洛恩",
+      "伊蕾娜・維斯特",
+      "凱恩",
+      "莉薇亞"
     ],
-    "prompt": "第三階段驗證申請已受理，原件由澈保管；下一步由玩家決定",
+    "prompt": "布魯克展示已驗收浮空車廂與夢想灰銀改良試錠數據",
     "restStarted": false
   },
   "openIssues": [
@@ -5253,6 +5378,18 @@
       "source": "V124｜快速接續、B 節",
       "details": "第195日09:43格雷文已完整歸還逾期借用的樣品，並交付三份研究報告。",
       "closed": true
+    },
+    {
+      "id": "C-212-POWER-ADAPTER",
+      "name": "三座維生艙獨立充能設備",
+      "status": "首套原型製作中",
+      "updatedDay": 212
+    },
+    {
+      "id": "C-212-STAFF-SEARCH",
+      "name": "白樺莊園照護者與傭人招募",
+      "status": "詢人及面談待完成",
+      "updatedDay": 212
     }
   ],
   "inventoryReview": {
@@ -5261,9 +5398,9 @@
     "scope": "已核對《20》V3 與第200日附錄的公開物品。涉及權屬及已移交物品保留原狀態。"
   },
   "inventoryLedger": {
-    "source": "第200日17:05 V127＋第200日20:08來源20 V2＋第201日02:48來源20 V3",
-    "version": "第201日02:48 GH同步 V3",
-    "reviewedThrough": "第201日 02:48",
+    "source": "V131＋第212日16:22已確認正式劇情",
+    "version": "第212日16:22 GH候選同步 V4",
+    "reviewedThrough": "第212日 16:22",
     "notes": [
       "第194日軍方四批成交合計 25,530,000 銅幣，商城三項收購合計 609,000 銅幣。合計僅用於對帳。研究補貼 960,000 銅幣在 12:12 被拒絕，庫存變動為零。",
       "軍法返還的 18,640 銅幣依正式財物帳入帳。此處的返還物品明細只記實物。",
@@ -6425,6 +6562,22 @@
         "name": "第三階段驗證受理憑證",
         "movement": "新取得＋1份",
         "result": "澈持有1份"
+      },
+      {
+        "id": "MOV-212-001-MIL-SALE",
+        "time": "第212日09:12–10:02",
+        "name": "六處魔族據點與白霜一般軍用戰利品",
+        "movement": "軍方交割出售",
+        "result": "實收15,240,000銅幣；研究原件、魔晶與危險核心保留",
+        "source": "第212日正式劇情"
+      },
+      {
+        "id": "MOV-212-002-MANOR-FUND",
+        "time": "第212日15:43",
+        "name": "白樺莊園日常經費",
+        "movement": "澈可支用資金-2,000,000；莊園專款+2,000,000",
+        "result": "雷薩克代管，尚無招募薪資支出",
+        "source": "第212日正式劇情"
       }
     ]
   }
