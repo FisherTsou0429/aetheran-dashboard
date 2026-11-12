@@ -23,7 +23,7 @@
     "lastGameTime": "16:22",
     "lastSourceSave": "V131＋第212日16:22正式劇情",
     "status": "成功同步",
-    "note": "第212日16:22正式劇情已合併至main並讀回核對；本儲存庫未回傳工作流程檢查結果。",
+    "note": "第212日16:22發布補正。按V131、後續正式劇情及《20》V8核對。本次未查得家族繼承信物階段1、2已付款的後續紀錄，沿用已核准待領3,200,000銅幣；不加入現金餘額。",
     "timelineVerifiedThrough": {
       "gameDay": 212,
       "gameTime": "16:22"
@@ -37,17 +37,17 @@
         "EV-212-1622-GREYSILVER"
       ],
       "questIds": [
+        "G-169-001",
+        "G-189-M01",
         "SB-211-S03",
         "SB-206-S02",
-        "G-189-M01",
-        "G-169-001",
         "G-206-B04"
       ],
       "inventoryIds": [
-        "INV-212-MANOR-FUND",
         "INV-212-LIFEPODS",
         "INV-212-CARRIAGE",
-        "INV-212-GREYSILVER-SAMPLE"
+        "INV-212-GREYSILVER-SAMPLE",
+        "INV-212-MANOR-FUND"
       ],
       "movementIds": [
         "MOV-212-001-MIL-SALE",
@@ -61,12 +61,63 @@
         "R-212-GREYSILVER",
         "R-212-LIFEPOD-POWER"
       ],
-      "noImportantEvents": false
+      "noImportantEvents": false,
+      "characterIds": [],
+      "equipmentIds": [],
+      "priceIds": [],
+      "logisticsIds": [
+        "L-BRANCH",
+        "L-TRUCK01",
+        "L-TRUCK02",
+        "L-TRUCK03",
+        "L-TRUCK04"
+      ],
+      "workforceIds": [
+        "W-212-MANOR"
+      ],
+      "sidelineIds": [],
+      "npcIds": [
+        "NPC-212-SEF",
+        "NPC-212-LIS",
+        "NPC-212-LORN"
+      ],
+      "overviewFields": [
+        "currentScene",
+        "hero.cashCopper",
+        "hero.currentLocation",
+        "hero.status"
+      ]
     },
     "commitmentsVerifiedThrough": {
-      "gameDay": 196,
-      "gameTime": "14:34",
-      "source": "V125、V124、V123及歷史附錄"
+      "gameDay": 212,
+      "gameTime": "16:22",
+      "source": "完整存檔 V131 第211日16:01；第212日16:22 正式劇情 白樺莊園充能與招募待辦"
+    },
+    "researchVerifiedThrough": {
+      "gameDay": 212,
+      "gameTime": "16:22",
+      "source": "第212日16:22 正式劇情：維生艙充能原型、灰銀試錠與浮空車廂驗收"
+    },
+    "dashboardReview": {
+      "id": "GH-212-1622-PUBLICATION-REPAIR",
+      "gameDay": 212,
+      "gameTime": "16:22",
+      "sections": {
+        "overview": "第212日16:22 正式劇情；《20》V8財物；V131歷史附錄待領款",
+        "characters": "完整存檔 V131 第211日16:01 §0 角色階級與能力；各人物保留原核對時點",
+        "equipment": "完整存檔 V131 第211日16:01 §2 及 V130 快速接續裝備欄；未見本次裝備異動",
+        "inventory": "《20》V8 新增異動與狀態更新",
+        "prices": "完整存檔 V131 第211日16:01 後附歷史永久價格；第212日軍需成交依《20》V8另作交易",
+        "quests": "完整存檔 V131 第211日16:01 §0、§2 及 第212日16:22 正式劇情任務狀態",
+        "player-commissions": "完整存檔 V131 第211日16:01 §0 礦源委託尾款與徵集期限",
+        "research": "第212日16:22 正式劇情 工坊、灰銀及維生艙研究",
+        "logistics": "完整存檔 V131 第211日16:01 後附V129第206日格林總行營運核對",
+        "workforce": "第212日16:22 正式劇情 白樺莊園照護與家務招募",
+        "sidelines": "完整存檔 V131 第211日16:01 白霜保存所、研究物及既有支線；第212日16:22 正式劇情白樺莊園",
+        "npcs": "第212日16:22 正式劇情 三位研究者抵達莊園；《12》V75索引",
+        "commitments": "第212日16:22 正式劇情 維生艙原型與莊園招募",
+        "timeline": "完整存檔 V131 第211日16:01 及第212日已確認事件；《20》V8"
+      }
     }
   },
   "hero": {
@@ -108,7 +159,7 @@
       "冰封"
     ],
     "note": "不採用HP／MP。其他已確立能力見正式完整存檔；看板未列出不代表失去。",
-    "uncollectedApprovedCopper": 0,
+    "uncollectedApprovedCopper": 3200000,
     "currentLocation": "白樺莊園一樓公共休息室",
     "status": "健康；已撥付白樺莊園生活經費2,000,000銅幣；未兌付憑票70,000銅幣"
   },
@@ -1666,7 +1717,9 @@
       "count": "3座",
       "status": "白樺莊園一樓休息室供能穩定，三人休養中",
       "place": "白樺莊園",
-      "updatedDay": 212
+      "updatedDay": 212,
+      "details": "第212日13:47抵達白樺莊園一樓公共休息室，三座供能穩定。獨立充能原型尚未接入，第二座需隔離測試。",
+      "source": "第212日正式劇情及《20》物品進出明細 V8"
     },
     {
       "id": "INV-212-CARRIAGE",
@@ -1674,7 +1727,9 @@
       "count": "1輛",
       "status": "已完成驗收待澈領取",
       "place": "夢想工坊成品停放區",
-      "updatedDay": 212
+      "updatedDay": 212,
+      "details": "霜骨龍牽引用獨立浮空車廂。靜載、緊急脫鉤及備援緩降通過；截至本快照仍停放工坊待領，未新增購買款。",
+      "source": "第212日正式劇情及《20》物品進出明細 V8"
     },
     {
       "id": "INV-212-GREYSILVER-SAMPLE",
@@ -1682,7 +1737,9 @@
       "count": "小批量試錠",
       "status": "實測導魔103.8%原版；大型構件未驗證",
       "place": "夢想工坊",
-      "updatedDay": 212
+      "updatedDay": 212,
+      "details": "原版導魔性能為100%，改良小型試錠實測103.8%。大型構件性能尚未驗證，墜星銀核未動用。",
+      "source": "第212日正式劇情及《20》物品進出明細 V8"
     },
     {
       "id": "INV-212-MANOR-FUND",
@@ -1690,7 +1747,9 @@
       "count": "2,000,000銅幣",
       "status": "雷薩克代管，獨立經費，非澈可支用餘額",
       "place": "白樺莊園",
-      "updatedDay": 212
+      "updatedDay": 212,
+      "details": "第212日15:43由澈撥付雷薩克管理。屬莊園日常專款，未支付薪資，不計入澈可支用餘額。",
+      "source": "第212日正式劇情及《20》物品進出明細 V8"
     }
   ],
   "quests": [
@@ -1804,7 +1863,7 @@
       "id": "G-169-001",
       "name": "G-169-001",
       "rank": "A",
-      "status": "未完成",
+      "status": "已接取未啟動",
       "rewardCopper": 320000,
       "bonusCopper": null,
       "deadlineDay": null,
@@ -1826,7 +1885,7 @@
       "id": "G-189-M01",
       "name": "G-189-M01",
       "rank": "玩家發布",
-      "status": "未完成",
+      "status": "徵集仍有效／尾款待驗收",
       "rewardCopper": null,
       "bonusCopper": null,
       "deadlineDay": 219,
@@ -2518,21 +2577,47 @@
     },
     {
       "id": "SB-211-S03",
-      "name": "白霜相關公會回報",
-      "status": "待公會驗收",
-      "updatedDay": 212
+      "name": "白霜石門偵察",
+      "status": "待向公會回報／未驗收",
+      "updatedDay": 212,
+      "rewardCopper": 850000,
+      "deadlineDay": 214,
+      "deadlineTime": "18:00",
+      "taskDetails": {
+        "acceptedAt": "第211日13:31，澈與哈洛德・維恩簽署",
+        "requirements": "偵察白霜石門，回報補給活動及可驗證成果。",
+        "deliveryDeadline": "第214日18:00前回報",
+        "payment": "基本850,000銅幣。新補給核心每處300,000、上限3處；安全移交受困者每人2,000、上限100人。總額上限1,950,000，尚未核准或支付。與SB-206-S02相同成果不重複領款。",
+        "progress": "白霜石門一處核心已阻斷，待公會回報及驗收。",
+        "source": "完整存檔 V131 第211日16:01；第212日16:22 正式劇情"
+      }
     },
     {
       "id": "SB-206-S02",
-      "name": "七日驗證委託",
+      "name": "魔王軍後勤據點突擊／六據點補給線截斷",
       "status": "驗證中",
-      "updatedDay": 212
+      "updatedDay": 212,
+      "rewardCopper": 2100000,
+      "deadlineDay": 216,
+      "deadlineTime": "18:00",
+      "taskDetails": {
+        "acceptedAt": "第209日18:15，B級單人越級例外獲准",
+        "requirements": "截斷六處據點補給線，完成七日停機驗證。",
+        "deliveryDeadline": "第216日18:00，EXT-01有效至同時點。",
+        "payment": "基本2,100,000銅幣，尚未結算。與SB-211-S03相同成果不重複領款。",
+        "progress": "六處據點停機驗證中。軍用物資成交款另計。",
+        "source": "完整存檔 V131 第211日16:01；第212日16:22 正式劇情"
+      }
     },
     {
       "id": "G-206-B04",
       "name": "G-206-B04",
       "status": "未接取",
-      "updatedDay": 212
+      "updatedDay": 212,
+      "taskDetails": {
+        "progress": "V130、V131及第212日紀錄均顯示澈未接取。原公告需求、報酬及期限未見可核對明文。",
+        "source": "完整存檔 V131 第211日16:01；第212日16:22 正式劇情"
+      }
     }
   ],
   "research": [
@@ -2733,47 +2818,52 @@
     {
       "id": "L-BRANCH",
       "name": "夢想物流・鐵壁分行",
-      "status": "營運資產已確立",
-      "place": "鐵壁舊貨場",
+      "status": "舊索引說法已更正",
+      "place": "格林總行",
       "lead": "卡爾・布倫",
-      "details": "舊貨場已付款，不重扣；後續財務數據依正式紀錄。",
-      "updatedDay": 190
+      "details": "第206日正式營運更正：夢想物流僅有格林總行，沒有鐵壁分行；第202日達10輛正式六噸貨車，初號試驗車另列。",
+      "updatedDay": 206,
+      "source": "V129 第206日14:05–14:19 格林總行正式營運紀錄"
     },
     {
       "id": "L-TRUCK01",
       "name": "六噸懸浮貨車第1輛",
-      "status": "已交付",
-      "place": "鐵壁分行",
+      "status": "已驗收／列入正式車隊",
+      "place": "格林總行",
       "lead": "班恩・霍克",
-      "details": "第一輛正式交付車。",
-      "updatedDay": 188
+      "details": "依第206日營運更正，正式車隊十輛全數交付並由格林總行調度。個別即時車況依最新調度。",
+      "updatedDay": 206,
+      "source": "V129 第206日14:05–14:19 格林總行正式營運紀錄"
     },
     {
       "id": "L-TRUCK02",
       "name": "六噸懸浮貨車第2輛",
-      "status": "已交付",
-      "place": "鐵壁分行",
+      "status": "已驗收／列入正式車隊",
+      "place": "格林總行",
       "lead": "托馬斯・里德",
-      "details": "第二輛正式交付車。",
-      "updatedDay": 188
+      "details": "依第206日營運更正，正式車隊十輛全數交付並由格林總行調度。個別即時車況依最新調度。",
+      "updatedDay": 206,
+      "source": "V129 第206日14:05–14:19 格林總行正式營運紀錄"
     },
     {
       "id": "L-TRUCK03",
       "name": "六噸懸浮貨車第3輛",
-      "status": "待驗收配車",
-      "place": "夢想工坊",
-      "lead": "尼可・費爾（已聘，尚未正式配車）",
-      "details": "第188日製成，尚未載貨驗收及分配。",
-      "updatedDay": 191
+      "status": "已驗收／列入正式車隊",
+      "place": "格林總行",
+      "lead": "尼可・費爾（既有司機）",
+      "details": "依第206日營運更正，正式車隊十輛全數交付並由格林總行調度。個別即時車況依最新調度。",
+      "updatedDay": 206,
+      "source": "V129 第206日14:05–14:19 格林總行正式營運紀錄"
     },
     {
       "id": "L-TRUCK04",
       "name": "六噸懸浮貨車第4輛",
-      "status": "製造逾期",
-      "place": "夢想工坊",
-      "lead": "工坊製造",
-      "details": "原定第190日完成，無完成／驗收紀錄。",
-      "updatedDay": 191
+      "status": "已驗收／列入正式車隊",
+      "place": "格林總行",
+      "lead": "格林總行調度",
+      "details": "依第206日營運更正，正式車隊十輛全數交付並由格林總行調度。個別即時車況依最新調度。",
+      "updatedDay": 206,
+      "source": "V129 第206日14:05–14:19 格林總行正式營運紀錄"
     }
   ],
   "workforce": [
@@ -4850,7 +4940,8 @@
       "summary": "軍方已支付15,240,000銅幣，古代研究原件與危險核心保留",
       "day": 212,
       "location": "格林",
-      "source": "第212日正式劇情"
+      "source": "第212日正式劇情及《20》物品進出明細 V8",
+      "details": "第212日09:12–10:02完成一般軍用物資交割。兩批實收11,560,000與3,680,000銅幣，共15,240,000。研究原件、晶核與危險樣品保留。本筆屬物資交易，不列入任務報酬。"
     },
     {
       "id": "EV-212-1347-ANCIENT-ARRIVAL",
@@ -4859,7 +4950,8 @@
       "summary": "賽芙琳、莉瑟雅、洛恩及3座維生艙抵達；與既有古代住客見面，住宿尚未正式核准",
       "day": 212,
       "location": "格林",
-      "source": "第212日正式劇情"
+      "source": "第212日正式劇情及《20》物品進出明細 V8",
+      "details": "賽芙琳、莉瑟雅與洛恩隨三座維生艙抵達白樺莊園一樓公共休息室，供能穩定，三人暫時休養。長期住宿仍待正式安排。"
     },
     {
       "id": "EV-212-1543-MANOR-FUND",
@@ -4868,7 +4960,8 @@
       "summary": "澈撥2,000,000銅幣交雷薩克管理，招募照護與家務人員待面談",
       "day": 212,
       "location": "格林",
-      "source": "第212日正式劇情"
+      "source": "第212日正式劇情及《20》物品進出明細 V8",
+      "details": "第212日15:43由澈撥付雷薩克管理。屬莊園日常專款，未支付薪資，不計入澈可支用餘額。"
     },
     {
       "id": "EV-212-1619-CARRIAGE",
@@ -4877,7 +4970,8 @@
       "summary": "靜載、脫鉤、備援緩降測試通過，今日可領",
       "day": 212,
       "location": "格林",
-      "source": "第212日正式劇情"
+      "source": "第212日正式劇情及《20》物品進出明細 V8",
+      "details": "霜骨龍牽引用獨立浮空車廂。靜載、緊急脫鉤及備援緩降通過；截至本快照仍停放工坊待領，未新增購買款。"
     },
     {
       "id": "EV-212-1622-GREYSILVER",
@@ -4886,7 +4980,8 @@
       "summary": "改良試錠相對原版103.8%；大型構件未驗證",
       "day": 212,
       "location": "格林",
-      "source": "第212日正式劇情"
+      "source": "第212日正式劇情及《20》物品進出明細 V8",
+      "details": "原版導魔性能為100%，改良小型試錠實測103.8%。大型構件性能尚未驗證，墜星銀核未動用。"
     }
   ],
   "prices": [
@@ -5383,19 +5478,28 @@
       "id": "C-212-POWER-ADAPTER",
       "name": "三座維生艙獨立充能設備",
       "status": "首套原型製作中",
-      "updatedDay": 212
+      "updatedDay": 212,
+      "kind": "todo",
+      "owner": "維爾納／布魯克／法恩",
+      "details": "目標3套，首套第212日傍晚，另兩套第213日初步驗證目標；未直接接入維生艙，第二座需隔離測試",
+      "source": "第212日16:22 正式劇情"
     },
     {
       "id": "C-212-STAFF-SEARCH",
       "name": "白樺莊園照護者與傭人招募",
       "status": "詢人及面談待完成",
-      "updatedDay": 212
+      "updatedDay": 212,
+      "kind": "todo",
+      "owner": "雷薩克；奧斯文協助",
+      "details": "2照護者、1家務傭人、1廚房助手，薪資預算80,000銅幣/月，尚未聘用",
+      "source": "第212日16:22 正式劇情"
     }
   ],
   "inventoryReview": {
-    "gameDay": 201,
-    "gameTime": "02:48",
-    "scope": "已核對《20》V3 與第200日附錄的公開物品。涉及權屬及已移交物品保留原狀態。"
+    "gameDay": 212,
+    "gameTime": "16:22",
+    "source": "第212日正式劇情及《20》物品進出明細 V8",
+    "scope": "核對《20》V8的兩筆金流／移交，以及三座維生艙、浮空車廂與灰銀試錠的狀態。其餘保留原條目核對時點。"
   },
   "inventoryLedger": {
     "source": "V131＋第212日16:22已確認正式劇情",
