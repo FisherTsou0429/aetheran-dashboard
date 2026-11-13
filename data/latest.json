@@ -2,56 +2,48 @@
   "schemaVersion": "1.0",
   "world": "艾瑟蘭異界物語：新世界",
   "snapshot": {
-    "gameDay": 212,
-    "gameTime": "16:22",
-    "location": "格林・白樺莊園一樓公共休息室",
-    "officialSave": "V131（第211日16:01）＋後續正式劇情至第212日16:22",
-    "npcIndex": "V75＋後續正式劇情",
-    "detailIndex": "V26＋後續正式劇情",
-    "baseline": "第212日16:22",
+    "gameDay": 235,
+    "gameTime": "09:55",
+    "location": "瑟雷汀港區中央廣場",
+    "officialSave": "V143（第235日09:55）",
+    "npcIndex": "V87",
+    "detailIndex": "V39",
+    "baseline": "第235日09:55",
     "authority": "最新有效完整存檔及後續正式劇情優先；本看板只作唯讀查詢，不是正式存檔",
-    "scope": "V131＋第211日至212日已確認正式劇情",
+    "scope": "V143及其完整歷史附錄",
     "paused": false,
-    "incrementalCounter": 33,
-    "fullCounter": 33
+    "incrementalCounter": 0,
+    "fullCounter": 0
   },
   "sync": {
     "intervalTurns": 20,
     "turnsSinceSuccessfulSync": 0,
     "triggerOnFormalSave": true,
-    "lastGameDay": 212,
-    "lastGameTime": "16:22",
-    "lastSourceSave": "V131＋第212日16:22正式劇情",
-    "status": "成功同步",
-    "note": "第212日16:22發布補正。按V131、後續正式劇情及《20》V8核對。本次未查得家族繼承信物階段1、2已付款的後續紀錄，沿用已核准待領3,200,000銅幣；不加入現金餘額。",
+    "lastGameDay": 235,
+    "lastGameTime": "09:55",
+    "lastSourceSave": "V143 第235日09:55",
+    "status": "候選分支檢查中",
+    "note": "按V143及V20核對至第235日09:55；累計正式小說回合玩家校正100；舊看板第212日資料逐項沿用未刪",
     "timelineVerifiedThrough": {
-      "gameDay": 212,
-      "gameTime": "16:22"
+      "gameDay": 235,
+      "gameTime": "09:55"
     },
     "changeSet": {
       "timelineIds": [
-        "EV-212-0920-MIL-SETTLEMENT",
-        "EV-212-1347-ANCIENT-ARRIVAL",
-        "EV-212-1543-MANOR-FUND",
-        "EV-212-1619-CARRIAGE",
-        "EV-212-1622-GREYSILVER"
+        "EV-235-COPPERBELL",
+        "EV-235-QUEST-ACCEPT",
+        "EV-235-HARBOR-RUMORS"
       ],
       "questIds": [
-        "G-169-001",
-        "G-189-M01",
-        "SB-211-S03",
-        "SB-206-S02",
-        "G-206-B04"
+        "TMP-ST235-B03",
+        "ST-233-S01",
+        "ST235-COPPERBELL-UNRECORDED"
       ],
       "inventoryIds": [
-        "INV-212-LIFEPODS",
-        "INV-212-CARRIAGE",
-        "INV-212-GREYSILVER-SAMPLE",
-        "INV-212-MANOR-FUND"
+        "INV-235-COPPERBELL-GUARDIAN"
       ],
       "movementIds": [
-        "MOV-212-001-MIL-SALE",
-        "MOV-212-002-MANOR-FUND"
+        "MOV-235-COPPERBELL-REWARD"
       ],
       "commitmentIds": [
         "C-212-POWER-ADAPTER",
@@ -77,9 +69,9 @@
       ],
       "sidelineIds": [],
       "npcIds": [
-        "NPC-212-SEF",
-        "NPC-212-LIS",
-        "NPC-212-LORN"
+        "NPC-ST-ERIN-MOORE",
+        "NPC-ST-LIVI-KARN",
+        "NPC-ST-ROSKA"
       ],
       "overviewFields": [
         "currentScene",
@@ -126,12 +118,12 @@
     "identity": "穿越者／非勇者",
     "rank": "B",
     "advancement": {
-      "qualified": 43,
+      "qualified": 47,
       "qualifiedTarget": 65,
       "hard": 19,
       "hardTarget": 18
     },
-    "cashCopper": 122896037,
+    "cashCopper": 118311670,
     "thirdPartyHeldCopper": 400000,
     "thirdPartyHeldBy": "奧斯文・貝克",
     "uncollectedBaseCopper": 0,
@@ -160,8 +152,8 @@
     ],
     "note": "不採用HP／MP。其他已確立能力見正式完整存檔；看板未列出不代表失去。",
     "uncollectedApprovedCopper": 3200000,
-    "currentLocation": "白樺莊園一樓公共休息室",
-    "status": "健康；已撥付白樺莊園生活經費2,000,000銅幣；未兌付憑票70,000銅幣"
+    "currentLocation": "瑟雷汀港區中央廣場",
+    "status": "健康；銅鐘堡任務已結算480,000；琥珀丘與深潮裂谷委託已正式接取；無頭馬車停港區中央廣場"
   },
   "characters": [
     {
@@ -1750,6 +1742,15 @@
       "updatedDay": 212,
       "details": "第212日15:43由澈撥付雷薩克管理。屬莊園日常專款，未支付薪資，不計入澈可支用餘額。",
       "source": "第212日正式劇情及《20》物品進出明細 V8"
+    },
+    {
+      "id": "INV-235-COPPERBELL-GUARDIAN",
+      "name": "銅鐘堡古代重型魔導守衛",
+      "status": "停機修復・暫時保管・非澈所有",
+      "place": "澈的無限空間",
+      "count": "1具",
+      "details": "第235日03:43收納，03:51完成隔離符文及指令緩衝修復，未重啟，右膝舊磨損，故障紀錄仍在核心；堡方所有權未轉移",
+      "updatedDay": 235
     }
   ],
   "quests": [
@@ -2618,6 +2619,40 @@
         "progress": "V130、V131及第212日紀錄均顯示澈未接取。原公告需求、報酬及期限未見可核對明文。",
         "source": "完整存檔 V131 第211日16:01；第212日16:22 正式劇情"
       }
+    },
+    {
+      "id": "TMP-ST235-B03",
+      "name": "琥珀丘的夜行貨隊",
+      "rank": "B",
+      "status": "已正式接取・未完成",
+      "rewardCopper": 138000,
+      "deadlineDay": 237,
+      "deadlineTime": "12:00",
+      "owner": "琥珀丘藥材商會",
+      "details": "第235日19:00東門藥材倉庫集合，19:30出發；四車藥草第236日上午送達、封條完整簽收後可自行離隊返城，不扣報酬；尚未結算",
+      "updatedDay": 235
+    },
+    {
+      "id": "ST-233-S01",
+      "name": "深潮裂谷的封印震盪",
+      "rank": "S",
+      "status": "附條件正式接取・待出航前確認",
+      "rewardCopper": 3800000,
+      "bonusCopper": 2200000,
+      "deadlineDay": 250,
+      "deadlineTime": "18:00",
+      "owner": "瑟雷汀城邦議會／潮汐術師院／沿岸防衛司令部",
+      "details": "第237日06:00前軍港報到，安全行動、觀測、撤離能力與封印作業區確認；07:00預定出航；正式接取已成立，不得改成僅申請",
+      "updatedDay": 235
+    },
+    {
+      "id": "ST235-COPPERBELL-UNRECORDED",
+      "name": "銅鐘堡失控守衛處置（原任務ID未留存，索引代號非原ID）",
+      "rank": "越級核准",
+      "status": "已完成・已結算",
+      "rewardCopper": 480000,
+      "details": "第235日08:43正式驗收結案，480,000銅幣已領；B級合格進度已計一次；封印物所有權仍屬堡方",
+      "updatedDay": 235
     }
   ],
   "research": [
@@ -3140,6 +3175,30 @@
       "role": "古代魔力循環技師",
       "status": "白樺莊園休養；希望入住，澈尚未正式分配房間",
       "updatedDay": 212
+    },
+    {
+      "id": "NPC-ST-ERIN-MOORE",
+      "name": "艾琳・莫爾",
+      "role": "白榆巷十七號住家員工",
+      "details": "29歲；料理儲藏帳務；日常合理採買記帳授權，08:25見馬車外觀；不知銅鐘堡",
+      "status": "在職",
+      "updatedDay": 235
+    },
+    {
+      "id": "NPC-ST-LIVI-KARN",
+      "name": "莉薇・卡恩",
+      "role": "白榆巷十七號住家員工",
+      "details": "24歲；園藝清潔採買；日常合理採買授權，08:25見馬車外觀；不知銅鐘堡",
+      "status": "在職",
+      "updatedDay": 235
+    },
+    {
+      "id": "NPC-ST-ROSKA",
+      "name": "蘿絲卡・維蘭",
+      "role": "瑟雷汀公會日班接待",
+      "details": "第235日結算銅鐘堡480,000並正式登記兩任務；不知守衛已修復",
+      "status": "在職",
+      "updatedDay": 235
     }
   ],
   "commitments": [
@@ -4982,6 +5041,36 @@
       "location": "格林",
       "source": "第212日正式劇情及《20》物品進出明細 V8",
       "details": "原版導魔性能為100%，改良小型試錠實測103.8%。大型構件性能尚未驗證，墜星銀核未動用。"
+    },
+    {
+      "id": "EV-235-COPPERBELL",
+      "day": 235,
+      "time": "08:43",
+      "title": "銅鐘堡任務完成結算",
+      "details": "現場驗收已通過，公會支付480,000銅幣；合格進度47/65；守衛修復停機保管、權屬堡方",
+      "summary": "現場驗收已通過，公會支付480,000銅幣；合格進度47/65；守衛修復停機保管、權屬堡方",
+      "location": "瑟雷汀",
+      "source": "第235日已確認正式劇情"
+    },
+    {
+      "id": "EV-235-QUEST-ACCEPT",
+      "day": 235,
+      "time": "09:23",
+      "title": "正式接取琥珀丘與深潮裂谷",
+      "details": "琥珀丘B級138,000、深潮裂谷S級3,800,000＋2,200,000附條件正式接取",
+      "summary": "琥珀丘B級138,000、深潮裂谷S級3,800,000＋2,200,000附條件正式接取",
+      "location": "瑟雷汀",
+      "source": "第235日已確認正式劇情"
+    },
+    {
+      "id": "EV-235-HARBOR-RUMORS",
+      "day": 235,
+      "time": "09:55",
+      "title": "港區打聽消息",
+      "details": "馬車停中央廣場，得知三潮酒館、海鷗茶館、晨魚市集、鐵鉤搬運工會館及未核實傳聞",
+      "summary": "馬車停中央廣場，得知三潮酒館、海鷗茶館、晨魚市集、鐵鉤搬運工會館及未核實傳聞",
+      "location": "瑟雷汀",
+      "source": "第235日已確認正式劇情"
     }
   ],
   "prices": [
@@ -5207,25 +5296,36 @@
       "time": "16:22",
       "title": "夢想灰銀導魔實測",
       "summary": "改良試錠相對原版103.8%；大型構件未驗證"
+    },
+    {
+      "id": "EV-235-COPPERBELL",
+      "gameDay": 235,
+      "time": "08:43",
+      "title": "銅鐘堡任務完成結算",
+      "summary": "現場驗收已通過，公會支付480,000銅幣；合格進度47/65；守衛修復停機保管、權屬堡方"
+    },
+    {
+      "id": "EV-235-QUEST-ACCEPT",
+      "gameDay": 235,
+      "time": "09:23",
+      "title": "正式接取琥珀丘與深潮裂谷",
+      "summary": "琥珀丘B級138,000、深潮裂谷S級3,800,000＋2,200,000附條件正式接取"
+    },
+    {
+      "id": "EV-235-HARBOR-RUMORS",
+      "gameDay": 235,
+      "time": "09:55",
+      "title": "港區打聽消息",
+      "summary": "馬車停中央廣場，得知三潮酒館、海鷗茶館、晨魚市集、鐵鉤搬運工會館及未核實傳聞"
     }
   ],
   "currentScene": {
-    "location": "格林・白樺莊園一樓公共休息室",
+    "location": "瑟雷汀港區中央廣場",
     "npcs": [
       "澈",
-      "小夢",
-      "布魯克",
-      "維爾納",
-      "法恩",
-      "雷薩克",
-      "賽芙琳",
-      "莉瑟雅",
-      "洛恩",
-      "伊蕾娜・維斯特",
-      "凱恩",
-      "莉薇亞"
+      "港區路人"
     ],
-    "prompt": "布魯克展示已驗收浮空車廂與夢想灰銀改良試錠數據",
+    "prompt": "澈已打聽三潮酒館、海鷗茶館、晨魚市集、鐵鉤搬運工會館；尚未決定去哪裡",
     "restStarted": false
   },
   "openIssues": [
@@ -5502,9 +5602,9 @@
     "scope": "核對《20》V8的兩筆金流／移交，以及三座維生艙、浮空車廂與灰銀試錠的狀態。其餘保留原條目核對時點。"
   },
   "inventoryLedger": {
-    "source": "V131＋第212日16:22已確認正式劇情",
-    "version": "第212日16:22 GH候選同步 V4",
-    "reviewedThrough": "第212日 16:22",
+    "source": "完整存檔V143／《20》V20",
+    "version": "第235日09:55 V20",
+    "reviewedThrough": "第235日09:55",
     "notes": [
       "第194日軍方四批成交合計 25,530,000 銅幣，商城三項收購合計 609,000 銅幣。合計僅用於對帳。研究補貼 960,000 銅幣在 12:12 被拒絕，庫存變動為零。",
       "軍法返還的 18,640 銅幣依正式財物帳入帳。此處的返還物品明細只記實物。",
@@ -6682,6 +6782,14 @@
         "movement": "澈可支用資金-2,000,000；莊園專款+2,000,000",
         "result": "雷薩克代管，尚無招募薪資支出",
         "source": "第212日正式劇情"
+      },
+      {
+        "id": "MOV-235-COPPERBELL-REWARD",
+        "time": "第235日08:43",
+        "name": "銅鐘堡委託報酬",
+        "movement": "現金+480,000銅幣",
+        "result": "已入帳，餘額118,311,670銅幣",
+        "source": "正式劇情／《20》V20"
       }
     ]
   }
